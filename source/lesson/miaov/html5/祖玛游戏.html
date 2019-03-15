@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>祖玛游戏</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	body{background: #000;}
+	#play{width: 600px; background: #fff; margin: 50px auto 0;}
+	.control{width: 600px; height: 40px; text-align: center; position: absolute; top: 0;}
+	.control input{width: 80px; height: 40px;}
+	</style>
+	<script>
+	window.onload = function(){
+		
+		var oC = document.getElementById('c1');
+		var oGc = oC.getContext('2d');
+		var oMusic = document.getElementById('audio1');
+		var oStart = document.getElementById('start');
+		var oEnd = document.getElementById('over');
+		// 创建img对象
+		var yImg = new Image();
+		yImg.src = 'data/person.png';
+
+		yImg.onload = function(){
+			
+			setInterval(function(){
+				 oGc.clearRect(0, 0, oC.width, oC.height);
+				// 外圈大圆
+				oGc.beginPath();
+				oGc.arc(300,200,200,-90 * Math.PI/180,180 * Math.PI/180,false);
+				oGc.stroke();
+				// 内圈圆
+				oGc.beginPath();
+				oGc.arc(250,200,150,-180 * Math.PI/180,0,false);
+				oGc.stroke();
+				// 结束点的小圆
+				oGc.beginPath();
+				oGc.arc(400,200,20,0,360 * Math.PI/180);
+				oGc.stroke();
+				// 绘制黑球
+				for (var i = 0; i < ball.length; i++) {
+					oGc.beginPath();
+					oGc.moveTo(ball[i].x, ball[i].y);
+					oGc.arc(ball[i].x,ball[i].y,20,0,360 * Math.PI/180,false);
+					oGc.fill();
+				};
+				// 设置祖玛图片
+				oGc.save();
+				oGc.translate(250,150);
+				oGc.rotate(iRotate);
+				oGc.translate(-40,-40);
+				oGc.drawImage(yImg, 0, 0);
+				oGc.restore();
+				// 绘制文字
+				oGc.save();
+				oGc.font = '60px impact';
+				oGc.fillStyle = 'red';
+				oGc.shadowOffsetX = 5;
+				oGc.shadowOffsetY = 5;
+				oGc.shadowColor = '#666';
+				var w = oGc.measureText('祖玛游戏').width;
+				oGc.fillText('祖玛游戏', (oC.width - w)/2, 470 );
+				oGc.restore();
+				// 绘制红球
+				for (var i = 0; i < bullet.length; i++) {
+					oGc.save();
+					oGc.fillStyle = 'red';
+					oGc.beginPath();
+					oGc.moveTo(bullet[i].x,bullet[i].y);
+					oGc.arc(bullet[i].x, bullet[i].y, 20,0,360 * Math.PI/180,false);
+					oGc.fill();
+					oGc.restore();
+				};
+				// 检测黑球与红球是否碰到
+				for (var i = 0; i < bullet.length; i++) {
+					for (var j = 0; j < ball.length; j++) {
+						if( collision(bullet[i].x, bullet[i].y, ball[j].x, ball[j].y) ){
+							oMusic.play();
+								bullet.splice( i, 1 );
+								ball.splice( j, 1 );
+						}
+					};
+				};
+
+			},1000/60);
+			// 让炮弹和黑球运动
+			setInterval(function(){
+				for (var i = 0; i < ball.length; i++) {
+					ball[i].num++;
+					// 当黑球运动到外圆270位置转入小球
+					if( ball[i].num == 270 ){
+						ball[i].r = 150;
+						ball[i].sX = 250;
+						ball[i].sY = 50;
+					}
+					// 运动到小球180位置的时候游戏结束
+					if( ball[i].num == 270 + 180 ){
+						alert('Game over!');
+						window.location.reload();
+					}
+					// 设置黑球位置
+					ball[i].x = Math.sin(ball[i].num * Math.PI/180) * ball[i].r + ball[i].sX;
+					ball[i].y = ball[i].r - Math.cos(ball[i].num * Math.PI/180) * ball[i].r + ball[i].sY;
+				};
+				// 设置子弹位置
+				for (var i = 0; i < bullet.length; i++) {
+					bullet[i].x = bullet[i].x + bullet[i].sX;
+					bullet[i].y = bullet[i].y + bullet[i].sY;
+				};
+
+			},30);
+
+			// 添加子弹信息
+			var ball = [];
+			setInterval(function(){
+				ball.push({
+					x : 300,
+					y : 0,
+					num : 0,
+					r : 200,
+					sX : 300,
+					sY : 0
+				});
+			},500);
+
+			// 鼠标控制方向
+			var iRotate = 0;
+			oC.onmousemove = function(ev){
+				if(!ev) ev = window.event;
+				var x = ev.clientX - oC.offsetLeft;
+				var y = ev.clientY - oC.offsetTop;
+				var a = x - 300;
+				var b = y - 200;
+				var c = Math.sqrt(a*a + b*b);
+
+				if(a > 0 && b > 0){
+					iRotate = Math.asin(b/c) + 90 * Math.PI/180;
+				}else if(a > 0){
+					iRotate = Math.asin(a/c);
+				}
+				if(a < 0 && b < 0){
+					iRotate = Math.asin(a/c);
+				}else if(a < 0 && b > 0){
+					iRotate = -(Math.asin(b/c) + 90 * Math.PI/180);
+				}
+			}
+			var bullet = [];
+			// 按下发送炮弹
+			oC.onmousedown = function(ev){
+				if(!ev) ev = window.event;
+				var x = ev.clientX - oC.offsetLeft;
+				var y = ev.clientY - oC.offsetTop;
+				var a = x - 300;
+				var b = y - 200;
+				var c = Math.sqrt(a*a + b*b);
+
+				var speed = 5;
+				var sX = speed * a/c;
+				var sY = speed * b/c;
+
+				bullet.push({
+					x : 250,
+					y : 150,
+					sX : sX,
+					sY : sY
+				});
+			}
+			// 检测碰撞
+			function collision(x1, x2, y1, y2){
+				var a = x1 - y1;
+				var b = x2 - y2;
+				var c = Math.sqrt(a*a + b*b);
+				return c < 40 ? true : false;
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="play">
+		<audio id="audio1">
+			<source src="data/3132.MP3" type="audio/mp3"></source>
+		</audio>
+		<div class="control">
+			<input type="button" value="开始" id="start">
+			<input type="button" value="结束" id="over">
+		</div>
+		<canvas id="c1" width="600" height="500"></canvas>
+	</div>
+</body>
+</html>

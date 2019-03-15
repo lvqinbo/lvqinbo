@@ -1,0 +1,266 @@
+/* 背景图片方式 */
+/* @mixin toolsbar-item($pos, $hoverPos){
+	background-position: 0 $pos;
+	&:hover{
+		background-position: 0 $hoverPos;
+	}
+}
+
+$toolsbar-size: 52px;
+
+.toolsbar-item,.toolsbar-layer{
+	background-image: url(../img/toolsbar.png);
+	background-repeat: no-repeat;
+}
+.toolsbar{
+	width: 52px;
+	height: 208px;
+	position: absolute;
+	right: 20px;
+	bottom: 30px;
+}
+.toolsbar-item{
+	width: $toolsbar-size;
+	height: $toolsbar-size;
+	position: relative;
+	display: block;
+	margin-top: 1px;
+	@include transition(background-position .6s);
+
+	&:hover{
+		.toolsbar-layer{
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolsbar-item-weixin{
+	@include toolsbar-item(-390px, -447px);
+	.toolsbar-layer{
+		height: 200px;
+		background-position: 0 0px;
+	}
+}
+.toolsbar-item-feedback{
+	@include toolsbar-item(-503px, -560px);
+}
+.toolsbar-item-app{
+	@include toolsbar-item(-616px, -673px);
+	.toolsbar-layer{
+		height: 180px;
+		background-position: 0 -207px;
+	}
+}
+.toolsbar-item-top{
+	@include toolsbar-item(-730px, -787px);
+}
+.toolsbar-layer{
+	width: 160px;
+	position: absolute;
+	right: $toolsbar-size;
+	bottom: 0;
+	@include opacity(0);
+	@include scale(0.01);
+	@include transition(all .3s linear);
+	@include transform-origin(bottom right);
+} */
+
+/* 图标方式 */
+/* $toolsbar-size: 52px;
+
+.toolsbar-item,.toolsbar-btn,.toolsbar-icon,.toolsbar-text{
+	width: $toolsbar-size;
+	height: $toolsbar-size;
+}
+.toolsbar-btn,.toolsbar-icon{
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+.toolsbar-icon,.toolsbar-text{
+	color: #fff;	
+	text-align: center;
+	@include transition(top 1s);
+}
+
+.toolsbar{
+	position: fixed;
+	right: 20px;
+	bottom: 5px;
+}
+.toolsbar-item{
+	position: relative;
+	display: block;
+	margin-top: 1px;
+
+	&:hover{
+		.toolsbar-icon{
+			top: -$toolsbar-size;
+		}
+		.toolsbar-text{
+			top: 0;
+		}
+		.toolsbar-layer{
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolsbar-btn{
+	overflow: hidden;
+}
+
+.toolsbar-icon{
+	font-size: 30px;
+	line-height: $toolsbar-size;
+	background-color: #d0d6d9;
+}
+.toolsbar-text{
+	left: 0;
+	top: $toolsbar-size;
+	position: absolute;
+	padding-top: 12px;
+	font-size: 12px;
+	line-height: 1.2em;
+	background-color: #98a1a6;
+}
+.toolsbar-layer{
+	position: absolute;
+	width: 160px;
+	right: $toolsbar-size;
+	bottom: 0;
+	background-image: url(../img/toolsbar.png);
+	background-repeat: no-repeat;
+	@include transition(all .6s);
+	@include transform-origin(bottom right);
+	@include opacity(0);
+	@include scale(0.01);
+}
+.toolsbar-layer-weixin{
+	height: 200px;
+	background-position: 0 0;
+}
+.toolsbar-layer-app{
+	height: 180px;
+	background-position: 0 -207px;
+} */
+/* 伪类方式 */
+$toolsbar-size: 52px;
+.toolsbar{
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+}
+.toolsbar-item{
+	position: relative;
+	width: $toolsbar-size;
+	height: $toolsbar-size;
+	margin-top: 1px;
+	display: block;
+
+	&:hover{
+		.toolsbar-btn{
+			&:before{
+				top: -$toolsbar-size;
+			}
+			&:after{
+				top: 0;
+			}
+		}
+		&:after{
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+
+	&:after{	// 二维码
+		content: "";
+		position: absolute;
+		width: 160px;
+		right: $toolsbar-size+1;
+		bottom: 0;
+		background-image: url(../img/toolsbar.png);
+		background-repeat: no-repeat;
+		@include opacity(0);
+		@include scale(0.01);
+		@include transform-origin(right bottom);
+		@include transition(all .6s);
+	}
+}
+.toolsbar-item-weixin{
+
+	.toolsbar-btn{
+		@extend .icon-weixin;
+		&:after{
+			content: "公众\A账号";
+		}
+	}
+	&:after{
+		content: "";
+		height: 200px;
+		background-position: 0 0;
+	}
+}
+.toolsbar-item-feedback{
+	.toolsbar-btn{
+		@extend .icon-yijianfankui;
+		&:after{
+			content: "意见\A反馈";
+		}
+	}
+}
+.toolsbar-item-app{
+	.toolsbar-btn{
+		@extend .icon-app;
+		&:after{
+			content: "app\A下载";
+		}
+	}
+	&:after{
+		content: "";
+		height: 177px;
+		background-position: 0 -206px;
+	}
+}
+.toolsbar-item-top{
+	.toolsbar-btn{
+		@extend .icon-top;
+		&:after{
+			content: "返回\A顶部";
+		}
+	}
+}
+.toolsbar-btn{
+	&,&:before,&:after{
+		width: $toolsbar-size;
+		height: $toolsbar-size;
+		position: absolute;
+	}
+	&,&:before{
+		left: 0; top: 0;
+	}
+	&:before,&:after{
+		content: "";
+		color: #fff;
+		@include transition(top .6s);
+	}
+	overflow: hidden;
+	@extend .iconfont;
+
+	&:before{	// icon
+		font-size: 30px;
+		text-align: center;
+		line-height: $toolsbar-size;
+		background-color: #d0d6d9;
+	}
+	&:after{	// text
+		left: 0; top: $toolsbar-size;
+		font-size: 12px;
+		text-align: center;
+		line-height: 1.2em;
+		padding-top: 12px;
+		background-color: #98a1a6;
+		white-space: pre;
+		font-weight: normal;
+	}
+}

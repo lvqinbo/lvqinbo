@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css">
+    	.gray-box{margin-bottom: 10px; padding: 20px 0; font-size: 1.2em;}
+    	.yellow-box{background: yellow; border: 1px solid #ccc; margin-bottom: 10px;}
+    </style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Tooltip</h1>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>Sigle toggle button</h4>
+			<div class="gray-box">
+				<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+					Sigle toggle button
+				</button>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>Checkbox button</h4>
+			<div class="gray-box">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary" active>
+						<input type="checkbox" autocomplete="off" checked>Checkbox 1
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off" >Checkbox 2
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off" >Checkbox 3
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>Radio button</h4>
+			<div class="gray-box">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary" active>
+						<input type="radio" autocomplete="off" checked>Radio 1
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" autocomplete="off" >Radio 2
+					</label>
+					<label class="btn btn-primary">
+						<input type="radio" autocomplete="off" >Radio 3
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>鼠标移入出现提示</h4>
+			<div class="gray-box">
+				<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Title at left">Tooltip left</button>
+				<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Title at top">Tooltip top</button>
+				<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Title at bottom">Tooltip bottom</button>
+				<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Title at right">Tooltip right</button>
+			</div>
+		</div>	
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>在点击一次提示消失</h4>
+			<div class="gray-box">
+				<button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on left</button>
+				<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on top</button>
+				<button type="button" class="btn btn-warning" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on bottom</button>
+				<button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on right</button>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>点击任何地方提示消失</h4>
+			<div class="gray-box">
+				<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on left</button>
+				<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on top</button>
+				<button type="button" class="btn btn-success" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on bottom</button>
+				<button type="button" class="btn btn-info" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus">Popover on right</button>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h4>点击然后地方提示消失</h4>
+			<div class="gray-box">
+				<button type="button" id="loading" class="btn btn-primary" autocomplete="off">
+					Start load
+				</button>
+				<button type="button" id="stoploading" class="btn btn-success" autocomplete="off">
+					Stop Loading
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+		$('[data-toggle="popover"]').popover();
+		$('#loading').on('click',function(){
+			$(this).button('loading').delay();
+		});
+		$('#stoploading').on('click',function(){
+			$('#loading').button('reset');
+		});
+	});
+	</script>
+</body>
+</html>

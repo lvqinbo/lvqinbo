@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ列表</title>
+	<style>
+	ul,h2{margin: 0; padding: 0;}
+	ul{list-style: none;}
+	body{font-family: "微软雅黑"; font-size: 12px;}
+	#qq{width: 200px; height: 400px; box-shadow: 0 0 5px #ccc; position: absolute; z-index: 2; overflow: hidden;}
+	.header{width: 100%; height: 80px; background: #4EA7F5; z-index: 4;}
+	.panel{width: 100%; height: 320px; position: absolute; top: 80px; z-index: -1;}
+	#list{width: 100%; position: absolute; top: 0;}
+	#list h2{font-size: 12px; line-height: 28px; font-weight: normal; background: url(img/iconfont-more.png)no-repeat 2px 6px;}
+	#list .list-item{text-indent: 18px;}
+	#list .list-item .f-list{display: none;}
+	#list .list-item li{line-height: 22px; width: 100%;}
+	#list .list-item li h2{ cursor: default;}
+	#list .list-item li:hover{background: #FCFBD2;}
+	#list .show{background: url(img/iconfont-moreunfold.png)no-repeat 2px 6px;}
+	#list .active{background: #FCFBD2;}
+	#list .move{cursor: move;}
+	/* 自定义滚动条 */
+	.bar{width: 10px; height: 310px; position: absolute; right: 1px; top: 82px; background: #f1f1f1; border-radius: 6px; display: none; z-index: 2;}
+	.bar-body{width: 10px; position: absolute; right: 0; top: 0; background: #B3B2B1; border-radius: 6px;}
+	</style>
+	<script src="jquery.js"></script>
+	<script>
+	$(function(){
+		var h2 = $('h2');
+		var ulList = $('.f-list');
+		var li = ulList.find('li');
+		var oBar = $('.bar');
+		var oBarBody = $('.bar-body');
+		var downY = 0;
+		var scale = 0;
+		var iHeight = 0;
+		var t = 0;
+
+		// 好友列表展开收起
+		$.each(h2,function(idx,ele){
+			$(ele).on('click',function(){
+				$(this).toggleClass('show');
+				$(ulList).eq(idx).toggle();
+
+				if($('#list').height() > 320 ){
+					$(oBar).show();
+				}else{
+					$(oBar).hide();
+				}
+				iHeight = $('.panel').height() * $('.panel').height() /$('#list').height() -20;
+				if(iHeight < 40){
+					iHeight = 40;
+				}
+				$(oBarBody).css('height', iHeight);
+
+			});
+		});
+		// 好友点击
+		li.on('click',function(){
+			$(li).attr('class','');
+			$(this).attr('class','active');
+		});
+		// 面板拖拽
+		var d1 = new Drag();
+		d1.init('qq');
+		
+		sildeBar();
+		// 滚动条
+		function sildeBar(){
+			oBarBody.mousedown(function(ev){
+				downY = ev.pageY - $(this).position().top;
+				$(document).mousemove(function(ev){
+					t = ev.pageY - downY;
+					if(t < 0){
+						t = 0;
+					}else if(t > oBar.height() - oBarBody.height()){
+						t = oBar.height() - oBarBody.height();
+					}
+					$(oBarBody).css('top', t);
+
+					scale = t / $(oBar).height();
+					$('#list').css('top', -scale * ($('#list').height()));
+
+				});
+				$(document).mouseup(function(){
+					$(document).off();
+				});
+				return false;
+			});
+		};
+		
+	})
+	function Drag(){
+		this.obj = null;
+		this.downX = null;
+		this.downY = null;
+	}
+	Drag.prototype.init = function(id){
+		this.obj = $('#'+id);
+		this.title = this.obj.find('.header');
+		var This = this.obj;
+
+		this.title.mousedown(function(ev){
+			This.downX = ev.pageX - This.offset().left;
+			This.downY = ev.pageY - This.offset().top;
+
+			$(document).mousemove(function(ev){
+				This.css('left',ev.pageX - This.downX);
+				This.css('top',ev.pageY - This.downY);
+			});
+			$(document).mouseup(function(){
+				$(document).off();
+			});
+			return false;
+		});
+	}
+	</script>
+</head>
+<body>
+	<div id="qq">
+		<div class="header">QQ</div>
+		<div class="bar">
+			<div class="bar-body"></div>
+		</div>
+		<div class="panel">
+			<ul id="list">
+				<li class="list-item">
+					<h2>我的好友</h2>
+					<ul class="f-list">
+						<li>张郎</li>
+						<li>张郎</li>
+						<li>张郎</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+					</ul>
+				</li>
+				<li class="list-item">
+					<h2>我的同事</h2>
+					<ul class="f-list">
+						<li>张郎</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+					</ul>
+				</li>
+				<li class="list-item">
+					<h2>我的同学</h2>
+					<ul class="f-list">
+						<li>张郎</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+					</ul>
+				</li>
+				<li class="list-item">
+					<h2>我的同学</h2>
+					<ul class="f-list">
+						<li>张郎</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+					</ul>
+				</li>
+				<li class="list-item">
+					<h2>我的同学</h2>
+					<ul class="f-list">
+						<li>张郎</li>
+						<li>小河</li>
+						<li>周宇</li>
+						<li>吴用</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+</body>
+</html>

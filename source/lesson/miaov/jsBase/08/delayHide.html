@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>延迟导航菜单</title>
+<style>
+*{margin: 0; padding: 0;}
+ul{list-style: none;}
+a{text-decoration: none;}
+body{background: #fff;  font-size: 14px; font-family: "微软雅黑";}
+#nav{width: 100%; height: 40px; background: #009688; margin-bottom: 160px; position: relative;}
+#nav .list{padding-left: 100px; line-height: 40px;}
+#nav .list li{padding: 0 10px; margin-right: 5px; float: left;}
+#nav .list li a{color: #fff;}
+#nav .list li a:hover{}
+#nav .list li.selected{background: #047D72;}
+#childlist{ height: 40px; line-height: 40px; background: #ccc; position: absolute; top: 50px;}
+.childnav{background: #009688; text-align: center; border-radius: 5px; display: none; position: absolute;}
+.childnav ul li{width: 80px; padding: 0 10px; border-radius: 5px; float: left;}
+.childnav ul li a{color: #fff;}
+.childnav ul li:hover{background: #047D72;}
+</style>
+</head>
+<body>
+	<div id="nav">
+		<ul class="list">
+			<li class="selected">
+				<a href="javascript:;">首页</a>
+			</li>
+			<li>
+				<a href="javascript:;">关于我们</a>
+			</li>
+			<li>
+				<a href="javascript:;">视频教程</a>
+			</li>
+		</ul>
+		<div id="childlist">
+			<div class="childnav">
+				<ul>
+					<li class="active"><a href="javascript:;">首页</a></li>
+					<li><a href="javascript:;">联系我们</a></li>
+					<li><a href="javascript:;">企业文化</a></li>
+				</ul>
+			</div>
+			<div class="childnav">
+				<ul>
+					<li class="active"><a href="javascript:;">About Us</a></li>
+					<li><a href="javascript:;">联系我们</a></li>
+					<li><a href="javascript:;">企业文化</a></li>
+				</ul>
+			</div>
+			<div class="childnav">
+				<ul>
+					<li class="active"><a href="javascript:;">企业文化</a></li>
+					<li><a href="javascript:;">联系我们</a></li>
+					<li><a href="javascript:;">企业文化</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="delayHide.js"></script>
+</body>
+</html>

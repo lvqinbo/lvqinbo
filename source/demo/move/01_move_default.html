@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul{margin: 0; padding: 0; list-style: none;}
+	.wrap{width: 500px; height: 300px; border: 1px solid #ccc; margin: 20px auto; overflow: hidden; position: relative;}
+	#listBox{position: absolute; left: 0;}
+	#listBox li{width: 500px; height: 300px; font-size: 50px; text-align: center; line-height: 300px; color: #fff; float: left; }
+	.listDot{margin: 0; text-align: center; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);}
+	.listDot span{width: 10px; height: 10px; border-radius: 50%; background: #ccc; display: inline-block; margin-right: 5px;}
+	.wrap .active{background: #7EC0EE;}
+	</style>
+	<script src="../../../js/doMove.js"></script>
+	<script>
+	function getByClass(oParent,sClass){
+		var arr = [];
+		var aEle = oParent.getElementsByTagName('*');
+
+		for (var i = 0; i < aEle.length; i++) {
+			if(aEle[i].className == sClass){
+				arr.push(aEle[i]);
+			}
+		};
+		return arr;
+	}
+	window.onload = function(){
+		var oListBox = document.getElementById('listBox');
+		var oList = oListBox.getElementsByTagName('li');
+		var oDotList = getByClass(document,'listDot')[0];
+		var oDot = oDotList.getElementsByTagName('span');
+
+		var iNow = 0;
+		var iBtn = true;
+		var arr = ['side 1','side 2','side 3','side 4','side 5','side 6','side 7'];
+		var arrColor = ['#8A2BE2','#76EE00','#76EEC6','#D15FEE','#C0FF3E','#CD3333','#D02090'];
+		
+		function fnCreate(){
+			var html = '';
+			var str = '';
+			for (var i = 0; i < arr.length; i++) {
+				html += '<li style="background:'+arrColor[i]+'">'+arr[i]+'</li>';
+				str += '<span></span>';
+			};
+			oDotList.innerHTML = str;
+			oListBox.innerHTML = html;
+		}
+		fnCreate();
+
+		function fnInit(){
+			for (var i = 0; i < oDot.length; i++) {
+				oDot[i].index = i;
+				for (var i = 0; i < oDot.length; i++) {
+					oDot[i].className = '';
+				};	
+
+				oDot[iNow].className = 'active';
+			}
+		}
+		fnInit();
+
+		function fnClear(){
+			for (var i = 0; i < oDot.length; i++) {
+				oDot[i].index = i;
+				
+				oDot[i].onmouseover = function(){
+					if(iBtn){
+						iBtn = false;
+						iNow = this.index;
+						fnInit();
+						doMove(oListBox,{left: -iNow * oList[0].offsetWidth},function(){
+							iBtn = true;
+						});
+					}
+				}
+			};
+			
+		}
+		fnClear();
+
+
+
+		oListBox.style.width = oList[0].offsetWidth * oList.length + 'px';
+	}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<ul id="listBox">
+		</ul>
+		<p class="listDot"></p>
+	</div>
+</body>
+</html>

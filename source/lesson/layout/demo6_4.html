@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全屏+flex+百分百布局</title>
+	<style>
+	body{font-family: "微软雅黑"; font-size: 30px; background-color: #fff; color: #fff;}
+	html,body,#wrapper{height: 100%; overflow: hidden; margin: 0;}
+	#wrapper{text-align: center;}
+	#wrapper{display: flex; flex-direction: column;}
+	#header{height: 8%; background-color: #ccc;}
+	#footer{height: 8%; background-color: #ccc;}
+	#main{flex: 1; display: flex;}
+	#main .left{width: 18%; background-color: orange;}
+	#main .right{flex: 1; overflow-y: auto;}
+	#main .right-inner{min-height: 1000px; background-color: blue;}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">header</div>
+		<div id="main">
+			<div class="left">left</div>
+			<div class="right">
+				<div class="right-inner">right</div>
+			</div>
+		</div>
+		<div id="footer">footer</div>
+	</div>
+</body>
+</html>

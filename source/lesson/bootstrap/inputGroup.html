@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css">
+    	.gray-box{background-color: #ccc; height: 200px; margin-bottom: 10px; font-size: 2em; text-align: center; padding: 10px;}
+    </style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Input Group</h1>
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h3>Input-Group Sizing</h3>
+				<div class="gray-box" >
+					<div class="input-group input-group-lg">
+						<span class="input-group-addon">@</span>
+						<input type="text" class="form-control" placeholder="Username">
+					</div>
+					<div class="input-group input-group-md">
+						<input type="text" class="form-control">
+						<span class="input-group-addon">.00</span>
+					</div>
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon">$</span>
+						<input type="text" class="form-control">
+						<span class="input-group-addon">.00</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h3>Input-Group input</h3>
+				<div class="gray-box" >
+					<div class="input-group input-group-lg">
+						<span class="input-group-addon"><input type="checkbox"></span>
+						<input type="text" class="form-control" placeholder="Username">
+					</div>
+					<div class="input-group input-group-md">
+						<input type="text" class="form-control">
+						<span class="input-group-addon"><input type="radio"></span>
+					</div>
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon">$</span>
+						<input type="text" class="form-control">
+						<span class="input-group-addon">.00</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h3>Input-Group button</h3>
+				<div class="gray-box" >
+					<div class="input-group input-group-lg">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go</button>
+						</span>
+						<input type="text" class="form-control" placeholder="Username">
+					</div>
+					<div class="input-group input-group-md">
+						<input type="text" class="form-control">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go</button>
+						</span>
+					</div>
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon">$</span>
+						<input type="text" class="form-control">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go</button>
+						</span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h3>Input-Group button</h3>
+				<div class="gray-box" >
+					<div class="input-group input-group-lg">
+						<div class="input-group-btn">
+							<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+								Choose Currency<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="javascript:;">$</a></li>
+								<li><a href="javascript:;">@</a></li>
+							</ul>
+						</div>
+						<input type="text" class="form-control" placeholder="Username">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h3>Input-Group split button</h3>
+				<div class="gray-box" >
+					<div class="input-group input-group-lg">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default">DropDown</button>
+							<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+								<span class="caret"></span>
+								<span class="sr-only"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="javascript:;">$</a></li>
+								<li><a href="javascript:;">@</a></li>
+							</ul>
+						</div>
+						<input type="text" class="form-control" placeholder="Username">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>

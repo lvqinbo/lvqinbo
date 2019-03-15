@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>幻灯片多种效果切换</title>
+	<style>
+	html,body,ul{margin: 0; padding: 0;}
+	li{list-style: none;}
+	img{border: none;}
+	#imgBox{width: 1000px; margin: 20px auto; position: relative;}
+	
+	#imgBox a{display: inline-block; width: 38px; height: 38px; position: absolute; top: 50%; z-index: 99; margin-top: -80px; opacity: 0;}
+	#imgBox .prev{left: 30px; background: url(img/btn.png)no-repeat 0 center;}
+	#imgBox .next{right: 30px; background: url(img/btn.png)no-repeat -37px center;}
+	#imgBox .markLeft,#imgBox .markRight{width: 50%; height: 400px; position: absolute; top: 0; z-index: 10;}
+	#imgBox .markLeft{left: 0;}
+	#imgBox .markRight{right: 0;}
+
+	#bigImg{}
+	#bigImg .list{height: 400px; width: 100%; position: relative;}
+	#bigImg .list li{height: 400px; width: 100%; position: absolute; top: 0; overflow: hidden;}
+	#bigImg .list img{ width: 1000px; height: 400px;}
+
+	#smallImg{background: #ccc; height: 110px; padding: 10px 0; position: relative; overflow: hidden;}
+	#smallImg .list{position: absolute; left: 0;}
+	#smallImg .list li{float: left; margin-left: 8px; opacity: 0.4;}
+	#smallImg .list img{width: 230px; height: 100px; border: 5px solid #fff;}
+	.btn-box{text-align: center;}
+	.btn-box input{width: 100px; height: 30px; background-color: #ddd; margin: 20px auto 10px;}
+	.btn-box .text{margin: 0; padding: 0;}
+	</style>
+	<script src="../../../js/doMove.js"></script>
+	<script>
+	function getByClass(oParent,sClass){
+		var aResult = [];
+		var aEle = oParent.getElementsByTagName('*');
+		var re = new RegExp('\\b'+sClass+'\\b');
+		for (var i = 0; i < aEle.length; i++) {
+			if(re.test(aEle[i].className)){
+				aResult.push(aEle[i]);
+			}
+		};
+		return aResult;
+	}
+	window.onload = function(){
+		var oBox = document.getElementById('imgBox');
+		var oBigImg = document.getElementById('bigImg');
+		var oSmallImg = document.getElementById('smallImg');
+		var oUlBig = oBigImg.getElementsByTagName('ul')[0];
+		var oUlSmanll = oSmallImg.getElementsByTagName('ul')[0];
+		var aLiBig = oUlBig.getElementsByTagName('li');
+		var aImgBig = oBigImg.getElementsByTagName('img');
+		var aLiSmanll = oUlSmanll.getElementsByTagName('li');
+		var oMarkL =  getByClass(imgBox,'markLeft')[0];
+		var oMarkR =  getByClass(imgBox,'markRight')[0];
+		var oPrev =  getByClass(imgBox,'prev')[0];
+		var oNext =  getByClass(imgBox,'next')[0];
+		var oBtnBox = getByClass(oBox,'btn-box')[0];
+		var aBtn = oBtnBox.getElementsByTagName('input');
+
+
+		var iNow = 0;
+		var nowIndex = 1;
+		var oneSW = aLiSmanll[0].offsetWidth + 8;
+		oUlSmanll.style.width = oneSW * aLiSmanll.length + 'px';
+		var arrEffect = ['fade','up','down','left','right'];
+		var tab = '';
+		var num = 0;
+		oPrev.onmouseover = oMarkL.onmouseover = function(){
+			doMove(oPrev,{ opacity : 100 });
+		}
+		oMarkL.onmouseout = function(){
+			doMove(oPrev,{ opacity : 0 });
+		}
+		oNext.onmouseover = oMarkR.onmouseover = function(){
+			doMove(oNext,{ opacity : 100 });
+		}
+		oMarkR.onmouseout = function(){
+			doMove(oNext,{ opacity : 0 });
+		}
+		
+		oPrev.onclick = function(){
+			if(iNow > 0){
+				iNow--;
+				fnTab();
+			}
+		}
+		oNext.onclick = function(){
+			if(iNow < aLiSmanll.length-1){
+				iNow++;
+				fnTab();
+			}
+		}
+		aBtn[0].onclick = function(){
+			num++;
+			num %= arrEffect.length;
+			tab = arrEffect[num];
+			document.querySelector('.text').innerHTML = tab+'切换';
+		}
+
+		for (var i = 0; i < aLiSmanll.length; i++) {
+			aLiSmanll[i].index = i;
+			
+			aLiSmanll[i].onmouseover = function(){
+				doMove(aLiSmanll[this.index],{ opacity : 100 });
+			}
+			aLiSmanll[i].onmouseout = function(){
+				for (var i = 0; i < aLiSmanll.length; i++) {
+					if(iNow != this.index){
+						doMove(this,{ opacity : 40 });
+					}
+				};		
+			}
+			aLiSmanll[i].onclick = function(){
+				if(iNow == this.index)return;
+				iNow = this.index;
+				fnTab();
+			}
+		};
+		function fnTab(){
+			for (var i = 0; i < aLiSmanll.length; i++) {
+				doMove(aLiSmanll[i],{ opacity : 40 });
+			};
+			doMove(aLiSmanll[iNow],{ opacity : 100 });
+			aLiBig[iNow].style.zIndex = nowIndex++;
+			
+			switch(tab){
+				case 'down':
+				aLiBig[iNow].style.height = 0;
+				doMove(aLiBig[iNow],{ height : 400 });
+				break;
+				case 'up':
+				aLiBig[iNow].style.height = 0;
+				aLiBig[iNow].style.top = '400px';
+				doMove(aLiBig[iNow],{ height : 400, top : 0 });
+				break;
+				case 'left':
+				aLiBig[iNow].style.width = 0;
+				doMove(aLiBig[iNow],{width : 1000});
+				break;
+				case 'right':
+				aLiBig[iNow].style.width = 0;
+				aLiBig[iNow].style.right = 0;
+				doMove(aLiBig[iNow],{width : 1000, left : 0});
+				break;
+				default:
+				aLiBig[iNow].style.opacity = 0;
+				doMove(aLiBig[iNow],{ opacity : 100 });
+				break;
+			}
+			/*if(tab == 'down'){
+				aLiBig[iNow].style.height = 0;
+				doMove(aLiBig[iNow],{ height : 400 });
+			}else if(tab == 'up'){
+				aLiBig[iNow].style.height = 0;
+				aLiBig[iNow].style.top = '400px';
+				doMove(aLiBig[iNow],{ height : 400, top : 0 });
+			}else if(tab == 'left'){
+				aLiBig[iNow].style.width = 0;
+				doMove(aLiBig[iNow],{width : 1000});
+			}else if(tab == 'right'){
+				aLiBig[iNow].style.width = 0;
+				aLiBig[iNow].style.right = 0;
+				doMove(aLiBig[iNow],{width : 1000, left : 0});
+			}else{
+				aLiBig[iNow].style.opacity = 0;
+				doMove(aLiBig[iNow],{ opacity : 100 });
+			}*/
+			if(iNow < 2){
+				doMove(oUlSmanll,{ left : 0 });
+			}else if(iNow == aLiSmanll.length-2){
+				doMove(oUlSmanll,{ left : -(iNow-2) * oneSW });
+			}else if(iNow == aLiSmanll.length-1){
+				doMove(oUlSmanll,{ left : -(iNow-3) * oneSW });
+			}
+			else{
+				doMove(oUlSmanll,{ left : -(iNow-1) * oneSW });
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="imgBox">
+		<a class="prev" href="javascript:;"></a>
+		<a class="next" href="javascript:;"></a>
+		<div class="markLeft"></div>
+		<div class="markRight"></div>
+		<div id="bigImg">
+			<ul class="list">
+				<li style="z-index:1"><img src="img/1.jpg" ></li>
+				<li><img src="img/2.jpg" ></li>
+				<li><img src="img/3.jpg" ></li>
+				<li><img src="img/4.jpg" ></li>
+				<li><img src="img/5.jpg" ></li>
+				<li><img src="img/6.jpg" ></li>
+				<li><img src="img/7.jpg" ></li>
+				<li><img src="img/8.jpg" ></li>
+			</ul>
+		</div>
+		<div id="smallImg">
+			<ul class="list">
+				<li style="opacity:1"><img src="img/1.jpg" ></li>
+				<li><img src="img/2.jpg" ></li>
+				<li><img src="img/3.jpg" ></li>
+				<li><img src="img/4.jpg" ></li>
+				<li><img src="img/5.jpg" ></li>
+				<li><img src="img/6.jpg" ></li>
+				<li><img src="img/7.jpg" ></li>
+				<li><img src="img/8.jpg" ></li>
+			</ul>
+		</div>
+		<div class="btn-box">
+			<input type="button" value="切换效果">
+			<p class="text">点击按钮切换幻灯片效果</p>
+		</div>
+	</div>
+</body>
+</html>

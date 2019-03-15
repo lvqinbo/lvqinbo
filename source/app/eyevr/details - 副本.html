@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-page-mode" content="app">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <meta name="browsermode" content="application">
+    <!-- WebApp全屏模式 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>eye+房产VR系统</title>
+    <link rel="stylesheet" href="vr_main.css">
+    <script src="base.js"></script>
+    <script>
+    window.onload = function() {
+        var oBannerWrap = g('banner-hx');
+        var oList = g('pic-list');
+        var aListLi = oList.getElementsByTagName('li');
+        var aNavLi = oBannerWrap.getElementsByTagName('nav')[0].children;
+        var oBtnPrev = g('banner-btn-prev');
+        var oBtnNext = g('banner-btn-next');
+
+        function init() {
+            for (var i = 0, l = aListLi.length; i < l; i++) {
+                aListLi[i].style.width = view().w + 'px';
+            }
+            oList.style.width = aListLi[0].offsetWidth * aListLi.length + 'px';
+        }
+        init();
+
+        fnTab();
+
+        function fnTab() {
+            var iNow = 0;
+            var iX = 0;
+            var iW = view().w;
+            var oTimer = 0;
+            var iStartTouchX = 0;
+            var iStartX = 0;
+
+            bind(oBannerWrap, "touchstart", fnStart);
+            bind(oBannerWrap, "touchmove", fnMove);
+            bind(oBannerWrap, "touchend", fnEnd);
+
+            auto();
+
+            function auto() {
+                oTimer = setInterval(function() {
+                    iNow++;
+                    iNow = iNow % aNavLi.length;
+                    tab();
+                }, 2000);
+            }
+
+            function tab() {
+                iX = -iNow * iW;
+                oList.style.transition = "0.5s";
+                oList.style.WebkitTransform = oList.style.transform = "translateX(" + iX + "px)";
+                for (var i = 0; i < aNavLi.length; i++) {
+                    removeClass(aNavLi[i], "active");
+                }
+                addClass(aNavLi[iNow], "active");
+            }
+
+            function fnStart(ev) {
+                oList.style.transition = "none";
+                var ev = ev.changedTouches[0];
+                iStartTouchX = ev.pageX;
+                iStartX = iX;
+                clearInterval(oTimer);
+
+            }
+
+            function fnMove(ev) {
+                var ev = ev.changedTouches[0];
+                var iDis = ev.pageX - iStartTouchX;
+                iX = iStartX + iDis;
+                oList.style.WebkitTransform = oList.style.transform = "translateX(" + iX + "px)";
+            }
+
+            function fnEnd() {
+                iNow = iX / iW;
+                iNow = -Math.round(iNow);
+                if (iNow < 0) {
+                    iNow = 0;
+                }
+                if (iNow > aNavLi.length - 1) {
+                    iNow = aNavLi.length - 1;
+                }
+                tab();
+                auto();
+            }
+
+            function tab() {
+                iX = -iNow * iW;
+                oList.style.transition = "0.5s";
+                oList.style.WebkitTransform = oList.style.transform = "translateX(" + iX + "px)";
+                for (var i = 0; i < aNavLi.length; i++) {
+                    removeClass(aNavLi[i], "active");
+                }
+                addClass(aNavLi[iNow], "active");
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="g-wrap" class="details-wrap">
+        <div id="top-tit">eye+房产VR系统</div>
+        <div class="banner-hx" id="banner-hx">
+            <ul class="banner-hx-list" id="pic-list">
+                <li><img src="img/c1.jpg" alt=""></li>
+                <li><img src="img/c2.jpg" alt=""></li>
+                <li><img src="img/c3.jpg" alt=""></li>
+                <li><img src="img/c4.jpg" alt=""></li>
+            </ul>
+            <nav>
+                <a href="javascript:;" class="active"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+            </nav>
+        </div>
+        <div class="contact-info">
+            <p>均价：888元/㎡</p>
+            <p>地址：桂林市中山中路5号佳信华庭5楼</p>
+            <p>电话：0773-2199999</p>
+        </div>
+        <div class="lp-list">
+            <ul>
+                <li><img src="img/c1.jpg" alt=""></li>
+                <li><img src="img/c1.jpg" alt=""></li>
+                <li><img src="img/c1.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="apart-layout">
+            <ul>
+                <li>
+                    <div class="apart-list-inner">
+                        <div class="apart-img-box">
+                            <img src="img/lp1.jpg" alt="">
+                        </div>
+                        <p class="hx-name">桂圳·城市领地</p>
+                        <a href="javascript:;" class="btn-sty">720查看</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="apart-list-inner">
+                        <div class="apart-img-box">
+                            <img src="img/lp1.jpg" alt="">
+                        </div>
+                        <p class="hx-name">桂圳·城市领地</p>
+                        <a href="javascript:;" class="btn-sty">720查看</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="apart-list-inner">
+                        <div class="apart-img-box">
+                            <img src="img/lp1.jpg" alt="">
+                        </div>
+                        <p class="hx-name">桂圳·城市领地</p>
+                        <a href="javascript:;" class="btn-sty">720查看</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="apart-list-inner">
+                        <div class="apart-img-box">
+                            <img src="img/lp1.jpg" alt="">
+                        </div>
+                        <p class="hx-name">桂圳·城市领地</p>
+                        <a href="javascript:;" class="btn-sty">720查看</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="form-bt">
+            <form action="">
+                <input type="tel" placeholder="手机号码">
+                <input type="text" placeholder="称呼">
+                <button class="form-btn">登记</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

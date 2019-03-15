@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>网易云课堂</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<!-- ========================================头部======================================== -->
+<div class="top-head" >
+	<div class="g-flow">
+		<div class="header clearfix">
+			<div class="logo fl">
+				<a href=""><h1 class="h-title">网易云课堂</h1></a>
+			</div>
+			<div class="u-box fr">
+				<a href="javascript:;" class="u-info j-more u-head iconfont icon-gerenxinxidaiban">
+				</a>
+				<a href="javascript:;" class="u-info j-more">课程包</a>
+				<a href="javascript:;" class="u-info j-more">消息</a>
+				<div class="p-info">
+					<ul class="p-info-list">
+						<li><a href="javascript:;">用户名</a></li>
+						<div class="hr"></div>
+						<li><a href="javascript:;">个人主页</a></li>
+						<li><a href="javascript:;">用户反馈</a></li>
+						<li><a href="javascript:;">设置</a></li>
+						<div class="hr"></div>
+						<li><a href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="nav">
+			<a href="javascript:;" class="all-lesson"><h3>全部课程</h3></a>
+			<div class="nav-box">
+				 <ul class="nav-box-list fl">
+					<li class="nav-item"><a href="javascript:;">首页</a></li>
+					<li class="nav-item">
+						<a href="javascript:;" class="nav-item-sys">课程体系</a>
+						<div class="sub_menu">
+							<a href="javascript:;"><span>大学计算机专业</span></a>
+							<div class="hr"></div>
+							<a href="javascript:;"><span>互联网职业技能</span></a>
+							<div class="hr"></div>
+							<a href="javascript:;"><span>金融专业</span></a>
+						</div>
+					</li>
+					<li class="nav-item"><a href="javascript:;">微专业</a></li>
+					<li class="nav-item"><a href="javascript:;">下载APP</a></li>
+					<li class="nav-item"><a href="javascript:;">学习中心</a></li>
+				</ul>
+			</div>
+			<!-- 侧边栏菜单 -->
+			<div class="sidebar">
+				<ul class="sidebar-list" id="tpl_sidebar">
+					<li class="sidebar-item">
+						<a class="sup-title" href="javascript:;">{{title}}</a>
+						<p class="sub-title">
+							<a href="javascript:;">{{sub_1}}</a>
+							<a href="javascript:;">{{sub_2}}</a>
+							<a href="javascript:;">{{sub_3}}</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- 侧边栏菜单对应内容 -->
+				<div class="sidebar-content" id="tpl-sidebar-content">
+					<div class="sidebar-content-wrap">
+						<!-- <h3>分类目录</h3>
+						<p class="l-link">
+						<h3>系列课程</h3>
+						<p class="l-list"></p>
+						<img class="sidebar-img" src="img/sidebar/ad1.png" alt=""> -->
+					</div>
+				</div>
+			<div class="search-box fr">
+				<i class="s-icon iconfont icon-search"></i>
+				<input class="s-input" type="text" placeholder="搜索">
+			</div>
+			<div class="getmore-box">
+				<div class="getmore">
+					<a class="img-wrap" href="javascript:;"><img src="img/aside/{{img}}.png" alt=""></a>
+					<div class="ad-list">
+						<a class="ad-list-text" href="javascript:;">{{title}}</a>
+					</div>
+				</div>
+				<div class="ad-btn-box">
+					<a class="ad-btn title fl" href="javascript:;"><i class="iconfont icon-video"></i>看直播</a>
+					<a class="ad-btn title fl" href="javascript:;"><i class="iconfont icon-edit"></i>做真题</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<!-- ========================================幻灯片======================================== -->
+<div class="slider" id="slider">
+	<div class="slider-wrap" id="tpl_slider_wrap">
+		<div class="slider-item" id="slider-item-{{index}}"><img src="img/{{img}}.jpg" alt="" ></div>
+	</div>
+	<div class="slider-ctrl" id="tpl_slider_ctrl">
+		<a href="javascript:switchSlider({{index}});" class="ctrl-item" id="ctrl-item-{{index}}"></a>
+	</div>
+</div>
+<!-- ========================================微专业======================================== -->
+<div class="scrn-gray">
+<div class="g-flow">
+	<div class="micro-wrap">
+		<div class="micro fl">
+			<img src="img/wzy.png" alt="">
+			<a class="title" href="javascript:;">一种专业有效的职业培训方案</a>
+		</div>
+		<div class="m-wrapper fl">
+			<a href="javascript:switchTab('l');" class="switch-btn prev">&lt;</a>
+			<a href="javascript:switchTab('r');" class="switch-btn next">&gt;</a>
+			<div class="list" id="tpl_micro_list">
+				<div class="micro-item fl">
+					<a href="javascript:;">
+						<div class="m-icon iconfont icon-{{icon}}"></div>
+						<div class="m-tit">{{title}}</div>
+						<div class="m-info">{{author}}</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ========================================免费课程======================================== -->
+<div class="h60"></div>
+<div class="g-flow">
+	<div class="container">
+		<div class="contain">
+			<div class="short"><img src="img/mf/free.png" alt=""></div>
+			<div class="imgbox-wrap" id="tpl_free">
+				<div class="imgbox">
+					<div class="img-wrap">
+						<img src="img/mf/{{img}}.jpg" alt="">
+					</div>
+					<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+					<div class="author">{{author}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ========================================畅销好课======================================== -->
+<div class="g-flow bestlesson">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">畅销好课</h2>
+		<div class="more-box">
+			<a class="u-more j-more fr" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="contain">
+			<div class="wrapper">
+				<a href="javascript:;" class="vertical img-wrap"><img src="img/hk/cell-2.png" alt=""></a>
+				<div class="imgbox-wrap" id="tpl_bestlesson">
+					<div class="imgbox">
+						<div class="img-wrap">
+							<img src="img/hk/{{img}}.jpg" alt="">
+						</div>
+						<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+						<div class="author">{{author}}</div>
+						<div class="thumb">
+							<span class="discount">{{discount}}.00</span>
+							<span class="normal">{{normal}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="getmore">
+			<div class="ad-list">
+				<a class="ad-list-text" href="javascript:;">{{title}}</a>
+			</div>
+			<a class="img-wrap" href="javascript:;"><img src="img/aside/{{img}}.png" alt=""></a>
+		</div>
+	</div>
+</div>
+<!-- ========================================名师大咖======================================== -->
+<div class="g-flow teacher">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">名师大咖</h2>
+		<div class="more-box">
+			<a class="u-more j-more fr" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="imgbox-wrap teach-wrap fl" id="tpl_teacher">
+			<a class="teach-item" href="">
+				<img src="img/teach/{{img}}.png" alt="">
+				<h3><span class="name">{{name}}</span><span class="title">{{title}}</span></h3>
+			</a>
+		</div>
+		<div class="getmore">
+			<div class="ad-list" id="tpl_institution">
+				<a class="ad-list-text" href="javascript:;">{{title}}<span class="monad-type fr">[机构]</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="h70"></div>
+</div>
+<!-- ========================================IT互联网======================================== -->
+<div class="g-flow internet">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">IT互联网</h2>
+		<div class="more-box">
+			<a class="u-more j-more" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="contain">
+			<div class="wrapper">
+				<a href="javascript:;" class="cross img-wrap"><img src="img/it/row-2.png" alt=""></a>
+				<div class="imgbox-wrap" id="tpl_internet">
+					<div class="imgbox">
+						<div class="img-wrap">
+							<img src="img/it/{{img}}.jpg" alt="">
+						</div>
+						<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+						<div class="author">{{author}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="getmore">
+			<div class="ad-list">
+				<a class="ad-list-text" href="javascript:;">{{title}}</a>
+			</div>
+			<a class="img-wrap" href="javascript:;"><img src="img/aside/{{img}}.png" alt=""></a>
+		</div>
+	</div>
+</div>
+<!-- ========================================职场技能======================================== -->
+<div class="g-flow job">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">职场技能</h2>
+		<div class="more-box">
+			<a class="u-more j-more" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="contain">
+			<div class="wrapper">
+				<a href="javascript:;" class="vertical img-wrap"><img src="img/zc/cell-2.png" alt=""></a>
+				<div class="imgbox-wrap" id="tpl_job">
+					<div class="imgbox">
+						<div class="img-wrap">
+							<img src="img/zc/{{img}}.jpg" alt="">
+						</div>
+						<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+						<div class="author">{{author}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="getmore">
+			<div class="ad-list">
+				<a class="ad-list-text" href="javascript:;">{{title}}</a>
+			</div>
+			<a class="img-wrap" href="javascript:;"><img src="img/aside/{{img}}.png" alt=""></a>
+		</div>
+	</div>
+</div>
+<!-- ========================================语言学习======================================== -->
+<div class="g-flow language">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">语言学习</h2>
+		<div class="more-box">
+			<a class="u-more j-more" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="contain">
+			<div class="wrapper">
+				<a href="javascript:;" class="cross img-wrap"><img src="img/row2.png" alt=""></a>
+				<div class="imgbox-wrap" id="tpl_language">
+					<div class="imgbox">
+						<div class="img-wrap">
+							<img src="img/yy/{{img}}.jpg" alt="">
+						</div>
+						<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+						<div class="author">{{author}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="getmore">
+			<div class="ad-list">
+				<a class="ad-list-text" href="javascript:;">{{title}}</a>
+			</div>
+			<a class="img-wrap" href="javascript:;"><img src="img/aside/{{img}}.png" alt=""></a>
+		</div>
+	</div>
+</div>
+<!-- ========================================兴趣爱好======================================== -->
+<div class="g-flow hobby">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">兴趣爱好</h2>
+		<div class="more-box">
+			<a class="u-more j-more" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="contain">
+			<div class="wrapper">
+				<a href="javascript:;" class="vertical img-wrap"><img src="img/xq/cell-2.png" alt=""></a>
+				<div class="imgbox-wrap" id="tpl_hobby">
+					<div class="imgbox">
+						<div class="img-wrap">
+							<img src="img/xq/{{img}}.jpg" alt="">
+						</div>
+						<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+						<div class="author">{{author}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="getmore">
+			<div class="ad-list">
+				<a class="ad-list-text" href="javascript:;">{{title}}</a>
+			</div>
+			<a class="img-wrap" href="javascript:;"><img src="img/aside/{{img}}.png" alt=""></a>
+		</div>
+	</div>
+</div>
+<div class="h30"></div>
+<!-- ========================================广告图片======================================== -->
+<div class="g-flow">
+	<div class="container">
+		<div class="contain">
+			<div class="ad-baner fl"><img src="img/banner1.jpg" alt=""></div>
+			<div class="ad-app fr"><img src="img/banner2.jpg" alt=""></div>
+		</div>
+	</div>
+</div>
+<!-- ========================================猜你喜欢======================================== -->
+<div class="g-flow">
+	<div class="bar-70 clearfix">
+		<h2 class="fl">猜你喜欢</h2>
+		<div class="more-box">
+			<a class="u-more j-more" href="javascript:;">{{list}}</a>
+		</div>
+	</div>
+	<div class="g-container container">
+		<div class="m-contain">
+			<div class="imgbox-wrap" id="tpl_youlike">
+				<div class="imgbox">
+					<div class="img-wrap">
+						<img src="img/like/{{img}}.jpg" alt="">
+					</div>
+					<div class="title-box"><a href="javascript:;" class="title">{{title}}</a></div>
+					<div class="author">{{author}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="h30"></div>
+<!-- ========================================合作机构======================================== -->
+<div class="major-box scrn-gray">
+	<div class="g-flow">
+		<div class="bar-70 clearfix">
+			<h2 class="fl">合作机构</h2>
+			<div class="more-box">
+				<a class="u-more j-more" href="javascript:;">{{list}}</a>
+			</div>
+		</div>
+		<div class="hr"></div>
+		<div class="major-list">
+			<ul class="normal-list" id="tpl_major-wrap">
+				<li class="major-item"><a class="title" href="javascript:;">{{major}}</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- ========================================footer======================================== -->
+<footer>
+	<div class="scrn scrn-black">
+		<div class="container">
+			<div class="col-lg-5">
+				<div class="logo"></div>
+				<div class="info">
+					<p class="text">网易公司(163.com)旗下实用技能学习平台。与顶级机构、院校和优秀讲师合作，为您提供海量优质课程，以及创新的在线学习体验，帮助您获得全新的个人发展和能力提升。</p>
+				</div>
+				<div class="focusus">
+					<p class="text">关注我们：
+						<a class="weibo" href="javascript:;"></a>
+						<a class="renren" href="javascript:;"></a>
+						<a class="yixin" href="javascript:;"></a>
+						<a class="weixin" href="javascript:;"></a>
+					</p>
+				</div>
+				<div class="copyright">©1997-2015 网易公司 版权所有</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="contact">
+					<ul class="normal-list">
+						<li><a href="">关于我们</a></li>
+						<li><a href="">联系我们</a></li>
+						<li><a href="">帮助中心</a></li>
+						<li><a href="">内容招募</a></li>
+						<li><a href="">意见反馈</a></li>
+						<li><a href="">中国大学MOOC</a></li>
+					</ul>
+					<div class="text mobile">
+						<span>移动app:</span>
+						<a class="apple" href="javascript:;"></a>
+						<a class="android" href="javascript:;"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<script src="data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/doMove.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单布局2</title>
+	<style>
+	body,ul{margin: 0; padding: 0;}
+	li{list-style: none; width: 100px; height: 100px; background: #77CC11;line-height: 100px;}
+	.container{width: 400px; border:2px solid #000; margin: 20px auto; overflow: hidden; text-align: center; font-size: 60px; color: #fff; vertical-align: top; }
+	.aside{width: 296px; height: 296px; margin: 2px; background: #FF00FF; float: left; line-height: 300px;}
+	.c_mid{background: yellow;}
+
+	.footer{height: 100px; background: black;}
+	.footer li{float: right;}
+
+	.fl{float: left;}
+	.fr{float: right;}
+	.clear{content: ''; display: block; height: 0; clear: both;}
+	.clear{zoom: 1;}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="top clear">
+			<div class="aside fl">1</div>
+			<div class="right fr">
+				<ul>
+					<li>2</li>
+					<li class="c_mid">3</li>
+					<li>4</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer clear">
+			<ul>
+				<li class="c_mid">5</li>
+				<li>6</li>
+				<li class="c_mid">7</li>
+				<li>8</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

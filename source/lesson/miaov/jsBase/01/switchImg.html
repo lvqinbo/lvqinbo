@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片切换</title>
+	<style>
+	body {font-family: "微软雅黑"; font-size: 14px; color: #999;}
+	ul {list-style: none;}
+	a {text-decoration: none;}
+	img {border: none;}
+	p {margin: 0;}
+	#wrap {width: 500px; margin: 20px auto; box-shadow: 0 0 1px #ccc;}
+	#wrap p {width: 100%; text-align: center;}
+	#wrap p.text{padding: 10px 0;}
+	#wrap p span {display: inline-block; padding: 2px 15px; margin-top: 10px; margin-right: 5px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; }
+	#wrap .active {background: #ff0;}
+	#imgbox {width: 100%; height: 300px; text-align: center;  position: relative; overflow: hidden;}
+	#imgbox p {padding: 10px 0; height: 25px; left: 0; color: #fff; background: rgba(0,0,0,.6); position: absolute; z-index: 2;}
+	#imgbox a {width: 50px; height: 50px; line-height: 50px; color: #fff; background: rgba(255,255,78,.4); position: absolute; top: 50%; margin-top: -25px; display: inline-block; z-index: 3;}
+	.prev {left: 20px;}
+	.next {right: 20px;}
+	.imgnum {top: 0;}
+	.imginfo {bottom: 0;}
+	.imglist {margin: 0; padding: 0; position: absolute; left: 0;}
+	.imglist li {width: 500px; height: 100%; color: #fff; font-size: 30px; line-height: 300px; float: left;}
+	.imglist li:nth-of-type(1) {background: #f008cd;}
+	.imglist li:nth-of-type(2) {background: #782354;}
+	.imglist li:nth-of-type(3) {background: #cd963d;}
+	.imglist li:nth-of-type(4) {background: #dada87;}
+	.imglist li:nth-of-type(5) {background: #e823d2;}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<p><span class="btn active">顺序</span><span class="btn">循环</span></p>
+		<p class="text">图片默认顺序切换</p>
+		<div id="imgbox">
+			<a class="prev" href="javascript:;"><</a>
+			<a class="next" href="javascript:;">></a>
+			<p class="imgnum">正在加载图片数量....</p>
+			<p class="imginfo">正在加载文字介绍....</p>
+			<ul class="imglist">
+				<li style="display:block">图片1</li>
+				<li>图片2</li>
+				<li>图片3</li>
+				<li>图片4</li>
+				<li>图片5</li>
+			</ul>
+		</div>
+	</div>
+	<script src="switchimg.js"></script>
+</body>
+</html>

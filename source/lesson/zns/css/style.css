@@ -1,0 +1,368 @@
+@font-face {font-family: "iconfont";
+  src: url('fonts/iconfont.eot'); /* IE9*/
+  src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fonts/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('fonts/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+a{text-decoration: none;}
+*{margin: 0; padding: 0;}
+ul{list-style: none;}
+input{outline-color: #fff; }
+body{width: 100%; height: auto; font-size: 12px; font-family: "微软雅黑"; overflow-x: hidden;}
+#wrapper{width: 100%;}
+.head{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	background: #CBD2D4;
+	position: relative;
+}
+.main{
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 900px;
+	overflow: hidden;
+	padding: 10px;
+	background: #823E74;
+	opacity: 0.6;
+	position: relative;
+}
+.footer{
+	line-height: 40px;
+	background: #999;
+	text-align: center;
+}
+.head .skin{
+	position: absolute;
+	top: 0; right: 10px;
+	color: #fff;
+	padding: 0 10px;
+}
+.head .skin:hover{
+	background: #497A14;
+}
+#list{
+	width: 100%;
+}
+#list li{
+	float: left;
+	margin: 10px 10px 0 10px;
+}
+#list li .box{
+	width: 300px; height: 160px;
+	background: #fff;
+	box-shadow: 0 0 10px #333;
+	overflow: hidden;
+}
+#list .box .title{
+	width: 100%;
+	height: 20px;
+	line-height: 20px; background: #ccc;
+}
+#list .box .title h3{
+	font-size: 12px;
+	font-family: "微软雅黑";
+	text-align: center;
+	color: #000;
+}
+#list .box .content{
+	padding: 10px;
+	position: relative;
+}
+#list .box input{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	padding: 2px;
+}
+#list .box p{
+	padding: 10px 0;
+}
+#list .mousemove{
+	cursor: move;
+}
+#list .litbox{
+	width: 60px; height: 50px; margin-top: 10px; background: green;
+}
+#list .litbox-item{
+	width: 260px; height: 70px; margin-top: 10px; padding: 10px; background: red;
+}
+.tab{width: 280px;}
+
+#list .tab p{padding: 0;}
+
+#list .tab-title{
+	border-bottom: 1px solid #999;
+}
+#list .tab-title span{
+	padding: 5px 15px;
+	border: 1px solid #999;
+	border-bottom: none;
+	border-radius: 5px 5px 0 0;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+}
+#list .tab-body-item{
+	height: 50px;
+	border: 1px solid #999;
+	border-top: none;
+	padding: 5px;
+	/*display: none;*/
+}
+#list .tab .selected{
+	background: #f30;
+}
+
+/* 简易日历 */
+#calender .content{
+	width: 280px;
+	height: 120px;
+	background: #ddd;
+}
+#list .calender p,
+#list .calender p{
+	width: 40px;
+	height: 20px;
+	margin: 5px 5px 0 0;
+	padding: 0 0 20px 0;
+	float: left;
+	background: #000;
+}
+#list .calender strong,
+#list .calender span{
+	width: 40px; 
+	height: 10px;
+	padding-top: 5px;
+	text-align: center;
+	float: left;
+	color: #fff;
+}
+#list .calender span{
+	padding: 5px 0;
+}
+#list p.active{
+	background: #fff;
+}
+#list p.active strong,
+#list p.active span{
+	color: #F01FB1;
+}
+#list .cont {
+	width: 265px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 95px;
+	clear: both;
+	background: #fff;
+}
+#list .cont p{
+	float: left;
+	height: 30px;
+	padding: 0;
+	text-indent: 15px;
+	border-left: 1px solid #999;
+}
+#list .cont strong{
+	float: left;
+	width: 50px;
+	padding: 0 10px;
+}
+#colock{
+	font-size: 30px;
+	line-height: -30px;
+}
+#colock span{
+	width: 5px;
+	height: 66px;
+	line-height: 66px;
+	display: inline-block;
+}
+#colock img{
+	width: 30px;
+	height: 60px;
+	border: none;
+	vertical-align: center;
+}
+#boxsort{}
+#boxsort .list-item{
+	width: 50px; 
+	height: 50px;
+	line-height: 50px;
+	margin-right: 5px;
+	font-size: 30px;
+	color: #fff;
+	text-align: center;
+	float: left;
+}
+.box table{
+	width: 260px;
+	border-collapse: collapse;
+}
+.box table,
+.box table th,
+.box table td{
+	border: 1px solid #ccc;
+	text-indent: 6px;
+}
+#share {
+	position: relative;
+}
+#share .share-body{
+	width: 60px;
+	height: 120px;
+	background: red;
+	position: absolute;
+	left: -60px;
+}
+#share .share-body span{
+	width: 20px;
+	height: 70px;
+	position: absolute;
+	right: -20px;
+	top: 25px;
+	color: red;
+}
+#scrollbar .content{
+	height: 115px;
+	overflow: hidden;
+}
+#scrollbar .sbar{
+	width: 8px; height: 20px; background: #ccc;
+	border-radius: 12px;
+	position: absolute; 
+	right: 0; top: 10px;
+	display: none;
+	opacity: 0;
+	z-index: 3;
+}
+#scrollbar .content p{
+	padding: 10px 10px 10px 0;
+	position: absolute;
+	top: 10px;
+}
+#login{
+	text-align: center;
+}
+#login .content input{
+	width: 200px; border-radius: 2px;
+	margin: 5px 0;
+	border: 1px solid #ccc;
+	color: #333;
+}
+#login .content input:nth-child(1){
+	padding: 5px;
+}
+#login .content input:nth-child(2){
+	padding: 5px;
+}
+#login .content p {
+	width: 100%;
+	padding: 0;
+	text-align: center;
+}
+#login .content p input:nth-child(1){
+	width: 120px;
+}
+#login .content p input:nth-child(2){
+	width: 30px;
+}
+
+.toolbar {
+	position: fixed;
+	right: 10px;
+	bottom: 40px;
+}
+.toolbar-item {
+	width: 50px; height: 50px;
+	margin-top: 1px;
+	position: relative;
+	display: block;
+
+}
+.toolbar-item:hover .toolbar-btn:before{
+	top: -50px;
+}
+.toolbar-item:hover .toolbar-btn:after{
+	top: 0;
+}
+.toolbar-weixin {
+
+}
+.toolbar-weixin .toolbar-btn:before{
+	content: "\e60a";
+}
+.toolbar-weixin .toolbar-btn:after{
+	content: "微信\A账号";
+}
+.toolbar-app {
+
+}
+.toolbar-app .toolbar-btn:before{
+		content: "\e608";
+}
+.toolbar-app .toolbar-btn:after{
+		content: "app\A下载";
+}
+.toolbar-feedback {
+
+}
+.toolbar-feedback .toolbar-btn:before{
+	content: "\e60f";
+}
+.toolbar-feedback .toolbar-btn:after{
+	content: "意见\A反馈";
+}
+.toolbar-top{
+
+}
+.toolbar-top .toolbar-btn:before{
+	content: "\e69e";
+}
+.toolbar-top .toolbar-btn:after{
+	content: "返回\A顶部";
+}
+.toolbar-btn {
+	width: 50px; height: 50px;
+	position: absolute;
+	left: 0; top: 0;
+	overflow: hidden;
+
+	font-family:"iconfont" !important;
+	font-size:30px;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* 图标字体 */
+.toolbar-btn:before{ 
+	content: "";
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	line-height: 50px;
+	font-size: 30px;
+	text-align: center;
+	color: #fff;
+	background: #d0d6d9;
+	transition: all  1s;	
+}
+/* 文字 */
+.toolbar-btn:after{
+	content: "";
+	position: absolute;
+	left: 0; top: 50px;
+	width: 100%; height: 100%;
+	line-height: 1.2em;
+	padding-top: 12px;
+	font-size: 12px;
+	text-align: center;
+	color: #fff;
+	background: #9854aa;
+	white-space: pre;
+	transition: all  1s;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流效果</title>
+	<style>
+	#wrap{width: 848px;  margin:0 auto;}
+	#wrap ul{padding:0; width: 202px; margin-right: 10px; float: left;}
+	#wrap li{list-style: none; margin-bottom: 10px;  border: 1px solid #333;}
+	#wrap img{width: 200px; display: block;}
+	#wrap p{ text-indent: 15px;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oBox = document.getElementById('wrap');
+		var aUl = oBox.getElementsByTagName('ul');
+
+		window.onscroll = function(){
+			var vH = document.documentElement.clientHeight;
+			var vT = document.documentElement.scrollTop || document.body.scrollTop;
+
+			if(vH + vT > document.documentElement.scrollHeight - 100){
+				createEle();
+			}
+		}
+
+		function checkHeight(obj){
+			var height = 10000;
+			var index = 0;
+			for (var i = 0; i < aUl.length; i++) {
+				var iHeight = aUl[i].offsetHeight;
+				if(iHeight < height){
+					height = iHeight;
+					index = i;
+				}
+			};
+			return index;
+		}
+		createEle();
+		function createEle(){
+			for (var i = 1; i <= 10; i++) {
+			var oImg = document.createElement('img');
+			oImg.src = 'img/'+i+'.jpg';
+
+			var oP = document.createElement('p');
+			oP.innerHTML = '图片说明加载中.......';
+
+			var oLi = document.createElement('li');
+			oLi.appendChild(oImg);
+			oLi.appendChild(oP);
+
+			var min_height = checkHeight(aUl);
+
+			aUl[min_height].appendChild(oLi);
+			};
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+	</div>
+</body>
+</html>

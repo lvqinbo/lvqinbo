@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>豆瓣</title>
+	<style>
+	html,body{margin: 0; padding: 0; font-size: 12px; font-family: "微软雅黑"; color: #333;}
+	a{text-decoration: none;}
+	li{list-style: none; float: left;}
+	#wrap{width: 580px; margin: 50px auto;}
+	/*搜索框*/
+	#searchBox{margin-bottom: 20px; position: relative;}
+	#sTitle{width: 566px; padding: 5px; background: #fff; border: 1px solid #ccc; color: #000; outline: none; font-family: "微软雅黑"; color: #333;}
+	#searchBox a{position: absolute; display: block; width: 80px; right: 0; top: 0; color: #111; font-size: 16px; text-align: center; padding: 4px; background: #ccc; color: #fff;}
+	#searchBox a:hover{background: #d187de;}
+
+	/*搜索返回内容*/
+	.result{width: 100%; padding: 10px;}
+ 	.result .pic{width: 90px; padding: 10px 10px 0 0; text-align: right;}
+ 	.result .content{border-bottom: 1px dashed #ccc;}
+ 	.result .content p{line-height: 18px;}
+ 	.content .cTitle h3{line-height: 20px;}
+ 	.content .cTitle h3 span{color: #ccc;}
+ 	.content .cTitle h3 a{color: #dd2200;}
+ 	.cTitle .rating-info span{margin-right: 5px;}
+ 	.rating-info .rating_nums{color: #f60;}
+
+	/*分页*/
+	#page{margin-top: 20px;}
+	#page a{display: inline-block; height: 30px; border: 1px solid #f0f0f0; box-shadow: 1px 1px 2px #f1f1f1; text-align: center; padding: 0 10px; line-height: 30px; margin-right: 1px; font-size: 16px; color: #333;}
+	#page a:hover,#page .active{background: #999;}
+
+ 	.fl{float: left;}
+ 	.fr{float: right;}
+	</style>
+	<script>
+	function fn1(data){
+
+		var oP = document.getElementById('srt');
+		var oResult = document.getElementsByClassName('result')[0];
+	
+		oP.innerHTML = data['title'].$t + ':' + data['opensearch:totalResults'].$t;
+		var totalNum = data['opensearch:totalResults'].$t;
+		
+		var aEntry = data.entry;
+		var html = '';
+		for (var i = 0; i < aEntry.length; i++) {
+			
+			html += '<div class="pic fr">\
+				<img src="'+aEntry[i].link[2]['@href']+'">\
+			</div>\
+			<div class="content">\
+				<div class="cTitle">\
+					<h3>\
+						<span>[书籍]</span>\
+						<a href="'+aEntry[i].link[1]['@href']+'" rel="'+aEntry[i].link[1]['@rel']+'">'+aEntry[i].title.$t+'</a>\
+					</h3>\
+					<div class="rating-info">\
+						<span class="allstar45"></span>\
+					    <span class="rating_nums">'+aEntry[i]['gd:rating']['@average']+'</span>\
+					    <span>('+aEntry[i]['gd:rating']['@numRaters']+'评论)</span>\
+						<span class="subject-cast">'+aEntry[i]['db:attribute'][2].$t+' / '+aEntry[i]['db:attribute'][4].$t+' / '+aEntry[i]['db:attribute'][5].$t+'</span></div></div><p>《JavaScript:The Good Parts(影印版)》一书中，Crockford深度分析了一堆好的意图和盲目的错误，为你提供了所有JavaScript的地道优良部分的细节，包括：·语法·继承·...</p></div>';
+		};
+		oResult.innerHTML = html;
+	}
+	
+	window.onload = function(){
+		var oInp = document.getElementById('sTitle');
+		var oSearch = document.getElementById('sBtn');
+		var oP = document.getElementById('srt');
+		
+		oSearch.onclick = function(){
+			if(oInp.value != ''){
+				var oScript = document.createElement('script');
+				oScript.src = 'http://api.douban.com/book/subjects?q='+oInp.value+'&alt=xd&callback=fn1&start-index=1&max-results=10';
+				document.body.appendChild(oScript);
+			}
+		}	
+	}
+
+	function page(opt){
+
+		if(!opt.id)return;
+
+		var obj = document.getElementById(opt.id);
+		var nowNum = opt.nowNum || 1;
+		var allNum = opt.allNum || 10;
+		var callBack = opt.callBack || function(){};
+
+		var showNum = 9;	//要显示的页
+		var cNum = Math.ceil(showNum/2); //显示页的中间页
+		var lNum = allNum - showNum;	//最后显示的那几页
+		
+		
+		// 首页页
+		var firstPage = (function (){
+			var oLi = document.createElement('li');
+			var oA = document.createElement('a');
+			oA.href = '#' + 1;
+			oA.innerHTML = '1';
+			if(nowNum == 1){oA.className = 'active';}
+			oLi.appendChild(oA);
+			obj.appendChild(oLi);
+		})();
+		// 省略点
+		if(nowNum > cNum){
+			var oLi = document.createElement('li');
+			oLi.innerHTML = '...';
+			obj.appendChild(oLi);
+		}
+		// 要显示的分页
+		if( allNum <= showNum){
+			for (var i = 2; i <= showNum; i++) {
+				var oLi = document.createElement('li');
+				var oA = document.createElement('a');
+				oA.href = '#' + i;
+				oA.innerHTML = i;
+				if(nowNum == i){
+					oA.className = 'active';
+				}
+				oLi.appendChild(oA);
+				obj.appendChild(oLi);
+			};
+		}
+		else{ // 超出显示的分页
+			for (var i = 2; i < showNum; i++) {
+				var oLi = document.createElement('li');
+				var oA = document.createElement('a');
+				
+				// 当前页小于中间页
+				if(nowNum < cNum){
+					oA.href = '#' + i;
+					oA.innerHTML = i;
+					
+					if(nowNum == i){
+						oA.className = 'active';
+					}
+				}// 总数页 - 显示页 剩下的页
+				else if( (allNum - nowNum) < cNum ){
+					oA.href = '#' + (allNum - showNum + i);
+					oA.innerHTML = (allNum - showNum + i);
+					
+					if(nowNum == ( (allNum - showNum) +i) ){
+						oA.className = 'active';
+					}
+				}
+				// 当前显示页超出的页
+				else{
+
+					oA.href = '#' + ( (nowNum - cNum) +i);
+					oA.innerHTML = ( (nowNum - cNum) +i);
+					
+					if(nowNum == ( (nowNum - cNum) +i) ){
+						oA.className = 'active';
+					}
+				}
+				oLi.appendChild(oA);
+				obj.appendChild(oLi);
+			};
+
+		}
+		// 省略点
+		if(allNum - nowNum >= 5){
+			var oLi = document.createElement('li');
+			oLi.innerHTML = '...';
+			obj.appendChild(oLi);
+		}
+		// 尾页
+		var lastPage = (function (){
+			var oLi = document.createElement('li');
+			var oA = document.createElement('a');
+			oA.href = '#' + allNum;
+			oA.innerHTML = allNum;
+			if(nowNum == allNum){oA.className = 'active';}
+			oLi.appendChild(oA);
+			obj.appendChild(oLi);
+		})();
+		
+		// 上一页
+		var fnPrev = (function (){
+			var oLi = document.createElement('li');
+			var oA = document.createElement('a');
+			oA.href = '#'+ (nowNum - 1);
+			oA.innerHTML = '上一页';
+			oA.className = nowNum < 2 ? 'gray' : 'prev';
+			oLi.appendChild(oA);
+			obj.appendChild(oLi);
+		})();
+		// 下一页
+		var fnNext = (function (){
+			var oLi = document.createElement('li');
+			var oA = document.createElement('a');
+			if(nowNum < allNum){
+
+				oA.href = '#'+ (nowNum + 1);
+			}else{
+				oA.href = '#'+ nowNum;
+			}
+			
+			oA.className = (allNum - nowNum) > 0 ? 'next' : 'gray';
+			oA.innerHTML = '下一页';
+			oLi.appendChild(oA);
+			obj.appendChild(oLi);
+		})();
+
+		callBack(nowNum,allNum);
+
+		var aA = obj.getElementsByTagName('a');
+
+		for (var i = 0; i < aA.length; i++) {
+			aA[i].index = i;
+			aA[i].onclick = function(){
+				
+				var nowNum = parseInt(this.getAttribute('href').substring(1));
+				obj.innerHTML = '';
+				page({
+					id : opt.id,
+					nowNum : nowNum,
+					allNum : allNum,
+					callBack : callBack
+				});
+			}
+		};
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="searchBox">
+			<input type="text" placeholder="输入查询是信息" id="sTitle">
+			<a href="javascript:;" id="sBtn">搜索</a>
+		</div><!-- searchBox -->
+
+		<p id="srt"></p>
+		<div class="result">
+			<!-- <div class="pic fr">
+				<img src="http://img3.douban.com/spic/s3400022.jpg">
+			</div>
+			<div class="content">
+				<div class="cTitle">
+					<h3>
+						<span>[书籍]</span>
+						<a href="javascript:;">javascript</a>
+					</h3>
+					<div class="rating-info">
+						<span class="allstar45 ll"></span>
+					    <span class="rating_nums">9.1</span>
+					    <span>(56评价)</span>
+					    <span class="subject-cast">克罗克福特 / 东南大学出版社 / 2009</span>
+					</div>
+				</div>
+				<p>《JavaScript:The Good Parts(影印版)》一书中，Crockford深度分析了一堆好的意图和盲目的错误，为你提供了所有JavaScript的地道优良部分的细节，包括：·语法·继承·...</p>
+			</div> -->
+		</div><!-- wrap -->
+
+		<ul id="page"></ul>
+	</div>
+</body>
+</html>

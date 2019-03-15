@@ -1,0 +1,921 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=640,user-scalable=no,target-densityDpi=device-dpi">
+<title>599元/M²爱家互联网家装套餐</title>
+<style>
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1461128350_4950025.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1461128350_4950025.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1461128350_4950025.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1461128350_4950025.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1461128350_4950025.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{font-family:"iconfont";
+font-size:16px;font-style:normal;}
+
+body,ul,p{ margin:0; padding:0;}
+body{font-family: "微软雅黑",Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;}
+li{ list-style:none;}
+a{text-decoration: none;}
+#main{ width:640px; height:1008px; min-width: 320px;
+    max-width: 640px; margin: auto; position:relative; overflow:hidden;}
+#c1{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:10;}
+#list{}
+#list > li{ width:100%; height:100%; position:absolute; left:0; top:0; background-size:cover; display:none; z-index:5;}
+#list > li.zIndex{ z-index:6;}
+
+#list > li:nth-of-type(1){ background-image:url(img/b.jpg);display:block;}
+#list > li:nth-of-type(2){ background-image:url(img/e.jpg);}
+#list > li:nth-of-type(3){ background-image:url(img/list1.jpg);}
+#list > li:nth-of-type(4){ background-image:url(img/list2.jpg);}
+#list > li:nth-of-type(5){ background-image:url(img/list3.jpg);}
+#list > li:nth-of-type(6){ background-image:url(img/a.jpg);}
+#list > li:nth-of-type(7){ background-image:url(img/e.jpg);}
+#list > li:nth-of-type(8){ background-image:url(img/i.jpg);}
+#list > li:nth-of-type(9){ background-image:url(img/k.jpg);}
+#list > li:nth-of-type(10){ background-image:url(img/k.jpg);}
+#list > li:nth-of-type(11){ background-image:url(img/i.jpg);}
+#list > li:nth-of-type(12){ background-image:url(img/n.jpg);}
+#list > li:nth-of-type(13){ background-image:url(img/l.jpg);}
+#list > li:nth-of-type(14){ background-image:url(img/e.jpg);}
+#list > li:nth-of-type(15){ background-image:url(img/o.jpg);}
+#list > li:nth-of-type(16){ background-image:url(img/m.jpg);}
+#list > li:nth-of-type(17){ background-image:url(img/p.jpg);}
+
+#list > li p{margin-top: 15%; text-align: center; color: #443F3F;}
+#list > li p span{display: block; font-size: 20px;line-height: 28px;}
+#list > li p .hd{font-size: 32px; line-height: 40px; font-weight: bold;}
+
+/*#list .list1{position: relative; height: 100%;}*/
+#list > ul{width: 90%; margin: 0 auto;}
+
+#list > li > ul >li{position: absolute; width: 100%; background-size: cover; left: 50%; transform: translate(-50%, 0);}
+#list .list1 > li{}
+#list .list1 > li:nth-of-type(1){width: 474px; height: 40px; background-image: url(img/list1_1.png); 
+top: 8%;}
+#list .list1 > li:nth-of-type(2){width: 569px; height:587px;background-image: url(img/list1_2.png); 
+top: 15%;}
+#list .list1 li.active{}
+
+/*#list .list2 > li{position: absolute; background-size: cover; left: 50%;}*/
+#list .list2 > li:nth-of-type(1){width: 569px; height: 688px; background-image: url(img/list2_1.png); 
+top: 5%;}
+
+/*#list .list3 > li{position: absolute; background-size: cover; left: 50%; transform: translateX(-50%);}*/
+#list .list3 > li:nth-of-type(1){width: 309px; height: 38px; background-image: url(img/list3_1.png); 
+top: 3%;}
+#list .list3 > li:nth-of-type(2){width: 570px; height:769px;background-image: url(img/list3_2.png); 
+top: 10%;}
+
+/*#list .list4 > li{position: absolute; background-size: cover; left: 50%; transform: translateX(-50%);}*/
+#list .list4 > li:nth-of-type(1){width: 548px; height: 278px; background-image: url(img/a1.png); 
+top: 0%;}
+#list .list4 > li:nth-of-type(2){width: 466px; height:110px; background-image: url(img/a2.png); 
+top: 32%;}
+#list .list4 > li:nth-of-type(3){width: 568px; height:329px; background-image: url(img/a3.png); top: 46%;}
+
+#list .li1child li{position: absolute; left: 50%; background-size: cover;}
+#list .li1child li:nth-of-type(1){width: 67px; height: 545px; background-image: url(img/b1.png); top: -9%; left: 54%; margin-left: -32px;}
+#list .li1child li:nth-of-type(2){width: 400px; height: 289px; background-image: url(img/b3.png); top: 36.5%; left: 55%;margin-left: -200px;}
+#list .li1child li:nth-of-type(3){width: 201px; height: 52px; background-image: url(img/b_btn.png); top: 70%; left: 50%;margin-left: -100px;}
+
+#list .li2child{display: flex; flex-flow: column;}
+#list .li2child ul{width: 90%; margin: 20px auto;}
+#list .li2child ul li,
+#list .li2child ul li a{width: 80%; margin: 10px auto;}
+#list .li2child ul li img{width: 100%;}
+
+#list .li3child ul{width: 90%; margin: 20px auto;}
+#list .li3child ul li{width: 47%; height: 30%; margin-bottom: 5%; float: left; overflow: hidden;}
+#list .li3child ul li:nth-of-type(2n+1){margin-right: 5%;}
+#list .li3child ul li img{width: 100%;}
+
+#list .li4child {height: 100%;}
+#list .li4child > p{margin-top: -6%;}
+#list .li4child ul{position: relative; margin: 200px auto 0; width: 80%; height: 48%; border-radius: 100%; border: 1px solid #fff;}
+#list .li4child li{width: 136px; height: 136px; position: absolute;}
+#list .li4child li:nth-of-type(1){background: url(img/g1.png)no-repeat;}
+#list .li4child li:nth-of-type(2){background: url(img/g2.png)no-repeat; left: 65%;}
+#list .li4child li:nth-of-type(3){background: url(img/g3.png)no-repeat; top: 60%; left: -6%;}
+#list .li4child li:nth-of-type(4){background: url(img/g4.png)no-repeat; top: 60%; left: 80%;}
+#list .li4child li:nth-of-type(5){background: url(img/g5.png)no-repeat; left: 50%; top: 84%; margin-left: -68px;}
+#list .li4child li:nth-of-type(6){background: url(img/g0.png)no-repeat; top: 15%; left: 50%; width: 350px; height: 350px;  margin-left: -175px;}
+#list .li4child p{font-size: 24px; position: relative; bottom: -140px; text-align: center; transform: translateX(-50%), scale(0.7);}
+
+#list .li5child ul{width: 90%; margin: 40px auto 0; overflow: hidden;}
+#list .li5child ul li{
+	width: 48%;
+	display: inline-block;
+	float:left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+#list .li5child ul li:nth-of-type(2n){	margin-right: -20px;}
+#list .li5child ul li img{
+	width: 100%;
+}
+#list .li6child > p{margin-top: 8%;}
+#list .li6child ul{width: 90%; margin: 40px auto;}
+#list .li6child ul li{width: 30%; margin-right: 18px; margin-bottom: 18px; float: left;}
+#list .li6child ul li img{width: 100%; }
+#list .li6child ul li:nth-last-child{margin-right: -18px;}
+
+#list .li7child > p{margin-top: 10%;}
+#list .li7child ul{position: relative; margin: 130px auto 0; width:400px; height: 327px; background-image: url(img/star.png); background-size: cover;}
+#list .li7child ul > li{position: absolute; width: 190px; text-align: center;}
+#list .li7child ul > li:nth-of-type(1){left: 70%; top: -30%;}
+#list .li7child ul > li:nth-of-type(2){left: 13%; top: -19%;}
+#list .li7child ul > li:nth-of-type(3){left: -12%; top: 10%;}
+#list .li7child ul > li:nth-of-type(4){left: -21%; top: 59%;}
+#list .li7child ul > li:nth-of-type(5){left: -25%; top: 98%;}
+#list .li7child ul > li:nth-of-type(6){left: 25%; top: 98%;}
+#list .li7child ul > li:nth-of-type(7){right: -6%; top: 70%;}
+#list .li7child ul > li:nth-of-type(8){right: -26%; top: 43%;}
+#list .li7child ul > li p{font-size: 18px; margin-top: 5px;}
+#list .li7child ul > li > p:first-child{font-size: 24px; font-weight: bold;}
+#list .li7child ul > li.active{width: 0; height: 0;}
+
+#list .li8child li{position:absolute; left: 50%; transform: translate(-50%,0); background-size: cover;}
+#list .li8child li:nth-of-type(1){width:500px; height: 368px; background-image: url(img/n1.png); top:5%;}
+#list .li8child li:nth-of-type(2){width:500px; height: 293px; background-image: url(img/n2.png); top: 51%;}
+
+#list .li9child{text-align: center;}
+#list .li9child ul{margin-top: 40px;}
+#list .li9child ul li{margin-bottom: 10px;}
+
+#list .li10child{}
+#list .li10child ul{margin: 30px auto 0;}
+#list .li10child ul li{background-size: cover;position: absolute; }
+#list .li10child ul li:nth-of-type(1){top: 30%;}
+#list .li10child ul li:nth-of-type(1) img{width: 100%;}
+
+#list .li11child li{position:absolute; left: 50%; transform: translate(-50%,0); background-size: cover;overflow: hidden;}
+#list .li11child li:nth-of-type(1){width:500px; height: 202px; background-image: url(img/o1.png);top:8%;}
+#list .li11child li:nth-of-type(2){width:500px; height: 473px; background-image: url(img/o2.png);top: 35%;}
+
+#list .li12child ol{position: absolute; top: 25%; left: 50%; height: 55%; padding-left: 0; border-left: 1px solid #E50012;}
+#list .li12child ol li{position: relative;left: -25px;top: -25px; width: 50px; height: 50px; 
+margin-bottom: 20px; line-height: 50px; background: #E50012; text-align: center; font-size: 26px; color: #fff; border-radius: 50%;}
+#list .li12child ol li p{position: absolute; left: 80px; top: 7px; width: 220px; margin-top: 0; font-size: 16px; color:#343434; line-height: 28px;}
+#list .li12child ol li:nth-of-type(2n+1)> p{left: -240px;}
+#list .li12child ol li p.active{left: 200px;}
+#list .li13child li{margin: 15% auto 0; width: 352px; height:585px; background-image: url(img/p1.png);}
+
+
+/* 底部导航  */
+#nav{position: fixed; bottom: 0; left: 0; right: 0; width: 100%; height: auto; min-width: 320px;
+    max-width: 640px; margin: auto;  background: #607d8b; ; z-index: 9;}
+#nav > ul{}
+#nav > ul > li{position: relative; display: inline-block; width: 33.3%; height: 30px; padding: 40px 0 5px 0; text-align: center; font-size: 16px; float: left;}
+#nav > ul > li > a{color: #fff; font-family: "微软雅黑"; }
+#nav > ul > li > i{position: absolute; left: 50%; margin-left: -20px; top: 5px; width: 40px; height: 40px; font-size: 30px; color: #fff; z-index: 11;}
+#nav .cur {background: #fff;}
+#nav .cur a{color: #E91E63;}
+#nav .cur i{color: #E91E63;}
+#arrow{position: absolute; bottom: 6%; left: 50%; margin-left: -45px; width: 90px; height: 52px; background-image: url(img/arr.png); z-index: 20; -webkit-animation: 1s arrowMove infinite; -moz-animation: 1s arrowMove infinite; animation: 1s arrowMove infinite;}
+
+@keyframes arrowMove{
+	0%{opacity: 0; transform: translate(0,0);}
+	50%{opacity: 1; transform: translate(0,-30px);}
+	100%{opacity: 0; transform: translate(0,-50px);}
+}
+@-webkit-keyframes arrowMove{
+	0%{opacity: 0; -webkit-transform: translate(0,0);}
+	50%{opacity: 1; -webkit-transform: translate(0,-30px);}
+	100%{opacity: 0; -webkit-transform: translate(0,-50px);}
+}
+
+@keyframes musicMove{
+	0%{transform: rotateZ(0deg);}
+	100%{transform: rotateZ(360deg);}
+}
+@-webkit-keyframes musicMove{
+	0%{-webkit-transform: rotateZ(0);}
+	100%{-webkit-transform: rotateZ(720deg);}
+}
+
+/* 加载进度条  */
+#loading{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:20; background:white;}
+#loading ul{ position:absolute; left:50%; top:40%; width:90px; margin-left:-45px;}
+#loading ul li{ width:5px; height:40px; margin-right:10px; background:#0F0; float:left; animation:2s linear infinite loadingMove;}
+@keyframes loadingMove{
+	0%{ transform:scaleY(1);}
+	50%{ transform:scaleY(0.2);}
+	100%{ transform:scaleY(1);}
+}
+#loading ul li:nth-of-type(1){ animation-delay:-0s;}
+#loading ul li:nth-of-type(2){ animation-delay:-0.2s;}
+#loading ul li:nth-of-type(3){ animation-delay:-0.4s;}
+#loading ul li:nth-of-type(4){ animation-delay:-0.6s;}
+#loading ul li:nth-of-type(5){ animation-delay:-0.8s;}
+#loading ul li:nth-of-type(6){ animation-delay:-1s;}
+#loading div{ font-size:30px; color:#0F0; width:100%; text-align:center; top:50%; position:absolute;}
+</style>
+<script src="jquery-2.1.3.min.js"></script>
+<script>
+$(document).on('touchmove',function(ev){
+	ev.preventDefault();
+});
+
+$(function(){
+	var $main = $('#main');
+	var $list = $('#list');
+	var $li = $list.find('>li');
+	var $nav = $('#nav');
+	var $navLi = $nav.find('li');
+	
+	var desW = 640;
+	var desH = 1008;
+	var viewHeight = $(window).height();
+	var viewWidth = $(window).width();
+	
+	$main.css('height',viewHeight);
+	$nav.css('width',viewWidth);
+	
+	showloading();
+	slideList();
+	
+	function nowWidth(){
+		var w = desW/desH * viewHeight;
+		return w;
+	}
+	// 滑动函数
+	function slideList(){
+		var downY = 0;
+		var step = 1/4;
+		
+		var nowIndex = 0;
+		var nextorprevIndex = 0;
+		var bBtn = true;
+//		$li.css('backgroundPosition',((desW - nowWidth())/2)+'px 0');
+		// 手指按下
+		$li.on('touchstart',function(ev){
+			if(!bBtn){return;}
+			bBtn = false;
+			var touch = ev.originalEvent.changedTouches[0];
+			downY = touch.pageY;
+			nowIndex = $(this).index();
+			
+			
+			// 手指滑动
+			$li.on('touchmove',function(ev){
+				var touch = ev.originalEvent.changedTouches[0];
+				
+				$(this).siblings().hide();
+				
+				if( touch.pageY < downY ){  //↑
+					nextorprevIndex = nowIndex == $li.length-1 ? 0 : nowIndex + 1;
+					$li.eq(nextorprevIndex).css('transform','translate(0,'+(viewHeight + touch.pageY - downY)+'px)');
+				}
+				else if( touch.pageY > downY ){  //↓
+					nextorprevIndex = nowIndex == 0 ? $li.length-1 : nowIndex - 1;
+					$li.eq(nextorprevIndex).css('transform','translate(0,'+(-viewHeight + touch.pageY - downY)+'px)');
+				}
+				else{
+					bBtn = true;
+				}
+				
+				//Math.abs(touch.pageY - downY)/viewHeight*step  //-viewHeight~viewHeight
+				//0~1  -> 0~0.25
+				$li.eq(nextorprevIndex).show().addClass('zIndex');
+				$(this).css('transform','translate(0,'+(touch.pageY - downY)*step+'px) scale('+(1-Math.abs(touch.pageY - downY)/viewHeight*step)+')');
+				
+			});
+			// 手指抬起
+			$li.on('touchend',function(ev){
+				var touch = ev.originalEvent.changedTouches[0];
+				if( touch.pageY < downY ){  //↑
+					$(this).css('transform','translate(0,'+(-viewHeight * step)+'px) scale('+(1-step)+')');
+				}
+				else if( touch.pageY > downY ){  //↓
+					$(this).css('transform','translate(0,'+(viewHeight * step)+'px) scale('+(1-step)+')');
+				}
+				$(this).css('transition','.3s');
+				$li.eq(nextorprevIndex).css('transform','translate(0,0)');
+				$li.eq(nextorprevIndex).css('transition','.3s');
+			});
+			
+		});
+		// 监听滑动结束
+		$li.on('transitionEnd webkitTransitionEnd',function(ev){
+			if( $li.is(ev.target) ){
+				resetFn();
+				 if(cjAnimate[nowIndex]){
+				 	 cjAnimate[nowIndex].outAn();
+				 }
+				 if(cjAnimate[nextorprevIndex]){
+				 	 cjAnimate[nextorprevIndex].inAn();
+				 }
+			}
+		});
+		
+		function resetFn(){
+			$li.css('transition','');
+			$li.eq(nextorprevIndex).removeClass('zIndex').siblings().hide();
+			bBtn = true;
+		}
+	}
+	//场景动画
+	var cjAnimate = [
+		{
+			inAn : function(){
+				var $liChild = $li.eq(0).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(0,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(0).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(0,-400px)');
+				$liChild.filter(':odd').css('transform','translate(0,600px)');
+			}
+		},
+		{
+			inAn : function(){
+				var $spanChild = $li.eq(1).find('span');
+				var $liChild = $li.eq(1).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','scale(1)');
+				$spanChild.css('opacity',1);
+				$spanChild.css('transition','1s');
+				$spanChild.css('transform','translate(0,0)');
+			},
+			outAn : function(){
+				var $spanChild = $li.eq(1).find('span');
+				var $liChild = $li.eq(1).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.css('transform','scale(.7)');
+				$spanChild.css('transition','');
+				$spanChild.filter(':even').css('transform','translate(-200px,0)');
+				$spanChild.filter(':odd').css('transform','translate(200px,0)');
+			}
+		},
+		{
+			inAn: function(){
+				var $liChild = $li.eq(2).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(-50%,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(2).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+			}
+			
+		},
+		{
+			inAn: function(){
+				var $liChild = $li.eq(3).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(-50%,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(3).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+			}
+		},
+		{
+			inAn: function(){
+				var $liChild = $li.eq(4).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(-50%,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(4).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+				
+			}
+		},
+		{
+			inAn: function(){
+				var $liChild = $li.eq(5).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(-50%,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(5).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+			}
+		},
+		
+		{
+			inAn : function(){
+				var $liChild = $li.eq(6).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(0,0)');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(6).find('li');
+				$liChild.css('transition','');
+				$liChild.css('opacity',0);
+				$liChild.filter(':even').css('transform','translate(-600px,0)');
+				$liChild.filter(':odd').css('transform','translate(200px,0)');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(7).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','scale(.7)');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(7).find('li');
+				$liChild.css('transition','');
+				$liChild.css('opacity',0);
+				$liChild.css('transform','scale(1.5)');
+			}
+		},
+		{
+			inAn : function(){
+				var $spanChild = $li.eq(8).find('span');
+				var $liChild = $li.eq(8).find('img');				
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(0,0)');
+				$spanChild.css('opacity',1);
+				$spanChild.css('transition','.4s');
+				$spanChild.css('transform','translate(0,0)');
+			},
+			outAn : function(){
+				var $spanChild = $li.eq(8).find('span');
+				var $liChild = $li.eq(8).find('img');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-200px,0)');
+				$liChild.filter(':odd').css('transform','translate(200px,0)');
+				$spanChild.css('opacity',0);
+				$spanChild.css('transition','');
+				$spanChild.filter(':even').css('transform','translate(-200px,0)');
+				$spanChild.filter(':odd').css('transform','translate(200px,0)');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(9).find('li');
+				var $spanChild = $li.eq(9).find('span');
+				$liChild.css('transform','scale(1)');
+				$liChild.css('transition','.4s');
+				$spanChild.css('opacity',1);
+				$spanChild.css('transform','translateX(0)');
+				$spanChild.css('transition','.4s');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(9).find('li');
+				var $spanChild = $li.eq(9).find('span');
+				$liChild.css('transform','scale(0)');
+				$liChild.css('transition','');
+				$spanChild.css('opacity',0);
+				$spanChild.css('transition','');
+				$spanChild.css('transform','translateX(-200px)');
+			}
+		},
+		{
+	 		inAn : function(){
+	 			var $liChild = $li.eq(10).find('li');
+	 			var $spanChild = $li.eq(10).find('span');
+	 			$liChild.css('opacity','1');
+	 			$liChild.css('transition','.4s');
+	 			$liChild.attr('class','');
+	 			$spanChild.css('opacity',1);
+				$spanChild.css('transform','translateX(0)');
+				$spanChild.css('transition','.4s');
+	 		},
+	 		outAn : function(){
+	 			var $liChild = $li.eq(10).find('li');
+	 			var $spanChild = $li.eq(10).find('span');
+	 			$liChild.css('opacity','0');
+	 			$liChild.css('transition','');
+	 			$liChild.attr('class','active');
+				$spanChild.css('opacity',0);
+	 			$spanChild.css('transition','');
+				$spanChild.css('transform','translateX(200px)');
+	 		}
+	 	},
+	 	{
+	 		inAn : function(){
+	 			var $liChild = $li.eq(11).find('li');
+				$liChild.css('opacity','1');
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(-50%,0)');
+	 		},
+	 		outAn : function(){
+	 			var $liChild = $li.eq(11).find('li');
+				$liChild.css('opacity','0');
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+	 		}
+	 	},
+	 	{
+	 		inAn : function(){
+				var $liChild = $li.eq(12).find('li');
+				var $spanChild = $li.eq(12).find('span');
+				$liChild.css('opacity',1);
+				$liChild.css('transform','translateX(0)');
+				$liChild.css('transition','.4s');
+				$spanChild.css('transform','translateY(0)');
+				$spanChild.css('transition','.4s');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(12).find('li');
+				var $spanChild = $li.eq(12).find('span');
+				$liChild.css('transition','');
+				$liChild.css('opacity',0);
+				$liChild.filter(':even').css('transform','translateX(-200px)');
+				$liChild.filter(':odd').css('transform','translateX(200px)');
+				$spanChild.css('transform','translateY(-200px)');
+				$spanChild.css('transition','');
+			}
+	 	},
+	 	{
+			inAn : function(){
+				var $spanChild = $li.eq(13).find('span');
+	 			var $liChild = $li.eq(13).find('li');
+	 			$spanChild.css('opacity',1);
+				$spanChild.css('transform','rotateY(720deg)');
+				$spanChild.css('transition','.4s');
+				$liChild.css('transition','.4s');
+				$liChild.css('opacity',1);
+				$liChild.css('transform','translate(0,0)');
+				
+			},
+			outAn : function(){
+				var $spanChild = $li.eq(13).find('span');
+	 			var $liChild = $li.eq(13).find('li');
+	 			$spanChild.css('opacity',0);
+				$spanChild.css('transform','rotateY(0)');
+				$spanChild.css('transition','.4s');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(0,-200px)');
+				$liChild.filter(':odd').css('transform','translate(0,800px)');
+				
+			}
+	 	},
+	 	{
+	 		inAn : function(){
+				var $liChild = $li.eq(14).find('li');
+				$liChild.css('opacity','1');
+				$liChild.css('transform','translate(-50%,0)');
+				$liChild.css('transition','.4s');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(14).find('li');
+				$liChild.css('opacity','0');
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+			}
+	 	},
+		{
+			inAn: function(){
+				var $liChild = $li.eq(15).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(0,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(15).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+			}
+		},
+			{
+			inAn: function(){
+				var $liChild = $li.eq(16).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transition','.4s');
+				$liChild.css('transform','translate(-50%,0)');
+			},
+			outAn: function(){
+				var $liChild = $li.eq(16).find('li');
+				$liChild.css('opacity',0);
+				$liChild.css('transition','');
+				$liChild.filter(':even').css('transform','translate(-50%,-200px)');
+				$liChild.filter(':odd').css('transform','translate(-50%,200px)');
+			}
+		}
+	];
+
+/*	cjAnimate[7].outAn();
+	setTimeout(function(){
+		cjAnimate[7].inAn();
+	},200);*/
+	
+	
+ 	$.each(cjAnimate,function(i,obj){
+		obj.outAn();
+	});
+	
+	// 导航栏点击
+	$navLi.on('touchstart click',function(){
+		toushStart($(this));
+	});
+
+	function toushStart(i){
+		$(i).addClass('cur').siblings().removeClass('cur');
+	}
+
+	// 资源加载
+	function showloading(){
+		var arr = ['star.png','a.jpg','a1.png','a2.png','a3.png','b.jpg','b_btn.png','b1.png','b2.png','b3.png','e.jpg','e1.jpg','e2.jpg','e3.jpg','e4.jpg','e5.jpg','e6.jpg','f1.jpg','f2.jpg','f3.jpg','g.jpg','g0.png','g1.png','g2.png','g3.png','g4.png','g5.png','h.jpg','h1.png','h2.png','h3.png','h4.png','h5.png','h6.png','h7.png','h8.png','h9.png','i.jpg','j_btn.png','j1.png','k.jpg','k1.jpg','k2.jpg','k3.jpg','k4.jpg','k5.jpg','k6.jpg','l.jpg','l1.png','l2.png','m.jpg','n.jpg','n1.png','n2	.png','o.jpg','o1.png','o2.png','p.jpg','p1.png','list1.jpg','list1_1.png','list1_2.png','list2.jpg','list2_1.png','list3.jpg','list3_1.png','list3_2.png'];
+		var $loading = $('#loading');
+		var iNow = 0;
+		
+		for(var i=0;i<arr.length;i++){
+			var objImg = new Image();
+			objImg.src = 'img/'+arr[i];
+			objImg.onload = function(){
+				iNow++;
+				if(iNow == arr.length){
+					$loading.animate({opacity:0},1000,function(){
+						$(this).remove();
+						 cjAnimate[0].inAn();
+					});
+				}
+			};
+			objImg.onerror = function(){
+				$loading.animate({opacity:0},1000,function(){
+					$(this).remove();
+					cjAnimate[0].inAn();
+				});
+			};
+		}
+	}
+});
+</script>
+</head>
+<body>
+<div id="main">
+	<div id="loading">
+    	<ul>
+        	<li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div>页面正在加载中....</div>
+    </div>
+	<ul id="list">
+    	<li>
+    		<ul class="li1child">
+    			<li></li>
+    			<li></li>
+    			<li></li>
+    		</ul>
+    	</li>
+    	<li>
+    		<div class="li2child">
+    			<p>
+    				<span class="hd">三种潮流装修风格</span>
+    				<span>三种潮流设计风格供您选择</span>
+    				<span>每种都能入您慧眼</span>
+    			</p>
+    			<ul>
+    				<li><a href="javascript:;"><img src="img/f1.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/f2.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/f3.jpg" alt=""></a></li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li>
+    		<ul class="list1"><li></li>
+    		<li></li></ul>
+    	</li>
+    	<li><ul class="list2"><li></li></ul>
+    	<li>
+    		<ul class="list3"><li></li><li></li></ul>
+    	</li>
+    	<li>
+    		<ul class="list4">
+    			<li></li>
+    			<li></li>
+    			<li></li>
+    		</ul>
+    	</li>
+    	<li>
+    		<div class="li3child">
+    			<p>
+    				<span class="hd">0增项</span>
+    				<span class="hd">一站式服务</span>
+    				<span>去中间化一口价0增项</span>
+    				<span>全程没有各种名目的额外预算</span>
+    				<span>简单、透明、个性、快捷</span>
+    				<span>性价比高</span>
+    			</p>
+    			<ul>
+    				<li><a href="javascript:;"><img src="img/e1.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/e2.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/e3.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/e4.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/e5.jpg" alt=""></a></li>
+    				<li><a href="javascript:;"><img src="img/e6.jpg" alt=""></a></li>
+    			</ul>
+    		</div>
+    	</li>
+    	
+    	<li>
+    		<div class="li4child">
+    			<p>
+    				<span class="hd">5大费用全免</span>
+    			</p>
+    			<ul>
+    				<li><p>免费计费</p></li>
+    				<li><p>免费报价</li>
+    				<li><p>免费量房</li>
+    				<li><p>免费管理</li>
+    				<li><p>免成品保护费</li>
+    				<li></li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li>
+    		<div class="li5child">
+    			<p>
+    				<span class="hd">精装全包服务</span>
+    				<span>每个角落都是精装</span>
+    				<span>每项都是为您精心定做</span>
+    			</p>
+    			<ul>
+    				<li><a href="javascript:;"><img src="img/k1.jpg" alt="客厅"></a></li>
+    				<li><a href="javascript:;"><img src="img/k2.jpg" alt="卧室"></a></li>
+    				<li><a href="javascript:;"><img src="img/k3.jpg" alt="卫生间"></a></li>
+    				<li><a href="javascript:;"><img src="img/k4.jpg" alt="厨房"></a></li>
+    				<li><a href="javascript:;"><img src="img/k5.jpg" alt="玄关"></a></li>
+    				<li><a href="javascript:;"><img src="img/k6.jpg" alt="阳台"></a></li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li>
+    		<div class="li6child">
+    			<p>
+    				<span class="hd">一线知名主材品牌</span>
+    				<span class="hd">辅材品牌</span>
+    				<span>为您精心挑选众多国内外一线知名品牌</span>
+    				<span>辅材品牌保证质量</span>
+    				<span>让您的家更舒适、更环保、更安全</span>
+    			</p>
+    			<ul>
+    				<li><a href="javascript:;"><img src="img/h1.png" alt="城市领袖"></a></li>
+    				<li><a href="javascript:;"><img src="img/h2.png" alt="德尔地板"></a></li>
+    				<li><a href="javascript:;"><img src="img/h3.png" alt="韩丽家具"></a></li>
+    				<li><a href="javascript:;"><img src="img/h4.png" alt="华润漆"></a></li>
+    				<li><a href="javascript:;"><img src="img/h5.png" alt="松堡王国"></a></li>
+    				<li><a href="javascript:;"><img src="img/h6.png" alt="名府工匠"></a></li>
+    				<li><a href="javascript:;"><img src="img/h7.png" alt="顺百年"></a></li>
+    				<li><a href="javascript:;"><img src="img/h8.png" alt="日丰"></a></li>
+    				<li><a href="javascript:;"><img src="img/h9.png" alt="玉兰"></a></li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li>
+    		<div class="li7child">
+    			<p>
+    				<span class="hd">8项高标准精细</span>
+    				<span class="hd">工程管理</span>
+    				<span>8项高标准精细工程管理</span>
+    				<span>指导监督工人施工、自检</span>
+    				<span>保证全程施工按高验收标准完成</span>
+    			</p>
+    			<ul><li>
+	    				<p>开放工地</p>
+	    				<p>所有施工地全面开放<br/>线上预约，线下参观</p>
+	    			</li><li>
+	    				<p>实时播报</p>
+	    				<p>微信专属群，施工<br/>进度每日实时播报</p>
+	    			</li><li>
+	    				<p>一对一</p>
+	    				<p>施工项目<br/>一对一服务</p>
+	    			</li><li>
+	    				<p>售后服务</p>
+	    				<p>防水5年，其他2年质保<br/>售后顾问7*24时服务</p>
+	    			</li><li>
+	    				<p>在线客服</p>
+	    				<p>在线客服，400电话<br/>提供7*12小时服务</p>
+	    			</li><li>
+	    				<p>APP</p>
+	    				<p>爱家一购APP一机<br/>在手，透明省心</p>
+	    			</li><li>
+	    				<p>直播厅</p>
+	    				<p>真实案例，每天更新<br/>全程直播，靠谱透明</p>
+	    			</li><li>
+	    				<p>免费升级</p>
+	    				<p>产品不断成绩，<br/>提质不加价</p>
+	    			</li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li>
+    		<ul class="li8child">
+    			<li></li>
+    			<li></li>
+    		</ul>
+    	</li>
+    	
+    	<li>
+    		<div class="li9child">
+    			<p>
+    				<span class="hd">装修监管</span>
+    				<span class="hd">一切尽在“掌”中</span>
+    				<span>免费为您提供爱家手机APP</span>
+    				<span>可随时随地查看家中装修进度和情况</span>
+    				<span>为您节省大量往返施工现场时间</span>
+    				<span>省时省心</span>
+    			</p>
+    			<ul>
+    				<li><a href="javascript:;"><img src="img/l1.png" alt="Android"></a></li>
+    				<li><a href="javascript:;"><img src="img/l2.png" alt="ios"></a></li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li>
+    		<div class="li10child">
+    			<p>
+    				<span class="hd">45天标准竣工工程</span>
+    				<span>家装行业45天科学化施工流程</span>
+    				<span>近百道标准施工工序</span>
+    				<span>保证按质按量完成施工</span>
+    			</p>
+    			<ul>
+    				<li><img src="img/j1.png" alt="" /></li>
+    			</ul>
+    		</div>
+    	</li>
+    	
+    	
+    	<li>
+    		<ul class="li11child">
+    			<li></li>
+    			<li></li>
+    		</ul>
+    	</li>
+    	<li>
+    		<div class="li12child">
+    			<p>
+    				<span class="hd">10全10美</span>
+    				<span class="hd">售后保障服务</span>
+    				<span>爱家一购承诺对套餐材料质量问题</span>
+    				<span>和家装质量问题进行先行赔付</span>
+    				<span>专业高效的售后服务让您没有后顾之忧</span>
+    			</p>
+    			<ol>
+    				<li>01<p>材料质量问题，先行赔付</p></li>
+    				<li>02<p>装修质量问题，先行赔付</p></li>
+    				<li>03<p>最高16万家装质量保险</p></li>
+    				<li>04<p>基础装修 2年质保</p></li>
+    				<li>05<p>水电工程 2年质保</p></li>
+    				<li>06<p>防水工程 5年质保</p></li>
+    				<li>07<p>超过质保期维修，人工费按5折收取</p></li>
+    				<li>08<p>售后问题2小时内响应，专业人员即刻对接解决</p></li>
+    				<li>09<p>免费手机APP随时进行工地监管，一切尽在“掌”中</p></li>
+    				<li>10<p>在爱家一购商城购买家居建材，享受会员超值优惠</p></li>
+    			</ol>
+    		</div>
+    	</li>
+    	<li>
+    		<ul class="li13child">
+    			<li></li>
+    		</ul>
+    	</li>
+    </ul>
+    <div id="nav">
+    	<ul>
+    		<li class="cur"><i class="iconfont">&#xe600;</i><a href="javascript:;">首页</a></li>
+    		<li><i class="iconfont">&#xe607;</i><a href="http://admin.secaj.com/index.html">体验馆</a></li>
+    		<li><i class="iconfont">&#xe605;</i><a href="javascript:;">微信</a></li>
+    	</ul>
+    </div>
+    <div id="arrow"></div>
+</div>
+
+</body>
+</html>

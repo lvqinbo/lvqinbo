@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	body{width: 100%; overflow: hidden;}
+	#menu{width: 960px; height: 100px; overflow: hidden;}
+	#menu span{width: 80px; height: 80px; line-height: 80px; text-align: center; border: 1px solid #f0f0f0; float: left;}
+	.dialog{background: #fff; box-shadow: 0 0 5px #999; position: absolute; z-index: 3;}
+	.title{width: 100%; position: relative;}
+	.title h3{height: 30px; line-height: 30px; font-size: 12px; font-weight: normal; background: #ddd; text-align: center;}
+	.title a{width: 30px; height: 18px; line-height: 18px; text-align: center; background: #f30; text-decoration: none; color: #fff; position: absolute; top: 0; right: 5px;}
+	.content{padding: 10px;}
+	#mark{background: rgba(0,0,0,.4); z-index: 2; position: absolute; left: 0; top: 0;}
+	</style>
+	<script>
+	window.onload = function(){
+		var str = 'dafsafsafsa';
+		var re = /(\w)+\4$/;
+
+		console.log(str.replace(re,'*'));	
+	}
+	</script>
+</head>
+<body>
+	<div id="menu">
+		<span>弹窗1</span>
+		<span>弹窗2</span>
+		<span>弹窗3</span>
+	</div>
+	
+</body>
+</html>

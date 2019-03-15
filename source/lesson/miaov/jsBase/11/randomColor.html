@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>随机颜色</title>
+<style>
+	#box{width: 960px; height: 220px; line-height: 50px; font-size: 24px; color: #fff; margin: 20px auto; text-align: center; position: relative; overflow: hidden;}
+</style>
+<script>
+window.onload = function(){
+	var oBox = document.getElementById('box');
+
+	for(var i = 0; i< 60; i++){
+		oBox.innerHTML += '<div style="position: absolute; width: 50px; height: 50px; left: '+(i%17) * 52+'px; top: '+Math.floor(i/17) * 52+'px; background: '+randomColor()+';">'+i+'</div>';
+	}
+
+	function randomVal(val){
+		return Math.floor(Math.random() * (val+1));
+	}
+	 function randomColor(){
+        return 'rgb(' + randomVal(255) + ',' + randomVal(255) + ',' + randomVal(255) + ')';
+    }
+}
+</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

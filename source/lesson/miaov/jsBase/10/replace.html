@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查找替换练习</title>
+	<style>
+	body,ul,span{margin: 0; padding: 0; font-size: 14px; font-family: "微软雅黑";}
+	li{list-style: none;}
+	a{text-decoration: none;}
+	span{color: #fff; background: #2e2e2e; text-align: center; display: inline-block; cursor: pointer;}
+	#wrap{width: 500px; padding: 20px; background: #f0f0f0; margin: 20px auto;}
+	
+	#content .aside{background: #fff; float: right;}
+	#content .aside span{width: 80px; line-height: 40px; }
+	#content .aside ul{display: none;}
+	#content .aside li{width: 80px; line-height: 40px; margin-top: 2px; background: #ddd; text-align: center;}
+	#content .aside li:hover{background: #f60; cursor: default;}
+	#content .text{width: 360px; padding: 20px; background: #fff;}
+	#content .t-msg span{background: #f30;}
+	
+	#hide .find input,#hide .search input{padding-left: 2px; font-family: "微软雅黑";}
+	#hide{width: 340px; padding: 20px; margin-top: 20px; border: 10px solid #c0c0c0; position: relative; overflow: hidden; display: none;}
+	#hide a{position: absolute; right: 0px; top: 0px; width: 30px; line-height: 15px; text-align: center; background: #f30; color: #fff; font-size: 12px; display: inline-block;}
+	#hide div.find{display: none; width: 300px; height: 60px; margin-top: 10px; clear: both;}
+	#hide .txt1{width: 200px; height: 22px; padding: 2px; margin-top: 5px;}
+	#hide .sbtn{width: 60px; height: 30px; padding: 2px 5px;}
+	
+	#hide .search{width: 300px; border-bottom: 1px solid #f30; height: 30px;}
+	#hide .search span{width: 50px; line-height: 30px; float: left;}
+	#hide .search .selected{background: #f30; color: #fff;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oShowBtn = document.querySelector('.show');
+		var oUl = document.getElementById('menu');
+		var iBtn = true;
+		var iNow = 0;
+		// 展开按钮点击
+		oShowBtn.onclick = function(){
+			if(iBtn){
+				oUl.style.display = 'block';
+			}else{
+				oUl.style.display = 'none';
+			}
+			iBtn = !iBtn;
+		}
+		// 显示查找 替换div
+		var aLi = oUl.getElementsByTagName('li');
+		var oHideDiv = document.getElementById('hide');
+		var oFind = oHideDiv.getElementsByClassName('find');
+		// 侧边栏 查找 替换点击
+		for(var i = 0; i < aLi.length; i++){
+			aLi[i].index = i;
+			aLi[i].onclick = function(){
+				iNow = this.index;
+				fnReplace();
+				oHideDiv.style.display = 'block';
+				oUl.style.display = 'none';
+				iBtn = true;
+			}
+		}
+		// 关闭查找 替换div
+		var oClose = oHideDiv.getElementsByTagName('a')[0];
+		oClose.onclick = function(){
+			oHideDiv.style.display = 'none';
+		}
+
+		var str = '';
+		var html = '';
+		var newStr = '';
+		var arr = [];
+		var oMsg = document.querySelector('.t-msg');
+		
+		for(var i = 0; i < oFind.length; i++){
+			fnSearch(oFind[i]);
+		}
+		function fnSearch(obj){
+			var aSearch = obj.getElementsByTagName('input')[0];
+			var aReplace = obj.getElementsByTagName('input')[1];
+			var oBtn = obj.getElementsByClassName('sbtn')[0];
+			html = oMsg.innerHTML;
+			// aSearch.value = str;
+			oBtn.onclick = function(){
+				if(oBtn.value == '查找'){
+					str = checkStr(aSearch.value);
+					oMsg.innerHTML = html.split(str).join('<span>'+str+'</span>');
+				}else{
+					if(aReplace.value == '' && aSearch.value == '' ){
+						if(confirm('你希望删除所有文字吗?')){
+							oMsg.innerHTML = '';
+						}
+					}
+					else if(aReplace.value == ''){
+						if(confirm('你希望删除选中文字吗？')){
+							oMsg.innerHTML = oMsg.innerHTML.split(aSearch.value).join('');
+							newStr = oMsg.innerHTML;
+						}else{
+							if(newStr != ''){
+								oMsg.innerHTML = newStr;
+							}
+						}
+					}else{
+						oMsg.innerHTML = oMsg.innerHTML.split(aSearch.value).join(aReplace.value);
+					}
+				}
+			}
+			
+		}
+		var oSearch = document.querySelector('.search');
+		var aSpan = oSearch.getElementsByTagName('span');
+		// 查找 替换点击
+		for (var i = 0; i < aSpan.length; i++) {
+			aSpan[i].index = i;
+			aSpan[i].onclick = function(){
+				iNow = this.index;
+				fnReplace();
+				fnSearch(oFind[this.index]);
+			}
+		};
+		function fnReplace(){
+			for (var i = 0; i < aSpan.length; i++) {
+				aSpan[i].className = '';
+				oFind[i].style.display = 'none';
+			};
+			aSpan[iNow].className = 'selected';
+			oFind[iNow].style.display = 'block';
+		}
+
+		function checkStr(str){
+			var re = /^\s/;
+			if(str == ''){
+				alert('请输入要查找的内容');
+			}else if(re.test(str)){
+				alert('请输入要查找的内容');
+			}else{
+				return str;	
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			<div class="aside">
+				<span class="show">展开</span>
+				<ul id="menu">
+					<li>查找</li>
+					<li>替换</li>
+				</ul>
+			</div>
+			<div class="text">
+				<p class="t-msg">
+					包车只能按用车要求，如7座，16座来安排车型，但原则上不能指定牌子，我司所安排的车子都是正常运营中的车子，干净、有空调。如需要指定豪华车型，请特别说明，我们在安排的时候尽量寻找。越南司机通常不会外语，只会越南语，所以咨询客服前请尽量提供您的详细的行程及要求，以便我们在跟包车公司联系时可以将清晰的要求提供给司机，以免发生纠纷。
+				</p>
+			</div>
+		</div>
+		<div id="hide">
+			<a id="close" href="javascript:;">X</a>
+			<div class="search">
+				<span class="selected">查找</span>
+				<span>替换</span>
+			</div>
+			<div class="find" style="display: block;">
+				<input class="txt1" type="text">
+				<input type="button" value="查找" class="sbtn">				
+			</div>
+			<div class="find" >
+				<input class="txt1" type="text"><br>			
+				<input class="txt1" type="text">				
+				<input type="button" value="替换" class="sbtn">	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

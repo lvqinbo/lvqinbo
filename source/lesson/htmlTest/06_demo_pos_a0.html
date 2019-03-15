@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动布局4</title>
+	<style>
+	body,ul,dl,dt,dd{margin: 0; padding: 0;}
+	body{font-size: 12px; background: #f0f0f0;}
+	a{text-decoration: none; color: #4F6C84;}
+	img{border: none; vertical-align: top;}
+
+	.tv{width: 460px; height: 165px; margin: 20px auto; background: #fff;}
+	.tv_2{width: 230px;}
+	.tv_1{width: 229px; height: 165px; border-right: 1px solid #D9E0E7; background: url(img/tv1_bg.png)repeat-y right top;}
+	.cover{margin:12px 0 10px 7px;}
+
+	.img{width:129px; height: 94px; background: url(img/cover.png)no-repeat 122px top;}
+	.img a{display: inline-block; width: 116px; height: 86px; padding: 2px; border: 1px solid #C3CFD9; }
+	.info{margin-right: 30px;}
+	.info dt,.info dd{line-height: 20px;}
+	.info dt{color: #4F6C84;}
+	.info dd{color: #7190A6;}
+
+	.other{}
+	.other a{display: inline-block; line-height: 20px; text-indent: 17px; background: url(img/dot.png)no-repeat 7px 7px;}
+	.promotion1{padding: 12px 0 0 12px; margin-right:-10px;}
+	.tv_2 li{list-style: none; float: left; margin-right: 10px; text-align: center;}
+	.tv_2 img{ margin-bottom: 10px; }
+	.tv_2 a{display: inline-block; width: 92px; height: 118px; padding: 3px;border:1px solid #C3CFD9;}
+
+	.fl{float: left;}
+	.fr{float: right;}
+	.clear{clear: both;}
+	.clear:after{content: ""; display: block; height: 0; overflow: hidden; visibility: hidden; clear: both;}
+	.clear{*zoom: 1;}
+
+	</style>
+</head>
+<body>
+	<div class="tv clear">
+		<div class="tv_1 fl">
+			<div class="cover clear">
+				<div class="img fl">
+					<a href="javascript:;"><img src="img/01.png" alt="潜伏"></a>
+				</div>
+				<div class="info fr">
+					<dl>
+						<dt>潜伏</dt>
+						<dd>导演：姜伟</dd>
+						<dd>主演：姚晨</dd>
+						<dd>孙红雷</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="other clear">
+				<a href="javascript:;">海清张嘉译演绎蜗居生活《蜗居》</a>
+				<a href="javascript:;">海清张嘉译演绎蜗居生活《蜗居》</a>
+			</div>
+		</div>
+		<div class="tv_2 fr">
+			<ul class="promotion1">
+				<li><a href="javascript:;"><img src="img/02.png" alt="将爱情进行到底">将爱情进行到底</a></li>
+				<li><a href="javascript:;"><img src="img/03.jpg" alt="老房有喜">老房有喜</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

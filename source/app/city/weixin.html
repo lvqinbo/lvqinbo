@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=640,user-scalable=no,target-densityDpi=device-dpi,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>百年荟·城市广场</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script>
+        $(document).on('touchmove',function(ev){
+            ev.preventDefault();
+        });
+        $(function(){
+            $('#wxMain .content').css('height',$(window).height())
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container" id="wxMain">
+        <h2>关注微信</h2>
+        <div class="content"></div>
+        <div class="nav-bt">
+            <ul>
+                <li><i class="iconfont icon-intro"></i><a href="index.html">首页</a></li>
+                <li><i class="iconfont icon-3d"></i><a href="3dexperience.html">3D体验馆</a></li>
+                <li><i class="iconfont icon-weixin"></i><a href="/">微信</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

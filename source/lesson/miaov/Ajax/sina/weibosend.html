@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微博发送</title>
+	<style>
+	body{background: #BFE4EB;}
+	#wrap{width:600px; margin:50px auto;  font-size: 12px;  color:#333; font-family: "微软雅黑"; }
+	#box {height: 200px; }
+	#box p,#box span{color:#f60; text-align: right; }
+	#box .hover{color:#ccc;}
+	#box textarea,#box input,#contain li{ border-radius: 2px;}
+	#box textarea{width: 590px; height: 90px; padding: 5px; outline: none; resize:none; font-family: "微软雅黑"; }
+	#box input{width:80px; height: 30px; border:none; background: #f0f0f0; text-align: center; line-height: 30px; float: right; color: #fff; background: #f60; font-family: "微软雅黑";}
+	#box .dis{background: #ccc; }
+	#contain{width: 600px; margin:0; padding:0;}
+	#contain li{list-style: none; margin-bottom: 10px; padding:10px 5px 0 5px; font-size: 14px; opacity: 0;  background: #fff; word-break:break-all;}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="box">
+		<p>黑龙江警车遇车祸掉头离去，官方尚未给出解释(视频)　热门微博</p>
+		<textarea name="message" id="txt1" cols="30" rows="10"></textarea>
+		<input type="button" value="发布" id="btn1">
+	</div>
+	<?php 
+		$sql = "SELECT ID,content,posttime FROM message";
+		mysql_connect('localhost','root','');
+		mysql_select_db(
+			'sina');
+		$res = mysql_query($sql);
+	?>
+	<ul id="contain">
+		<?php while($row = mysql_fetch_row($res)){ ?>
+		<li><?php echo $row[1]; ?></li>
+		<?php } ?>
+	</ul>
+</div>
+	<script src="../../../js/ajax.js"></script>
+	<script src="../../../js/doMove.js"></script>
+	<script src="weibosend.js"></script>
+</body>
+</html>

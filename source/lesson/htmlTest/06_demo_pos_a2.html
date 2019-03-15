@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动布局2</title>
+	<style>
+	body,h3,ul,p,span{margin: 0; padding: 0;}
+	body{font-size: 12px; background: #f0f0f0;}
+	a{text-decoration: none;}
+	img{border: none; vertical-align: top;}
+
+	.comment{width: 310px; margin: 20px auto; padding: 8px 10px 10px 8px; background: #fff;}
+	.title{width: 308px; height: 26px; border: 1px solid #E2E1E7; background: url(img/btn.png)no-repeat 11px 6px,url(img/head_bg.png)repeat-x;}
+	.title h3{line-height: 28px; text-indent: 38px; font-size: 12px; color: #4C5354;}
+
+	.show{padding: 13px 0; overflow: hidden;}
+	.img{margin-right: 12px;}
+	.img a{display: inline-block; padding: 2px; border: 1px solid #C8C4D3;}
+	.img img{width: 116px; height: 125px;}
+
+	.show_info{width: 176px;}
+	.show_info h3{color: #333; font-size: 12px; line-height: 26px;}
+	.show_info p,.show_info a{color: #666; line-height: 20px; margin-top: 2px;}
+	.show_info p span{color: #333;}
+
+	.mov_list{}
+	.mov_list li{margin-left: 30px;}
+	.mov_list li,.mov_list a{line-height: 22px; color: #333;}
+	.mov_list li span{margin-right: 10px; margin-right: 29px; color: #888; display: inline-block; float: right;}
+
+	.fl{float: left;}
+	.fr{float: right;}
+	.clear{clear: both;}
+	.clear:after{content: ""; display: block; height: 0; overflow: hidden; visibility: hidden; clear: both;}
+	.clear{*zoom: 1;}
+
+
+
+	</style>
+</head>
+<body>
+	<div class="comment">
+		<div class="title">
+			<h3>明星荐片</h3>
+		</div>
+
+		<div class="show">
+			<div class="img fl">
+				<a href="javascript:;">
+					<img src="img/pic1.jpg" alt="让子弹飞">
+				</a>
+			</div>
+			<div class="show_info fl">
+				<h3>周秀娜荐片 ：让子弹飞</h3>
+				<p>导演：<span>姜文</span></p>
+				<p>主演：<span>姜文 周润发 葛优</span></p>
+				<p>点评：我最近最喜欢的要算《让子弹飞》了，超喜欢<a href="javascript:;">[详细]</a></p>
+			</div>
+		</div>
+
+		<ul class="mov_list clear">
+			<li><a href="javascript:;">《巴别塔》：好的故事引入深思</a><span>阿朵</span></li>
+			<li><a href="javascript:;">《巴别塔》：好的故事引入深思</a><span>阿朵</span></li>
+			<li><a href="javascript:;">《巴别塔》：好的故事引入深思</a><span>阿朵</span></li>
+			<li><a href="javascript:;">《巴别塔》：好的故事引入深思</a><span>阿朵</span></li>
+			<li><a href="javascript:;">《巴别塔》：好的故事引入深思</a><span>阿朵</span></li>
+			<li><a href="javascript:;">《巴别塔》：好的故事引入深思</a><span>阿朵</span></li>
+		</ul>
+	</div>
+</body>
+</html>

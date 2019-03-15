@@ -1,0 +1,281 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+@font-face {
+  font-family: "iconfont";
+  src: url("../fonts/iconfont.eot");
+  /* IE9*/
+  src: url("../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+.iconfont, .toolsbar-btn {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-app:before, .toolsbar-item-app .toolsbar-btn:before {
+  content: "\e608"; }
+
+.icon-weixin:before, .toolsbar-item-weixin .toolsbar-btn:before {
+  content: "\e60a"; }
+
+.icon-top:before, .toolsbar-item-top .toolsbar-btn:before {
+  content: "\e69e"; }
+
+.icon-yijianfankui:before, .toolsbar-item-feedback .toolsbar-btn:before {
+  content: "\e60f"; }
+
+/* 背景图片方式 */
+/* @mixin toolsbar-item($pos, $hoverPos){
+	background-position: 0 $pos;
+	&:hover{
+		background-position: 0 $hoverPos;
+	}
+}
+
+$toolsbar-size: 52px;
+
+.toolsbar-item,.toolsbar-layer{
+	background-image: url(../img/toolsbar.png);
+	background-repeat: no-repeat;
+}
+.toolsbar{
+	width: 52px;
+	height: 208px;
+	position: absolute;
+	right: 20px;
+	bottom: 30px;
+}
+.toolsbar-item{
+	width: $toolsbar-size;
+	height: $toolsbar-size;
+	position: relative;
+	display: block;
+	margin-top: 1px;
+	@include transition(background-position .6s);
+
+	&:hover{
+		.toolsbar-layer{
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolsbar-item-weixin{
+	@include toolsbar-item(-390px, -447px);
+	.toolsbar-layer{
+		height: 200px;
+		background-position: 0 0px;
+	}
+}
+.toolsbar-item-feedback{
+	@include toolsbar-item(-503px, -560px);
+}
+.toolsbar-item-app{
+	@include toolsbar-item(-616px, -673px);
+	.toolsbar-layer{
+		height: 180px;
+		background-position: 0 -207px;
+	}
+}
+.toolsbar-item-top{
+	@include toolsbar-item(-730px, -787px);
+}
+.toolsbar-layer{
+	width: 160px;
+	position: absolute;
+	right: $toolsbar-size;
+	bottom: 0;
+	@include opacity(0);
+	@include scale(0.01);
+	@include transition(all .3s linear);
+	@include transform-origin(bottom right);
+} */
+/* 图标方式 */
+/* $toolsbar-size: 52px;
+
+.toolsbar-item,.toolsbar-btn,.toolsbar-icon,.toolsbar-text{
+	width: $toolsbar-size;
+	height: $toolsbar-size;
+}
+.toolsbar-btn,.toolsbar-icon{
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+.toolsbar-icon,.toolsbar-text{
+	color: #fff;	
+	text-align: center;
+	@include transition(top 1s);
+}
+
+.toolsbar{
+	position: fixed;
+	right: 20px;
+	bottom: 5px;
+}
+.toolsbar-item{
+	position: relative;
+	display: block;
+	margin-top: 1px;
+
+	&:hover{
+		.toolsbar-icon{
+			top: -$toolsbar-size;
+		}
+		.toolsbar-text{
+			top: 0;
+		}
+		.toolsbar-layer{
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolsbar-btn{
+	overflow: hidden;
+}
+
+.toolsbar-icon{
+	font-size: 30px;
+	line-height: $toolsbar-size;
+	background-color: #d0d6d9;
+}
+.toolsbar-text{
+	left: 0;
+	top: $toolsbar-size;
+	position: absolute;
+	padding-top: 12px;
+	font-size: 12px;
+	line-height: 1.2em;
+	background-color: #98a1a6;
+}
+.toolsbar-layer{
+	position: absolute;
+	width: 160px;
+	right: $toolsbar-size;
+	bottom: 0;
+	background-image: url(../img/toolsbar.png);
+	background-repeat: no-repeat;
+	@include transition(all .6s);
+	@include transform-origin(bottom right);
+	@include opacity(0);
+	@include scale(0.01);
+}
+.toolsbar-layer-weixin{
+	height: 200px;
+	background-position: 0 0;
+}
+.toolsbar-layer-app{
+	height: 180px;
+	background-position: 0 -207px;
+} */
+/* 伪类方式 */
+.toolsbar {
+  position: fixed;
+  right: 20px;
+  bottom: 20px; }
+
+.toolsbar-item {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  margin-top: 1px;
+  display: block; }
+  .toolsbar-item:hover .toolsbar-btn:before {
+    top: -52px; }
+  .toolsbar-item:hover .toolsbar-btn:after {
+    top: 0; }
+  .toolsbar-item:hover:after {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+    
+  .toolsbar-item:after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    right: 53px;
+    bottom: 0;
+    background-image: url(../img/toolsbar.png);
+    background-repeat: no-repeat;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transform: scale(0.01);
+    -moz-transform: scale(0.01);
+    -ms-transform: scale(0.01);
+    -o-transform: scale(0.01);
+    transform: scale(0.01);
+    -webkit-transform-origin: right bottom;
+    -moz-transform-origin: right bottom;
+    -o-transform-origin: right bottom;
+    -ms-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    transition: all 0.6s; }
+
+.toolsbar-item-weixin .toolsbar-btn:after {
+  content: "公众\A账号"; }
+.toolsbar-item-weixin:after {
+  content: "";
+  height: 200px;
+  background-position: 0 0; }
+
+.toolsbar-item-feedback .toolsbar-btn:after {
+  content: "意见\A反馈"; }
+
+.toolsbar-item-app .toolsbar-btn:after {
+  content: "app\A下载"; }
+.toolsbar-item-app:after {
+  content: "";
+  height: 177px;
+  background-position: 0 -206px; }
+
+.toolsbar-item-top .toolsbar-btn:after {
+  content: "返回\A顶部"; }
+
+.toolsbar-btn {
+  overflow: hidden; }
+  .toolsbar-btn, .toolsbar-btn:before, .toolsbar-btn:after {
+    width: 52px;
+    height: 52px;
+    position: absolute; }
+  .toolsbar-btn, .toolsbar-btn:before {
+    left: 0;
+    top: 0; }
+  .toolsbar-btn:before, .toolsbar-btn:after {
+    content: "";
+    color: #fff;
+    -webkit-transition: top 0.6s;
+    -moz-transition: top 0.6s;
+    -o-transition: top 0.6s;
+    -ms-transition: top 0.6s;
+    transition: top 0.6s; }
+  .toolsbar-btn:before {
+    font-size: 30px;
+    text-align: center;
+    line-height: 52px;
+    background-color: #d0d6d9; }
+  .toolsbar-btn:after {
+    left: 0;
+    top: 52px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.2em;
+    padding-top: 12px;
+    background-color: #98a1a6;
+    white-space: pre;
+    font-weight: normal; }
+
+/*# sourceMappingURL=main.css.map */

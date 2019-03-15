@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for循环</title>
+	<style>
+	.wrapper{width: 900px; margin: 0 auto;}
+	.box{position: relative; width: 550px; height: 350px; margin: 20px auto; border: 1px solid #ddd;}
+	.box div{line-height: 55px; text-align: center; color: #fff; border-radius: 5px;}
+	#box2{width: 550px; height: 325px; border: 1px solid #ddd; margin: 0 auto;}
+	input{width: 100%; height: 30px; margin-left: 30px; padding: 0 5px; font-family: "微软雅黑"; margin: 10px 0;}
+	#box2 .wrap{width: 550px; height: 260px; margin: 0 auto; position: relative;}
+	#box2 .wrap div{line-height: 50px; text-align: center; color: #fff; border-radius: 5px; font-size: 30px;}
+	#newsbox{height: 200px;}
+	#imgbox{position: relative; width: 550px; height: 550px; margin: 40px auto;}
+	#imgbox input{position: absolute; top: -30px;}
+	#imgbox .imglist{width: 100%; height: 100px; position: relative;}
+	#imgbox .imglist div{border: 1px solid #fff;}
+	</style>
+	<script>
+	window.onload = function(){
+		
+		//创建100个div
+		var oBox1 = document.getElementById('box1');
+		var html = '';
+		var len = 60;
+		var arrColor = ['#FF00FF','#FF3030','#D15FEE','#CAFF70','#B0E0E6','#5C5C5C','#4169E1','#00CDCD'];
+
+		for(var i = 0; i < len; i++){
+			html += '<div style="width: 50px; height: 50px; left: '+ (i%10)*55 +'px; top: '+ Math.floor(i/10)*55 +'px; position: absolute; background: '+arrColor[i%arrColor.length]+'">'+ i +'</div>';
+		}
+		oBox1.innerHTML = html;
+
+		//创建V字形各种div
+		var oBox2 = document.getElementById('box2');
+		var oBtn = oBox2.getElementsByTagName('input')[0];
+		var oWrap = oBox2.getElementsByTagName('div')[0];
+		var iNum = 0;
+
+		for(var i = 0; i < 5; i++){
+			var oDiv = document.createElement('div');
+			if(i >= 2){
+				oDiv.style.cssText = 'width: 50px; height: 50px; background: red; left: '+(5-1-i)*50+'px; top: '+i*50+'px; position: absolute;';
+			}else{
+				oDiv.style.cssText = 'width: 50px; height: 50px; background: red; left: '+i*50+'px; top: '+i*50+'px; position: absolute;';
+			}
+			oDiv.innerHTML = i;
+			oWrap.appendChild(oDiv);
+		}
+
+		oBtn.onclick = function(){
+			oWrap.innerHTML = '';
+			iNum ++;
+			iNum %= 4;
+			
+			for(var i = 0; i < 5; i++){
+				var m = i*50;
+				var k = (5-1-i)*50;
+				
+				if(iNum === 1){
+					m = i >= 2 ? k : m;	
+				}
+				else if(iNum === 2){
+					m = i >= 2 ? m : k;	
+				}
+				else if(iNum === 3){
+					k = i >= 2 ? m : k;	
+				}
+				else if(iNum === 0){
+					k = i >= 2 ? k : m;	
+				}
+				oWrap.innerHTML += '<div style="width: 50px; height: 50px; position: absolute; left: '+k+'px; top: '+m+'px; background: '+arrColor[i % arrColor.length]+'">'+i+'</div>';
+			}			
+		}
+
+		//创建新闻
+		var arrNews = [
+			'1. 本版块不代劳商业应用（江湖救急可免）。',
+			'2. 本版块是为大家提供一个学习及技术交流的平台，禁止灌水和广告。',
+			'3. 本版块作为技术和交流平台，严重鄙视行业内的滥竽充数者：自己有脑，不肯思考；发狠提问，呲牙咧嘴；绝对白丁，只吃现成。',
+			'4.拒绝不劳而获，提问请发悬赏贴。',
+			'5.拒绝不劳而获，提问请发悬赏贴。'
+		];
+		var oNewsBox = document.getElementById('newsbox');
+		var oNewsList = oNewsBox.getElementsByTagName('ul')[0];
+		var oCreateLi = oNewsBox.getElementsByTagName('input')[0];
+		var b = true;
+
+		oCreateLi.onclick = function(){
+			//如果为真则创建
+			/*if(b){
+				for(var i = 0; i < arrNews.length; i++){
+					oNewsList.innerHTML += '<li>'+arrNews[i]+'</li>';
+				}
+				b = false;
+			}*/
+			// 或者
+			if(!b) return;
+			for(var i = 0; i < arrNews.length; i++){
+				oNewsList.innerHTML += '<li>'+arrNews[i]+'</li>';
+			}
+			b = false;
+		}
+
+		//创建100个div
+		var oImgBox = document.getElementById('imgbox');
+		var oCreateDivBtn = oImgBox.getElementsByTagName('input')[0];
+		var imgList = oImgBox.getElementsByTagName('div')[0];
+		var aDiv = imgList.getElementsByTagName('div');
+		var arrImg = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+		var iNow = 0;
+		var num = 0;
+		var on = true;
+		var str = '';
+		
+		oCreateDivBtn.onclick = function(){
+			if(aDiv.length == 0){
+				createDiv();
+			}else{
+				iNow++;
+				var timer = setInterval(function(){
+					num--;
+					if(num == 0){
+						clearInterval(timer);
+						
+						var timer2 = setInterval(function(){
+							aDiv[num].style.display = 'block';
+							
+							aDiv[num].style.background = 'url('+arrImg[iNow%arrImg.length]+')no-repeat -'+(num%10)*52+'px -'+Math.floor(num/10)*52+'px"';
+							num++;
+							if(num == 100){
+								clearInterval(timer2);
+							}
+						},30);
+					}
+					aDiv[num].style.display = 'none';
+
+				},30);
+			}
+			
+			oCreateDivBtn.value = '下一张';
+		}
+
+		function createDiv (){
+			var crtDiv = setInterval(function(){
+				
+				imgList.innerHTML += '<div style="position: absolute; width: 50px; height: 50px; left: '+(num%10)*52+'px; top: '+Math.floor(num/10)*52+'px; background: url('+arrImg[iNow]+')no-repeat -'+(num%10)*52+'px -'+Math.floor(num/10)*52+'px"></div>';
+			
+				num ++;
+				if(num == 100){
+					clearInterval(crtDiv);
+				}
+			},50);
+		}
+	}
+	</script>
+</head>
+<body>
+<div class="wrapper">
+	<div id="box1" class="box"></div>
+	<div id="box2" class="box">
+		<input type="button" value="V字形">
+		<div class="wrap"></div>
+	</div>
+	<div id="newsbox" class="box">
+		<input type="button" value="创建5条新闻">
+		<ul class="newslist"></ul>
+	</div>
+	<div id="imgbox">
+		<input type="button" value="生成图片">
+		<div class="imglist"></div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流效果</title>
+	<style>
+	#wrap{width: 940px;  margin:0 auto;}
+	#wrap ul{padding:0; width: 300px; margin-right: 10px;float: left;}
+	#wrap li{list-style: none; margin-bottom: 10px;  border:1px solid #333;}
+	#wrap img{width:298px; display: block;}
+	#wrap p{ text-indent: 15px; font-family: "微软雅黑";}
+	</style>
+	<script src= "ajax.js"></script>
+	<script>
+	window.onload = function(){
+		var oBox = document.getElementById('wrap');
+		var aUl = oBox.getElementsByTagName('ul');
+		var onOff = true;
+
+		window.onscroll = function(){
+			var vH = document.documentElement.clientHeight;
+			var vT = document.documentElement.scrollTop || document.body.scrollTop;
+
+			for (var i = 0; i < aUl.length; i++) {
+				var aLi = aUl[i].getElementsByTagName('li');
+				var aLastLi = aLi[aLi.length-1];
+
+				if(onOff && getTop(aLastLi) < vH + vT){
+					onOff = false;
+					ajax('data.js',function(str){
+						var json = eval('('+ str +')');
+
+						if(json.code){
+							onOff = true;
+						}
+						for (var i = 0; i < json.list.length; i++) {
+							var list = json.list[i];
+
+							for (var k = 0; k < list.src.length; k++) {
+								var oLi = document.createElement('li');
+								oLi.innerHTML = '<img src="'+list.src[k]+'">\
+		<p>'+list.title[k]+'</p>';
+								aUl[i].appendChild(oLi);
+							};
+						};
+					},function(){
+						alert('内容加载失败！');
+					});
+				}
+
+			};
+		}
+		function getTop(obj){
+			var top = 0;
+			while(obj){
+				top += obj.offsetTop;
+				obj = obj.offsetParent;
+			}
+			return top;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<ul>
+			<li><img src="img/1.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+			<li><img src="img/2.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+			<li><img src="img/3.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+		</ul>
+		<ul>
+			<li><img src="img/6.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+			<li><img src="img/5.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+			<li><img src="img/8.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+		</ul>
+			
+		<ul>
+			<li><img src="img/7.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+			<li><img src="img/8.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+			<li><img src="img/9.jpg" alt="">
+			<p>图片说明加载中......</p></li>
+		</ul>
+	</div>
+</body>
+</html>

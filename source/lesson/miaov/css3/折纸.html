@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折纸效果</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	#wrap{width: 200px; margin: 20px auto; position: relative; text-align: center; -webkit-perspective: 800px;}
+	#wrap h2{width: 100%; height: 40px; line-height: 40px; background: #E91E63; font-size: 20px; color: #fff; position: relative; cursor: pointer; z-index: 10;}
+	#wrap div{width: 100%; background: #03A9F4; color: #fff; opacity: 0; position: absolute; top: 30px; left: 0;  -webkit-transform: rotateX(-60deg); -webkit-transform-style: preserve-3d; -webkit-transform-origin: bottom; -webkit-transition: 1s;}
+	#wrap span{width: 100%; height: 28px; border: 1px solid #fff; line-height: 30px; display: block; box-shadow: inset 0 0 0 50px rgba(20,104,140,1); transition:3s;}
+	#wrap>div{top: 40px;}
+	#wrap .show{-webkit-animation: 3s show linear; -webkit-transform: rotateX(0deg); opacity: 1;}
+	#wrap .show>span{box-shadow: inset 0 0 50px rgba(25,152,207,0);}
+	#wrap .hide{-webkit-animation: 1s close linear; -webkit-transform: rotateX(-120deg); }
+	@-webkit-keyframes show{
+		0%{-webkit-transform:rotateX(-120deg);}
+		25%{-webkit-transform:rotateX(-30deg);}
+		50%{-webkit-transform:rotateX(25deg);}
+		75%{-webkit-transform:rotateX(8deg);}
+		100%{-webkit-transform:rotateX(0deg);}
+	}
+	@-webkit-keyframes close{
+		0%{-webkit-transform:rotateX(0deg);}
+		25%{-webkit-transform:rotateX(-60deg);}
+		50%{-webkit-transform:rotateX(-100deg);}
+		75%{-webkit-transform:rotateX(-110deg);}
+		100%{-webkit-transform:rotateX(-120deg);}
+	}
+	</style>
+	<script>
+	window.onload = function(){
+		var oWrap = document.getElementById('wrap');
+		var aDiv = oWrap.getElementsByTagName('div');
+		var oH = oWrap.getElementsByTagName('h2')[0];
+		var timer = null;
+		var iBtn = true;
+		var i = 0;
+		oH.onclick = function(){
+			if(iBtn){
+				i = 0;
+				timer = setInterval(function (){
+					aDiv[i].className = 'show';
+					i++;
+					if(i == aDiv.length){
+						clearInterval(timer);
+					}
+				},200);
+				iBtn = false;
+			}else{
+				i = aDiv.length-1;
+				timer = setInterval(function (){
+					aDiv[i].className = 'hide';
+					i--;
+					if(i == -1){
+						clearInterval(timer);
+					}
+				},200);
+				iBtn = true;
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<h2>点击展开</h2>
+		<div class="hide">
+			<span>第一层</span>
+			<div>
+				<span>第2层</span>
+				<div>
+					<span>第3层</span>
+					<div>
+						<span>第4层</span>
+						<div>
+							<span>第5层</span>
+							<div>
+								<span>第6层</span>
+								<div>
+									<span>第7层</span>
+									<div>
+										<span>第8层</span>
+										<div>
+											<span>第9层</span>
+											<div>
+												<span>第10层</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

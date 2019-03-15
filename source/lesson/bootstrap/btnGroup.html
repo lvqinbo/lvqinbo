@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css">
+    	.gray-box{background-color: #ccc; height: 200px; margin-bottom: 10px; font-size: 2em;}
+    </style>
+</head>
+
+<body>
+<div class="container">
+	<h1>dropdown</h1>
+	<div class="row">
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<h3>default</h3>
+			<div class="gray-box" >
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">
+						点击查看更多
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropDownMenu1">
+						<li role="presentation"><a class="menuitem" tabindex="1" href="javascript:;">Homepage</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="2" href="javascript:;">Login</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="3" href="javascript:;">Contact Us</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="4" href="javascript:;">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<h3>dropdown-right</h3>
+			<div class="gray-box" >
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">
+						点击查看更多
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropDownMenu1">
+						<li role="presentation"><a class="menuitem" tabindex="1" href="javascript:;">Homepage</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="2" href="javascript:;">Login</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="3" href="javascript:;">Contact Us</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="4" href="javascript:;">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<h3>dropdown-header</h3>
+			<div class="gray-box" >
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">
+						点击查看更多
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropDownMenu1">
+						<li role="presentation" class="dropdown-header">DropDown Header</li>
+						<li role="presentation"><a class="menuitem" tabindex="1" href="javascript:;">Homepage</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="2" href="javascript:;">Login</a></li>
+						<li role="presentation" class="dropdown-header">Contact Header</li>
+						<li role="presentation"><a class="menuitem" tabindex="3" href="javascript:;">Contact Us</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="4" href="javascript:;">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<h3>divider</h3>
+			<div class="gray-box" >
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">
+						点击查看更多
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropDownMenu1">
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a class="menuitem" tabindex="1" href="javascript:;">Homepage</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="2" href="javascript:;">Login</a></li>
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a class="menuitem" tabindex="3" href="javascript:;">Contact Us</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="4" href="javascript:;">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<h3>disabled</h3>
+			<div class="gray-box" >
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropDownMenu1" data-toggle="dropdown">
+						点击查看更多
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropDownMenu1">
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a class="menuitem" tabindex="1" href="javascript:;">Homepage</a></li>
+						<li class="disabled" role="presentation"><a class="menuitem" tabindex="2" href="javascript:;">Login</a></li>
+						<li role="presentation" class="divider"></li>
+						<li class="disabled" role="presentation"><a class="menuitem" tabindex="3" href="javascript:;">Contact Us</a></li>
+						<li role="presentation"><a class="menuitem" tabindex="4" href="javascript:;">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<h3>btn-group</h3>
+			<div class="gray-box" >
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Left</button>
+					<button type="button" class="btn btn-default">Middle</button>
+					<button type="button" class="btn btn-default">Right</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+			<h3>btn-toolbar</h3>
+			<div class="gray-box" >
+				<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default">Left</button>
+						<button type="button" class="btn btn-default">Middle</button>
+						<button type="button" class="btn btn-default">Right</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default">Left</button>
+						<button type="button" class="btn btn-default">Middle</button>
+						<button type="button" class="btn btn-default">Right</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default">Left</button>
+						<button type="button" class="btn btn-default">Middle</button>
+						<button type="button" class="btn btn-default">Right</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h3>btn-size</h3>
+			<div class="gray-box" >
+				
+				<div class="btn-group btn-group-lg">
+					<button type="button" class="btn btn-default">Left</button>
+					<button type="button" class="btn btn-default">Middle</button>
+					<button type="button" class="btn btn-default">Right</button>
+				</div>
+				<div class="btn-group btn-group-md">
+					<button type="button" class="btn btn-default">Left</button>
+					<button type="button" class="btn btn-default">Middle</button>
+					<button type="button" class="btn btn-default">Right</button>
+				</div>
+				<div class="btn-group btn-group-sm">
+					<button type="button" class="btn btn-default">Left</button>
+					<button type="button" class="btn btn-default">Middle</button>
+					<button type="button" class="btn btn-default">Right</button>
+				</div>
+				<div class="btn-group btn-group-xs">
+					<button type="button" class="btn btn-default">Left</button>
+					<button type="button" class="btn btn-default">Middle</button>
+					<button type="button" class="btn btn-default">Right</button>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>Group-Nesting</h3>
+			<div class="gray-box">
+				<div class="btn-group">
+					
+					<div class="btn-group">
+						<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							Dropdown
+							<span class="caret"></span>
+						</button>
+	
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="javascript:;">DropDown Link 1</a></li>
+							<li><a href="javascript:;">DropDown Link 2</a></li>
+						</ul>
+					</div>
+
+					<div class="btn-group">
+						<button class="btn btn-default" type="button">Left</button>
+						<button class="btn btn-default" type="button">Middle</button>
+						<button class="btn btn-default" type="button">Right</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>Group-Vertical</h3>
+			<div class="gray-box">
+				<div class="btn-group">
+					
+					<div class="btn-group">
+						<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							Dropdown
+							<span class="caret"></span>
+						</button>
+	
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="javascript:;">DropDown Link 1</a></li>
+							<li><a href="javascript:;">DropDown Link 2</a></li>
+						</ul>
+					</div>
+
+					<div class="btn-group btn-group-vertical">
+						<button class="btn btn-default" type="button">Left</button>
+						<button class="btn btn-default" type="button">Middle</button>
+						<button class="btn btn-default" type="button">Right</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>Group-Justified</h3>
+			<div class="gray-box">
+				<div class="btn-group btn-group-justified">
+					<div class="btn-group btn-group-vertical">
+						<button class="btn btn-default" type="button">Left</button>
+					</div>
+					<div class="btn-group btn-group-vertical">
+						<button class="btn btn-default" type="button">Middle</button>
+					</div>
+					<div class="btn-group btn-group-vertical">
+						<button class="btn btn-default" type="button">Right</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>btn-default/primary/success/info/warning/danger</h3>
+			<div class="gray-box">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Action
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Something else</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Something else</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						Action
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Something else</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Something else</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+						Action
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Something else</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Something else</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+						Action
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Something else</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Something else</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+						Action
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Something else</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Something else</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+						Action
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Action</a></li>
+						<li><a href="javascript:;">Something else</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Something else</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>Split button dropdowns</h3>
+			<div class="gray-box">
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger">Click Me</button>
+					
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle DropDown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Homepage</a></li>
+						<li><a href="javascript:;">About Us</a></li>
+						<li><a href="javascript:;">Product</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>Btn-sizing</h3>
+			<div class="gray-box">
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger dropdown-toggle btn-lg" data-toggle="dropdown">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Homepage</a></li>
+						<li><a href="javascript:;">About Us</a></li>
+						<li><a href="javascript:;">Product</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger dropdown-toggle btn-md" data-toggle="dropdown">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Homepage</a></li>
+						<li><a href="javascript:;">About Us</a></li>
+						<li><a href="javascript:;">Product</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Homepage</a></li>
+						<li><a href="javascript:;">About Us</a></li>
+						<li><a href="javascript:;">Product</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger dropdown-toggle btn-xs" data-toggle="dropdown">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Homepage</a></li>
+						<li><a href="javascript:;">About Us</a></li>
+						<li><a href="javascript:;">Product</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h3>Btn-dropup</h3>
+			<div class="gray-box">
+				<div class="btn-group dropup">
+					<button type="button" class="btn btn-danger dropdown-toggle btn-lg" data-toggle="dropdown">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="javascript:;">Homepage</a></li>
+						<li><a href="javascript:;">About Us</a></li>
+						<li><a href="javascript:;">Product</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>

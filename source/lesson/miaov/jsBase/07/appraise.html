@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>评分</title>
+<style>
+ul{margin: 0; padding: 0; list-style: none;}
+p{margin: 0;}
+#appraise{width: 960px; margin: 20px auto;}
+#scope{width: 100%; padding: 20px 0;}
+#scope li{width: 800px; height: 60px; overflow: hidden;}
+#scope li p{height: 50px; line-height: 50px; border-radius: 8px; float: left;}
+#scope li p.text{font-size: 20px;}
+#scope li p.hint{padding: 0 10px; margin-left: 20px; background: yellow; position: relative;}
+#scope li p.hint::before{content: ""; width: 0; height: 0; border: 15px solid red; border-color: transparent yellow transparent transparent; position: absolute; left: -30px; top: 10px;}
+#scope li div{width: 50px; height: 50px; float: left;}
+#scope .star{background: url(img/star.png)no-repeat left top;}
+</style>
+</head>
+<body>
+	<div id="appraise">
+		<ul id="scope">
+			<li>
+				<p class="text">宝贝评价：</p>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<p class="hint">小提示：点击小星星为此次服务评分!</p>
+			</li>
+			<li>
+				<p class="text">物流评价：</p>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<p class="hint">小提示：点击小星星为此次服务评分!</p>
+			</li>
+			<li>
+				<p class="text">服务评价：</p>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<p class="hint">小提示：点击小星星为此次服务评分!</p>
+			</li>
+			<li>
+				<p class="text">总体评价：</p>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<div class="star"></div>
+				<p class="hint">小提示：点击小星星为此次服务评分!</p>
+			</li>
+		</ul>
+	</div>
+	<script src="appraise.js"></script>
+</body>
+</html>

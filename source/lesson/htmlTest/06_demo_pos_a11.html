@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动布局</title>
+	<style>
+	html,body,ul,span{margin: 0; padding: 0;}
+	body{background: #fafafa; font-size: 12px;}
+	li{list-style: none;}
+	a{text-decoration: none;}
+
+	.menu-box{width: 978px; height: 113px; padding: 0 10px; border: 1px solid #fff; margin: 20px auto;}
+	.menu-box a:hover{color: #f60;}
+	.list-menu{width: 978px; height: 36px; line-height: 36px; border-bottom: 1px solid #e2e2e2; position: relative;}
+	.list-menu ul{float: left;}
+	.list-menu li{float: left; margin-right: 20px; text-align: center;}
+	.list-menu .title{font-size: 12px; color: #333; font-weight: bold; display: inline-block;}
+	.list-menu .all a{display: inline-block; width: 34px; height: 18px; margin-left: 30px;line-height: 18px; background: #0066CC; color: #fff; box-shadow: 2px 2px 0 #D2D2D2;}
+	.list-menu li a{color: #444;}
+	.list-menu li span{color: #878787;}
+	.list-menu li .more{position: absolute; right: 0; display: inline-block; width: 42px; color: #FF9900; text-align: left; background: url(img/select.png)no-repeat right center;}
+
+	.special{height: 43px; line-height: 43px; border: none;}
+	.special ul{margin-left: 30px;}
+	.special li{}
+	.special li a{display: inline-block; padding: 0 7px 0 13px; height: 20px; line-height: 20px; color: #fff; font-weight: bold; background: #F57390 url(img/a_bg.png)repeat-x; border: 1px solid #F5708E; border-right: none; box-shadow: inset 1px 1px 2px #FEB4C6; border-radius: 1px 0 0 1px;}
+	.special a.trangle{display: inline-block; width: 12px; height: 22px; background: url(img/button_bg.png)no-repeat; position: relative; top: 7px; border: none; box-shadow: none; padding: 0;}
+
+	.fl{float: left;}
+	.fr{float: right;}
+	.clear{clear: both; display: block;}
+	.clear{*zoom: 1;}
+	.clear:after{content: ""; height: 0; display: block; overflow: hidden; visibility: hidden;}
+	</style>
+</head>
+<body>
+	<div class="menu-box">	
+
+			<div class="list-menu">
+				<span class="title fl">分类</span>
+				<ul>
+					<li class="all"><a href="javascript:;">全部</a></li>
+					<li><a href="javascript:;">今日新单</a><span>(44)</span></li>
+					<li><a href="javascript:;">美食</a><span>(298)</span></li>
+					<li><a href="javascript:;">娱乐</a><span>(140)</span></li>
+					<li><a href="javascript:;">美容</a><span>(99)</span></li>
+					<li><a href="javascript:;">生活服务</a><span>(89)</span></li>
+					<li><a href="javascript:;">酒店</a><span>(413)</span></li>
+					<li><a href="javascript:;">电影</a><span>(34)</span></li>
+					<li><a href="javascript:;">旅游</a><span>(77)</span></li>
+					<li><a href="javascript:;">摄影</a><span>(93)</span></li>
+					<li><a class="more" href="javascript:;">更多</a></li>
+				</ul>
+			</div>
+			<div class="list-menu">
+				<span class="title fl">地区</span>
+				
+				<ul>
+					<li class="all"><a href="javascript:;">全部</a></li>
+					<li><a href="javascript:;">朝阳区</a><span>(363)</span></li>
+					<li><a href="javascript:;">海定区</a><span>(163)</span></li>
+					<li><a href="javascript:;">丰台区</a><span>(118)</span></li>
+					<li><a href="javascript:;">东城区</a><span>(113)</span></li>
+					<li><a href="javascript:;">西城区</a><span>(87)</span></li>
+					<li><a href="javascript:;">昌平区</a><span>(66)</span></li>
+					<li><a href="javascript:;">大兴区</a><span>(30)</span></li>
+					<li><a href="javascript:;">石景山区</a><span>(27)</span></li>
+					<li><a href="javascript:;">顺义区</a><span>(17)</span></li>
+					<li><a class="more" href="javascript:;">更多</a></li>
+				</ul>
+			</div>
+
+			<div class="list-menu special">
+				<span class="title fl">专题</span>
+				<ul>
+					<li><a href="javascript:;">精品摄影专场</a><a class="trangle" href="#"></a></li>
+					<li><a href="javascript:;">丽人专场</a><a class="trangle" href="#"></a></li>
+					<li><a href="javascript:;">健康生活专场</a><a class="trangle" href="#"></a></li>
+					<li><a href="javascript:;">自助餐专场</a><a class="trangle" href="#"></a></li>
+					<li><a href="javascript:;">便宜坊专场</a><a class="trangle" href="#"></a></li>
+				</ul>
+			</div>
+	</div>
+</body>
+</html>

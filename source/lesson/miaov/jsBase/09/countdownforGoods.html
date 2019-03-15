@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抢购商品</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	a{text-decoration: none;}
+	input{outline: none;}
+	body{font-family: "微软雅黑";}
+	#wrap{width: 960px; border: 1px solid #ccc; margin: 20px auto; box-sizing: border-box;}
+	.title{width: 100%; height: 50px; border-bottom: 1px solid #ddd;}
+	.title h3{width: 100%; line-height: 50px; padding-left: 20px; font-size: 16px; font-weight: 400; color: #666;}
+	.content{width: 100%; height: 360px; margin-top: 20px; overflow: hidden; position: relative; background: #fff url(img/bg.jpg)1px top;}
+	.box{width: 300px; height: 100%; padding-left: 20px; background: #fff; float: left; position: absolute; top: 0;}
+	.box p{padding: 10px 0; color: red; text-indent: 20px;}
+	.box p span{color: #f50; font-weight: bold;}
+	.box a{font-size: 12px; width: 220px; display: inline-block;}
+	.set-data input{width: 56px; padding: 2px 0 2px 4px; border: 1px solid #f0f0f0; border-radius: 2px; font-family: "微软雅黑";}
+	.set-data a{width: 60px; height: 24px; line-height: 24px; font-size: 12px; display: inline-block; background: #8BC34A; color: #fff; text-decoration: none; text-align: center; transition: all 1s;}
+	.set-data a:hover{background-color: #f90;}
+	.phone{width: 280px;}
+	.cart{width: 100%; clear: both;}
+	.cart p{height: 40px;}
+	.cart p.title{background: #00BCD4;}
+	.cart p.title span{font-weight: bold; color: #fff;}
+	.cart p span{display: inline-block; line-height: 40px; padding: 0 20px;}
+	.cart .goods-name{width: 460px;}
+	.cart .s-price,.cart .price{width: 100px;}
+	.cart .s-total,.cart .total{width: 260px; text-align: right;}
+	.t-price p{line-height: 40px; width: 100%; padding-left: 20px; font-size: 18px;}
+	</style>
+	<script>
+	window.onload = function(){
+
+		var oContent = document.querySelector('.content');
+		var aBox = oContent.children;
+		var oCart = document.querySelector('.cart');
+		var oTp = document.querySelector('.t-price').getElementsByTagName('p')[0];
+		
+		var iBtn = true;
+		var num = 0;
+
+		for(var i = 0; i < aBox.length; i++){
+			aBox[i].style.left = (i * 320)+'px';
+			setTimeData(aBox[i]);
+		}
+		function setTimeData(obj){
+			var oParent = obj.getElementsByTagName('div')[0];
+			var aInput = oParent.getElementsByTagName('input');
+			var oBtn = oParent.getElementsByTagName('a')[0];
+			var oShowTime = obj.getElementsByTagName('p')[0];
+			var oTitle = obj.getElementsByTagName('a')[1];
+			var oPrice = obj.getElementsByTagName('span')[0];
+			var stop = null;
+
+			oBtn.onclick = function(){
+				clearInterval(stop); 
+				stop = setInterval(setTime,1000);
+			}
+			function setTime(){
+				var oDate = new Date();
+				var oNewDate = new Date();
+
+				var iH = parseInt(aInput[0].value);
+				var iM = parseInt(aInput[1].value);
+				var iS = parseInt(aInput[2].value);
+
+				oNewDate.setFullYear(oDate.getFullYear());
+				oNewDate.setMonth(oDate.getMonth());
+				oNewDate.setDate(oDate.getDate());
+				oNewDate.setHours(iH);
+				oNewDate.setMinutes(iM);
+				oNewDate.setSeconds(iS);
+
+				var t = Math.floor((oNewDate - oDate)/1000);
+				var iDay = toDou(Math.floor(t/86400));
+				var iHours = toDou(Math.floor(t%86400/3600));
+				var iMin = toDou(Math.floor(t%86400%3600/60));
+				var iSec = toDou(Math.floor(t%60));
+				
+				if( aInput[0].value == '' || aInput[1].value == '' || aInput[2].value == '') {
+					alert("请设定时间!"); 
+					clearInterval(stop);
+					return;
+				}else if(t < 0){
+					clearInterval(stop);
+					shake(obj,'left');
+					setTimeout(function(){
+						startMove(obj,{top: 500, opacity: 0},function (){
+							fnCreate();
+						});
+					},1000);
+					return;
+				}
+				oShowTime.innerHTML = '剩余'+iDay+'天'+iHours+'时'+iMin+'分'+iSec+'秒';
+			}
+			function fnCreate(){
+				var oP = document.createElement('p');
+				oP.innerHTML = '<span class="goods-name">'+oTitle.innerHTML+'</span>\
+					<span class="s-price">'+oPrice.innerHTML+'</span>\
+					<span class="s-total">'+oPrice.innerHTML+'</span>';
+				oCart.appendChild(oP);
+
+				var oMoney = document.querySelector('.s-total');
+				if(oMoney){
+					num += parseInt(oPrice.innerHTML);
+					oTp.innerHTML = '总价：'+num+'元';	
+				}
+			}
+		}
+		function toDou(n){
+			return n < 10 ? '0' + n : '' + n;
+		}
+		function shake(obj, attr, fnEnd){
+			if(!iBtn) return;
+			iBtn = false;
+			var pos = parseInt(getStyle(obj, attr));
+			var arr = [];
+			var num = 0;
+
+			for(var i = 20; i > 0; i-=2){
+				arr.push(i,-i);
+			}
+			arr.push(0);
+
+			clearInterval(obj.shake);
+			obj.shake = setInterval(function(){
+				obj.style[attr] = pos + arr[num] + 'px';
+				num++;
+				if(num == arr.length-1){
+					clearInterval(obj.shake);
+					iBtn = true;
+				}
+			},50);
+		}
+		function startMove(obj, json, fnEnd){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var bBtn = true;
+				for(var attr in json){
+					var cur = 0;
+					if(attr == 'opacity'){
+						cur = Math.round(parseFloat(getStyle(obj, attr))*100);
+					}else{
+						cur = parseInt(getStyle(obj, attr));
+					}
+
+					var speed = (json[attr] - cur)/6;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(cur != json[attr]){
+						bBtn = false;
+					}
+
+					if(attr == 'opacity'){
+						obj.style.opacity = (cur + speed)/100;
+						obj.style.filter = 'alpha(opacity: '+(cur + speed)+')';
+					}else{
+						obj.style[attr] = cur + speed + 'px';
+					}
+				}
+				if(bBtn){
+					clearInterval(obj.timer);
+					fnEnd && fnEnd();
+				}
+			},30);
+		}
+		function getStyle(obj, name){
+			return obj.currentStyle ? obj.currentStyle[name] : getComputedStyle(obj, false)[name];
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="title">
+			<h3>倒计时抢购</h3>
+		</div>
+
+		<div class="content">
+			<div class="box">
+				<div class="set-data">
+					<input type="text" placeholder="时">
+					<input type="text" placeholder="分">
+					<input type="text" placeholder="秒">
+					<a href="javascript:;">设定</a>
+				</div>
+				<p class="show-time">剩余00天00时00分00秒</p>
+				<div class="phone">
+					<img src="http://img14.360buyimg.com/n7/jfs/t1180/236/925849879/82803/784f564d/555aebfbN2625109b.jpg" alt="">
+				</div>
+				<a href="javascript:;">三星 Galaxy S6 Edge+（G9280）64G版 钛泽银 全网通4</a>
+				<p>特价：<span>2699元</span></p>
+			</div>
+			<div class="box">
+				<div class="set-data">
+					<input type="text" placeholder="时">
+					<input type="text" placeholder="分">
+					<input type="text" placeholder="秒">
+					<a href="javascript:;">设定</a>
+				</div>
+				<p>剩余00天00时00分00秒</p>
+				<div class="phone">
+					<img src="http://img14.360buyimg.com/n7/jfs/t418/156/715477376/218894/71d9660f/542d09f4Na73d11a5.jpg" alt="">
+				</div>
+				<a href="javascript:;">Apple iPhone 6 Plus (A1524) 16GB 金色</a>
+				<p>特价：<span>5088元</span></p>
+			</div> 
+			<div class="box">
+				<div class="set-data">
+					<input type="text" placeholder="时">
+					<input type="text" placeholder="分">
+					<input type="text" placeholder="秒">
+					<a href="javascript:;">设定</a>
+				</div>
+				<p>剩余00天00时00分00秒</p>
+				<div class="phone">
+					<img src="http://img11.360buyimg.com/n7/jfs/t1441/161/1218054937/118347/9539b0ee/55c17dc0Nd62f4a8e.jpg" alt="">
+				</div>
+				<a href="javascript:;">小米 红米2A 灰色 移动4G手机 双卡双待4</a>
+				<p>特价：<span>699元</span></p>
+			</div> 
+		</div>
+
+		<div class="cart">
+			<p class="title">
+				<span class="goods-name">商品名称</span>
+				<span class="price">单价</span>
+				<span class="total">小计</span>
+			</p>
+			<!-- <p>
+				<span class="goods-name">三星 Galaxy S6 Edge+（G9280）64G版 钛泽银 全网通4</span>
+				<span class="s-price">2699</span>
+				<span class="s-total">2699元</span>
+			</p> -->
+		</div>
+		<div class="t-price">
+			<p>总价：0元</p>
+		</div>
+	</div>
+</body>
+</html>

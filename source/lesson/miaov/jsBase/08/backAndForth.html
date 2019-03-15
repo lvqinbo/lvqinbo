@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>往返切换菜单</title>
+<style>
+*{margin: 0; padding: 0;}
+body{font-family: Arial;}
+#wrap{width: 900px; padding: 10px; margin: 20px auto; border: 1px solid #ddd; border-radius: 4px;  overflow: hidden;}
+#wrap ul{list-style: none;}
+#wrap .aside{float: left;}
+#wrap .aside li{width: 80px; height: 50px; line-height: 50px; margin-bottom: 2px; border: 1px solid #ccc; border-radius: 4px; text-align: center;}
+#wrap .active{background: #03A9F4; color: #fff;}
+#wrap .pic{float: left; width: 710px; margin: 0 10px;}
+#wrap .pic img{ width: 710px;}
+</style>
+<script>
+	window.onload = function(){
+		var oWrap = document.getElementById('wrap');
+		var aLi = oWrap.getElementsByTagName('li');
+		var oImg = oWrap.getElementsByTagName('img')[0];
+
+		var arrUrl = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+		var iNow = 0;
+		var timer1 , timer2 = null;
+		
+		fnTab();
+		function fnTab(){
+			for(var i = 0; i < aLi.length; i++){
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					iNow = this.index;
+					setStyle();
+					clearInterval(timer1);
+				}
+				aLi[i].onmouseout = function(){
+					autoPlay1();
+				}
+			}
+		}
+		autoPlay1();
+		function autoPlay1(){
+			timer1 = setInterval(function(){
+				setStyle();
+				iNow++;
+				if(iNow == aLi.length){
+					clearInterval(timer1);
+					iNow = aLi.length-1;
+					setTimeout(autoPlay2,1000);
+				}
+			},2000);
+		}
+
+		function autoPlay2(){
+			timer2 = setInterval(function(){
+				setStyle();
+				iNow--;
+				if(iNow == -1){
+					clearInterval(timer2);
+					iNow = 0;
+					setTimeout(autoPlay1,1000);
+				}
+			},1000);
+		}
+
+		function setStyle(){
+			for(var j = 0; j < aLi.length; j++){
+				aLi[j].className = '';
+			}
+			aLi[iNow].className = 'active';
+			oImg.src = arrUrl[iNow % arrUrl.length];
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="left">
+			<ul class="aside">
+				<li class="active">html</li>
+				<li>css</li>
+				<li>js</li>
+				<li>dom</li>
+				<li>nodejs</li>
+				<li>html5</li>
+				<li>css3</li>
+			</ul>
+		</div>
+		<div class="pic">
+			<img src="img/1.jpg" alt="">
+		</div>
+		<div class="right">
+			<ul class="aside">
+				<li>html</li>
+				<li>css</li>
+				<li>js</li>
+				<li>dom</li>
+				<li>nodejs</li>
+				<li>html5</li>
+				<li>css3</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

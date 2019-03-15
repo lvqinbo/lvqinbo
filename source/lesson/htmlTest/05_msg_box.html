@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>消息盒子</title>
+	<style>
+	html,body,h2,ul,span,strong{margin: 0; padding: 0;}
+	body{font-size: 12px; font-family: "微软雅黑"; color: #666;}
+	li{list-style: none;}
+	a{text-decoration: none;}
+	img{border: none; vertical-align: top;}
+	.msg-box{width: 740px; padding: 13px 19px 10px 6px; background: #FDF8F1; margin: 20px auto;}
+	.header h2{color: #867C7B; font-size: 15px;}
+	.header .msg-nav{border-bottom: 2px solid #806F66; width: 740px; height: 16px; padding-top: 7px;}
+	.header .msg-nav li{float: left; margin-right: 1px;}
+	.header .msg-nav a{display: inline-block; color: #595959; }
+	.header .msg-nav li,.header .msg-nav a{width:100px; text-align: center; background: #EADDCC;}
+	.header .msg-nav .active{background: #806F66; font-weight: bold; color: #fff;}
+
+	.msg{display: none;}
+	.msg_list li{height: 104px; padding: 16px 0 0 32px; border-bottom: 1px solid #E3E3E3; position: relative;}
+	.msg_list .hover{background: #F9F0E3;}
+	.msg_list .hover .icon a{border: 3px solid #ccc;}
+	.msg_list .hover #close{display: block;}
+	.msg_list .icon{width: 56px; margin-right: 10px;}
+	.msg_list .icon a{display: inline-block; width: 50px; height: 50px;}
+	.msg_list .icon img{width: 50px; height: 50px;}
+	
+	.msg_list .text{width: 520px;}
+	.msg_list .text p{line-height: 20px;}
+	.msg_list .text a{color: #806F66; font-weight: bold;}
+	
+	#close{display: none; position: absolute; top: 15px; right: 10px; width: 16px; height: 16px; border: none; background: url(img/close.jpg)no-repeat;}
+
+	.fl{float: left;}
+	.fr{float: right;}
+	.clear{clear: both;}
+	.clear:after{content: ""; display: block; height: 0; overflow: hidden; visibility: hidden; clear: both;}
+	.clear{*zoom: 1;}
+	</style>
+	<script>
+	function getByClass(oParent,sClass){
+		var aEle = oParent.getElementsByTagName('*');
+		var result = [];
+	
+		for (var i = 0; i < aEle.length; i++) {
+			if(aEle[i].className == sClass){
+				result.push(aEle[i]);
+			}
+		};
+		return result;
+	}
+	window.onload = function(){
+		var oBox = document.getElementById('msg-box');
+		var aANav = getByClass(oBox,'msg-nav')[0].getElementsByTagName('a');		
+		var oBoxList = getByClass(oBox,'msg');
+		var oClose = document.getElementById('close');
+	
+		// 导航切换
+		for (var i = 0; i < aANav.length; i++) {
+			aANav[i].index = i;
+			aANav[i].onclick = function(){
+				for (var i = 0; i < aANav.length; i++) {
+					aANav[i].className = '';
+					oBoxList[i].style.display = 'none';
+				};
+				this.className = 'active';
+				oBoxList[this.index].style.display = 'block';
+			}
+		};
+	
+		// 鼠标移入Li高亮 调用
+		for (var i = 0; i < oBoxList.length; i++) {
+			tab(oBoxList[i]);
+		};
+	
+	
+		// 鼠标移入Li高亮函数
+		function tab(obj){
+			var aLi = obj.getElementsByTagName('li');
+			var oUl = obj.getElementsByTagName('ul')[0];
+			var oClose = obj.getElementsByTagName('button');
+			
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].onmouseover = function(){
+					for (var i = 0; i < aLi.length; i++) {
+						aLi[i].className = '';
+					};
+					this.className = 'hover';
+				}
+			};
+	
+			for (var i = 0; i < oClose.length; i++) {
+				oClose[i].index = i;
+				oClose[i].onclick = function(){
+					if(confirm('确定要删除吗？')){
+						oUl.removeChild(aLi[this.index]);
+					}else{
+						return false;
+					}
+					
+				}
+			};
+			
+		}
+	}
+	</script>
+</head>
+<body>
+	<div class="msg-box" id="msg-box">
+		<div class="header">
+			<h2>消息盒子</h2>
+			<ul class="msg-nav">
+				<li><a href="javascript:;">未读</a></li>
+				<li><a href="javascript:;">全部</a></li>
+				<li><a class="active" href="javascript:;">我的成长</a></li>
+				<li><a href="javascript:;">特权活动</a></li>
+				<li><a href="javascript:;">系统消息</a></li>
+				<li><a href="javascript:;">其他</a></li>
+			</ul>
+		</div>
+		<div class="msg" style="display:block">
+			<ul class="msg_list">
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>809</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+			</ul>
+		</div>
+		<div class="msg">
+			<ul class="msg_list">
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部2：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部2：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部2：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>809</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+			</ul>
+		</div>
+		<div class="msg">
+			<ul class="msg_list">
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部3：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部3：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部3：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>809</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+			</ul>
+		</div>
+		<div class="msg">
+			<ul class="msg_list">
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部4：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部4：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部4：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>809</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+			</ul>
+		</div>
+		<div class="msg">
+			<ul class="msg_list">
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部5：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部5：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部5：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>809</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+			</ul>
+		</div>
+		<div class="msg">
+			<ul class="msg_list">
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部6：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部6：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>1600</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+				<li>
+					<div class="icon fl">
+						<a href="javascript:;"><img src="img/tmail.jpg" alt="天猫"></a>
+					</div>
+					<div class="text fl">
+						<strong>天猫俱乐部6：</strong>
+						<p><span>天猫达人经验值发放成功</span>您上月购买天猫商品，总共获得<b>809</b>点天猫经验值，已发放成功！查看天猫达人经验值&nbsp<a href="javascript:;">点此查看</a></p>
+						<span>2015年9月1日</span>
+					</div>
+					<button id="close"></button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

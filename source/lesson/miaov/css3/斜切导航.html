@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斜切导航</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	ul{list-style: none;}
+	a{text-decoration: none;}
+	body{font-family: "微软雅黑"; font-size: 14px;}
+	#wrap{width: 580px; height: 40px; border: 1px solid #ccc; margin: 20px auto; overflow: hidden;}
+	#list{margin-left: -12px; width: 700px;}
+	#list li{width: 100px; height: 40px; line-height: 40px; border-right: 1px solid #fff; background: #C627F2; text-align: center; float: left; -webkit-transform: skew(-30deg);}
+	#list li a{color: #fff; display: block; -webkit-transition: all 1s; -webkit-transform: skew(30deg);}
+	#list li:hover{background: #2DB2EB; -webkit-transform: skew(-30deg);}
+	#list li:hover a{color: #343434;}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="list">
+			<li></li>
+			<li><a href="javascript:;">首页</a></li>
+			<li><a href="javascript:;">新闻</a></li>
+			<li><a href="javascript:;">视频</a></li>
+			<li><a href="javascript:;">联系我们</a></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

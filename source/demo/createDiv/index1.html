@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>固定定位创建规则div</title>
+	<style>
+	#div1{height: 40px; width: 100%; text-align: center;}
+	#ul1{width:330px; margin:20px auto; padding:0; color:#fff;}
+	#ul1 li{width: 100px; height: 100px; list-style: none;  margin: 0 10px 10px 0; float: left; font-size: 50px; text-align: center;}
+	</style>
+	<script>
+	window.onload = function(){
+		var aBtn = document.getElementsByTagName('input');
+		var oUl = document.getElementById('ul1');
+		var aLi = document.getElementsByTagName('li');
+
+		var str = '';
+		var arr = [];
+		var num = iNum = 0;
+		var timer = null;
+		var onOff = true;
+		var arrColor = ['#3A5FCD','#008B00','#7A378B','#8B1A1A','#EE9A00','#CD3278'];
+			
+		aBtn[1].onclick = function(){
+
+			var str = parseInt(aBtn[0].value);
+			if( aBtn[0].value != ''){
+				createLi(str,80,80);
+			}else{
+				return;
+				alert('请输入数量');
+			}
+		}
+		aBtn[2].onclick = function(){
+
+			createLi(9,100,100);
+		}
+
+		aBtn[3].onclick = function(){
+
+			createLi(81,50,50);
+		}
+
+		function createLi(cNum,W,H){
+			if(!onOff)return;
+			onOff = false;
+			oUl.innerHTML = null;
+
+			timer = setInterval(function(){
+				var oLi = document.createElement('li');
+
+				oLi.style.width = W+'px';
+				oLi.style.height = H+'px';
+				oLi.style.background = arrColor[num%arrColor.length];
+				oLi.innerHTML = num+1;
+				oLi.style.lineHeight = H+'px';
+
+				if(cNum > 9 && W > 50){
+					oUl.style.width = '960px';
+				}
+				else if(cNum > 9 && W == 50){
+					oUl.style.width = '540px';
+				}
+				else{
+					oUl.style.width = '330px';
+				}
+				oUl.appendChild(oLi);
+				
+				num++;
+				if(num == cNum){
+					clearInterval(timer);
+					num = 0;
+					onOff = true;
+				}
+			},100);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="text" placeholder="请输入你想要的数量">
+		<input type="button" value="自定义">
+		<input type="button" value="9宫格">
+		<input type="button" value="小9宫格">
+	</div>
+	<ul id="ul1">
+	</ul>
+</body>
+</html>

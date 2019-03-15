@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动内容</title>
+	<style>
+	ul{margin: 0; padding: 10px 0; list-style: none; border: 1px solid #f6f6f6; float: left;}
+	li{height: 30px; line-height: 30px; padding: 0 10px; margin-bottom: 5px; cursor: pointer;}
+	li.selected{background: #c40954; color: #fff;}
+	.btnGroup{margin: 0 20px; width: 120px; float: left;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul id="ul1">
+			<li>left item1</li>
+			<li>left item2</li>
+			<li>left item3</li>
+			<li>left item4</li>
+			<li>left item5</li>
+		</ul>
+		<div class="btnGroup">
+			<input id="toRight" type="button" value="到右边" form="#ul1" to="#ul2">
+			<input id="toLeft" type="button" value="到左边" form="#ul2" to="#ul1">
+		</div>
+		<ul id="ul2">
+			<li>right item1</li>
+			<li>right item2</li>
+			<li>right item3</li>
+			<li>right item4</li>
+			<li>right item5</li>
+		</ul>
+	</div>
+	<script src="jquery.js"></script>
+	<script>
+		
+		$(function(){
+			$('li').on('click',function(){
+				$(this).toggleClass('selected');
+			});
+
+			$('input').on('click',function(){
+				$($(this).attr('form')).find('.selected').appendTo( $($(this).attr('to')) ).removeClass('selected');
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单提交</title>
+	<script>
+		/*
+			表单：数据提交方式
+			action : 数据提交地址，默认是当前页面
+			method : 数据提交方式，默认是get方式
+			1.get
+				把数据和数据名称用=连接，如果有多个数据组合用&连接，然后把数据放到url？后面传入到指定页面
+			2.post
+			enctype : 提交的数据格式，默认application/x-www-form-urlencoded
+		*/
+	</script>
+</head>
+<body>
+	<form action="form.php" method="POST">
+		<input type="text" name="user" placeholder="用户名或邮箱">
+		<input type="password" name="pass" placeholder="请输入密码">
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>

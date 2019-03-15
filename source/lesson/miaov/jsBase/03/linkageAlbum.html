@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>联动相册</title>
+	<style>
+	body{background: #fff; font-family: "微软雅黑";}
+	img{border: none;}
+	#photo{width: 800px; padding: 10px 10px 20px; margin: 30px auto 0; overflow: hidden;}
+	
+	.btngroup{text-align: center; background: #fff;}
+	.btngroup a{display: inline-block; width: 80px; height: 40px; line-height: 40px; text-align: center; text-decoration: none; color: #fff; background: #607D8B;}
+	
+	.photobox{padding: 10px; box-shadow: 0 0 5px #ccc; border-radius: 5px;}
+	.photobox img{background: url(img/loader_ico.gif)no-repeat center center;}
+	#photoleft{width: 480px;}
+	#photoright{width: 260px;}
+
+	#photoleft img{width: 480px; height: 300px;}
+	#photoright img{width: 260px; height: 300px;}
+	.photobox p{text-align: center; margin: 0 0 10px 0;}
+	.photobox .info{padding: 10px 0; background-color: #ddd;}
+
+	.fl{float: left;}
+	.fr{float: right;}
+	</style>
+</head>
+<body>
+	<div id="photo" class="photobox">
+		<p class="btngroup">
+			<a class="prev" href="javascript:;">上一组</a>
+			<a class="next" href="javascript:;">下一组</a>
+		</p>
+		<div id="photoleft" class="photobox fl">
+			<img src="" >
+			<p class="info">照片说明加载中...</p>
+			<span>照片总数加载中...</span>
+		</div>
+		<div id="photoright" class="photobox fr">
+			<img src="">
+			<p class="info">照片说明加载中...</p>
+			<span>照片总数加载中...</span>
+		</div>
+	</div>
+	<script src="linkageAlbum.js"></script>
+</body>
+</html>

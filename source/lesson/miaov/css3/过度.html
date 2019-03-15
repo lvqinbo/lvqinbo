@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transition</title>
+	<style>
+	#div1{width: 100px; height: 100px; background: red; position: absolute; left: 0; -webkit-transition: 1s;}
+	</style>
+	<script>
+	window.onload = function() {
+		var oDiv = document.getElementById('div1');
+
+		oDiv.onclick = function() {
+			this.style.left = this.offsetLeft + 50 + 'px';
+			addEnd(oDiv,end);
+		}
+		function end(){
+		removeEnd(oDiv,end);
+		};
+
+		function addEnd(obj,fn)
+		{
+			obj.addEventListener('WebkitTransitionEnd',fn,false);
+			obj.addEventListener('transitionend',fn,false);
+		}
+		function removeEnd(obj,fn)
+		{
+			obj.removeEventListener('WebkitTransitionEnd',fn,false);
+			obj.removeEventListener('transitionend',fn,false);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

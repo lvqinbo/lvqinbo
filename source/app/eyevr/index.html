@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>eye+房产VR系统</title>
+    <link rel="stylesheet" href="vr_main.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <script src="data.js"></script>
+    <script src="base.js"></script>
+    <script>
+    window.onload = function() {
+        var oWrap = g('g-wrap');
+        var aPage = g('.page-list');
+        var pageAd = g('pageAd');
+        var btnSkip = g('btn-skip');
+        var oNum = document.getElementsByTagName('small')[0];
+        var oLoading = g('loading');
+        var timer = null;
+
+        bind(pageAd, 'touchmove', fnPrevent);
+
+        function fnPrevent(ev) {
+            ev.preventDefault();
+        }
+        // 初始化定时器自动运行
+        function init() {
+            oWrap.style.width = document.documentElement.clientWidth + 'px';
+            oWrap.style.height = document.documentElement.clientHeight + 'px';
+            pageAd.style.width = document.documentElement.clientWidth + 'px';
+            pageAd.style.height = document.documentElement.clientHeight + 'px';
+
+            loadSource();
+        };
+        init();
+
+        function countDown() {
+            clearInterval(timer);
+            timer = setInterval(function() {
+                var num = oNum.innerHTML;
+                if (num > 0) {
+                    num--;
+                }
+                oNum.innerHTML = num;
+                if (num == 0) {
+                    clearInterval(timer);
+                    pageAd.style.display = 'none';
+                };
+            }, 1000);
+        }
+
+        // 点击按钮删除广告层
+        bind(btnSkip, 'touchstart', fnBtnTouchDown);
+
+        function fnBtnTouchDown() {
+            clearInterval(timer);
+            pageAd.style.display = 'none';
+        }
+
+
+        function loadSource() {
+            var sourceAry = ['h1.jpg', 'home_bg.jpg', 'list_bg.jpg', 'lp1.jpg'];
+            var aryNum = 0;
+
+            for (var i = 0, l = sourceAry.length; i < l; i++) {
+                var objImg = new Image();
+                objImg.src = 'img/' + sourceAry[i] + '';
+
+                objImg.onload = function() {
+                    aryNum++;
+                    if (aryNum == sourceAry.length) {
+                        countDown();
+                        oWrap.removeChild(loading);
+                    }
+                }
+                objImg.onerror = function() {
+                    countDown();
+                }
+            }
+        }
+
+        // 底部导航点击
+        var oFootNav = g('footNav');
+        var oFootLi = oFootNav.getElementsByTagName('li');
+        for (var i = 0; i < oFootLi.length; i++) {
+            oFootLi[i].index = i;
+            bind(oFootLi[i], 'touchstart', fnFootNavTab);
+
+            function fnFootNavTab(ev) {
+                for (var j = 0; j < oFootLi.length; j++) {
+                    oFootLi[j].className = '';
+                    aPage[j].className = 'page-list';
+                }
+                this.className = 'cur';
+                aPage[this.index].className = 'page-list show';
+            }
+        }
+        // 添加数据
+        var data = map;
+        var oArea = g('area');
+        var oCity = g('city');
+        var oCounty = g('county');
+
+        oArea.addEventListener('input', function() {
+            addCity(this.value);
+
+        }, false);
+        oCity.addEventListener('input', function() {
+            addCounty(this.value);
+        }, false);
+        addArea();
+
+        function addArea() {
+            var options = '';
+            for (var i = 0; i < data.length; i++) {
+                options += '<option value="' + data[i].area + '">' + data[i].area + '</option>';
+            }
+            oArea.innerHTML = options;
+            addCity(oArea.value);
+        }
+
+        function addCity(n) {
+            var options = '';
+            for (var i = 0; i < data.length; i++) {
+                if (n == data[i].area) {
+                    for (var j = 0; j < data[i].city.length; j++) {
+                        options += '<option value="' + data[i].city[j] + '">' + data[i].city[j] + '</option>';
+                    }
+                }
+            }
+            oCity.innerHTML = options;
+            addCounty(oCity.value);
+        }
+
+        function addCounty(n) {
+            var options = '';
+            var iNow = 0;
+            for (var i = 0; i < data.length; i++) {
+                for (var k = 0; k < data[i].city.length; k++) {
+                    if (n == data[i].city[k]) {
+                        iNow = k;
+                        for (var j = 0; j < data[i].county[iNow].length; j++) {
+                            options += '<option value="' + data[i].county[iNow][j] + '">' + data[i].county[iNow][j] + '</option>';
+                        }
+                    }
+                }
+            }
+            oCounty.innerHTML = options;
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="g-wrap">
+        <div id="loading">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <p>即将进入eye+VR房产体验世界</p>
+        </div>
+        <div id="top-tit">eye+房产VR系统</div>
+        <div id="pageAd"><a href="javascript:;" id="btn-skip"><small>6</small>跳过</a></div>
+        <div class="page-list show" id="page-home"></div>
+        <div class="page-list">
+            <div class="select-wrap">
+                <select name="area" id="area">
+                    <i class="iconfont icon-select"></i>
+                </select>
+                <select name="city" id="city">
+                </select>
+                <select name="county" id="county">
+                </select>
+            </div>
+            <ul class="list-inner city-leader">
+                <li class="list-wrap">
+                    <div class="lp-img">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_14-57-10.jpg" alt="" />
+                    </div>
+                    <div class="lp-msg">
+                        <p class="lp-name">
+                            桂圳·城市领地</p>
+                        <p class="lp-addr">
+                            桂林市叠彩区北极广场-中山北路112号</p>
+                        <p class="lp-price">
+                            均价：<span>￥4200/平方</span></p>
+                        <a href="http://720yun.com/t/82125jsvwcv?pano_id=358879" class="btn-sty">
+                        桂圳·城市领地</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388002" class="btn-sty">
+                        书房</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388004" class="btn-sty">
+                        餐厅</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388249" class="btn-sty">
+                        厨房</a>
+                    </div>
+                </li>
+                <li class="list-wrap">
+                    <div class="lp-img">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_14-57-10.jpg" alt="" />
+                    </div>
+                    <div class="lp-msg">
+                        <p class="lp-name">
+                            桂圳·城市领地</p>
+                        <p class="lp-addr">
+                            桂林市叠彩区北极广场-中山北路112号</p>
+                        <p class="lp-price">
+                            均价：<span>￥4200/平方</span></p>
+                        <a href="http://720yun.com/t/82125jsvwcv?pano_id=358879" class="btn-sty">
+                        桂圳·城市领地</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388002" class="btn-sty">
+                        书房</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388004" class="btn-sty">
+                        餐厅</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388249" class="btn-sty">
+                        厨房</a>
+                    </div>
+                </li>
+                <li class="list-wrap">
+                    <div class="lp-img">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_14-57-10.jpg" alt="" />
+                    </div>
+                    <div class="lp-msg">
+                        <p class="lp-name">
+                            桂圳·城市领地</p>
+                        <p class="lp-addr">
+                            桂林市叠彩区北极广场-中山北路112号</p>
+                        <p class="lp-price">
+                            均价：<span>￥4200/平方</span></p>
+                        <a href="http://720yun.com/t/82125jsvwcv?pano_id=358879" class="btn-sty">
+                        桂圳·城市领地</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388002" class="btn-sty">
+                        书房</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388004" class="btn-sty">
+                        餐厅</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388249" class="btn-sty">
+                        厨房</a>
+                    </div>
+                </li>
+                <li class="list-wrap">
+                    <div class="lp-img">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_14-57-10.jpg" alt="" />
+                    </div>
+                    <div class="lp-msg">
+                        <p class="lp-name">
+                            桂圳·城市领地</p>
+                        <p class="lp-addr">
+                            桂林市叠彩区北极广场-中山北路112号</p>
+                        <p class="lp-price">
+                            均价：<span>￥4200/平方</span></p>
+                        <a href="http://720yun.com/t/82125jsvwcv?pano_id=358879" class="btn-sty">
+                        桂圳·城市领地</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388002" class="btn-sty">
+                        书房</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388004" class="btn-sty">
+                        餐厅</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388249" class="btn-sty">
+                        厨房</a>
+                    </div>
+                </li>
+                <li class="list-wrap">
+                    <div class="lp-img">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_14-57-10.jpg" alt="" />
+                    </div>
+                    <div class="lp-msg">
+                        <p class="lp-name">
+                            桂圳·城市领地</p>
+                        <p class="lp-addr">
+                            桂林市叠彩区北极广场-中山北路112号</p>
+                        <p class="lp-price">
+                            均价：<span>￥4200/平方</span></p>
+                        <a href="http://720yun.com/t/82125jsvwcv?pano_id=358879" class="btn-sty">
+                        桂圳·城市领地</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388002" class="btn-sty">
+                        书房</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388004" class="btn-sty">
+                        餐厅</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388249" class="btn-sty">
+                        厨房</a>
+                    </div>
+                </li>
+                <li class="list-wrap">
+                    <div class="lp-img">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_14-57-10.jpg" alt="" />
+                    </div>
+                    <div class="lp-msg">
+                        <p class="lp-name">
+                            桂圳·城市领地</p>
+                        <p class="lp-addr">
+                            桂林市叠彩区北极广场-中山北路112号</p>
+                        <p class="lp-price">
+                            均价：<span>￥4200/平方</span></p>
+                        <a href="http://720yun.com/t/82125jsvwcv?pano_id=358879" class="btn-sty">
+                        桂圳·城市领地</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388002" class="btn-sty">
+                        书房</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388004" class="btn-sty">
+                        餐厅</a>
+                        <a href="http://720yun.com/t/77128mff9lv?pano_id=388249" class="btn-sty">
+                        厨房</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="page-list">
+            <ul class="list-inner">
+                <li>
+                    <h2>
+                        599中式
+                    </h2>
+                    <div class="img-box">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_17-53-4.jpg" alt="">
+                    </div>
+                    <div class="caption">
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403234">
+                            卧室</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403235">
+                            卫生间</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403237">
+                            厨房</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403354">
+                            客厅</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403236">
+                            餐厅</a>
+                    </div>
+                </li>
+                <li>
+                    <h2>
+                        599中式
+                    </h2>
+                    <div class="img-box">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_17-53-4.jpg" alt="">
+                    </div>
+                    <div class="caption">
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403234">
+                            卧室</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403235">
+                            卫生间</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403237">
+                            厨房</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403354">
+                            客厅</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403236">
+                            餐厅</a>
+                    </div>
+                </li>
+                <li>
+                    <h2>
+                        599中式
+                    </h2>
+                    <div class="img-box">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_17-53-4.jpg" alt="">
+                    </div>
+                    <div class="caption">
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403234">
+                            卧室</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403235">
+                            卫生间</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403237">
+                            厨房</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403354">
+                            客厅</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403236">
+                            餐厅</a>
+                    </div>
+                </li>
+                <li>
+                    <h2>
+                        599中式
+                    </h2>
+                    <div class="img-box">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_17-53-4.jpg" alt="">
+                    </div>
+                    <div class="caption">
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403234">
+                            卧室</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403235">
+                            卫生间</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403237">
+                            厨房</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403354">
+                            客厅</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403236">
+                            餐厅</a>
+                    </div>
+                </li>
+                <li>
+                    <h2>
+                        599中式
+                    </h2>
+                    <div class="img-box">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_17-53-4.jpg" alt="">
+                    </div>
+                    <div class="caption">
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403234">
+                            卧室</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403235">
+                            卫生间</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403237">
+                            厨房</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403354">
+                            客厅</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403236">
+                            餐厅</a>
+                    </div>
+                </li>
+                <li>
+                    <h2>
+                        599中式
+                    </h2>
+                    <div class="img-box">
+                        <img src="http://vr.secaj.com/Contents/img/upload/2016-04-27_17-53-4.jpg" alt="">
+                    </div>
+                    <div class="caption">
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403234">
+                            卧室</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403235">
+                            卫生间</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403237">
+                            厨房</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403354">
+                            客厅</a>
+                        <a class="h-name" href="http://720yun.com/t/fdb2amrO9tw?pano_id=403236">
+                            餐厅</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="footNav">
+            <ul>
+                <li class="foot-item cur"><i class="iconfont icon-home"></i>首页</li>
+                <li class="foot-item"><i class="iconfont icon-pkg"></i>eye+楼盘</li>
+                <li class="foot-item"><i class="iconfont icon-vr"></i>eye+家装套餐</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

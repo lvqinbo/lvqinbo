@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jq选项卡</title>
+	<style>
+	#tab{
+		width: 400px;
+	}
+	.tab-title{
+		margin: 0; padding: 0;
+		list-style: none;
+		border-bottom: 1px solid #999;
+	}
+	.tab-title-item{
+	}
+	.tab-title-item a{
+		color: #333;
+	}
+	.tab-title-item,
+	.tab-title-item span{
+		display: inline-block;
+	}
+	.tab-title-item span{
+		font-size: 12px;
+		padding: 5px 15px;
+		border: 1px solid #999;
+		border-bottom: none;
+		border-radius: 5px 5px 0 0;
+	}
+	.tab-body-item{
+		height: 50px;
+		border: 1px solid #999;
+		border-top: none;
+		padding: 5px;
+		display: none;
+	}
+	#tab .selected{
+		border-radius: 5px 5px 0 0;
+		position: relative;
+		bottom: -1px;
+		border-bottom: none;
+		background: #f30;
+	}
+	#tab .show{
+		display: block;
+	}
+	</style>
+	<script src="jquery.js"></script>
+	<script>
+	$(function(){
+
+		/*
+		$('li').mouseover(function(){
+			$('li').attr('class','tab-title-item');
+			$(this).toggleClass('selected');
+			$('.tab-body div').css('display','none');
+			$('.tab-body div').eq( $(this).index() ).css('display','block');
+		});*/
+
+		$('ul').delegate('li','click',function(){
+			$('li').attr('class','tab-title-item');
+			$(this).toggleClass('selected');
+			$('.tab-body div').css('display','none');
+			$('.tab-body div').eq( $(this).index() ).css('display','block');
+		});
+
+		var setTitle = $('.set-tab-title');
+		var setContent = $('.set-tab-content');
+
+		$('#btn').on('click',function(){
+			$('ul').append('<li class="tab-title-item"><span>'+ setTitle.val() +'</span></li>');
+			$('.tab-body').append('<div class="tab-body-item">'+setContent.val()+'</div>');
+		})
+
+	})
+	</script>
+</head>
+<body>
+	<p>
+		<input type="text" class="set-tab-title">
+		<input type="text" class="set-tab-content">
+		<input type="button" value="设置" id="btn">
+	</p>
+	<div id="tab">
+		<ul class="tab-title">
+			<li class="tab-title-item"><span>选项1</span></li>
+			<li class="tab-title-item"><span>选项2</span></li>
+			<li class="tab-title-item"><span>选项3</span></li>
+		</ul>
+		<div class="tab-body">
+			<div class="tab-body-item show">content1</div>
+			<div class="tab-body-item">content2</div>
+			<div class="tab-body-item">content3</div>
+		</div>
+	</div>
+</body>
+</html>

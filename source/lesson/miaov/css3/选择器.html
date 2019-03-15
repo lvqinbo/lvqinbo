@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>元素选择</title>
+	<style>
+	body{font-family: "微软雅黑";}
+	#wrap{width: 960px; margin: 20px auto;}
+	.box{width: 100%;}
+	#tab{width: 100%; border-collapse: collapse; font-family: Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self; font-size: 12px;}
+	#tab th,#tab td{border: 1px solid #f1f1f1; padding-left: 10px; text-align: left;}
+	#tab th{line-height: 30px; background: #f0f0f0;}
+	#tab td{line-height: 24px; font-family: "Menlo";  word-break:break-all;}
+	#tab td:nth-of-type(2){width: 300px;}
+
+	.box1 div{height: 100px; background: red; display: none;}
+	.box1 div:target{display: block;}
+	</style>
+	<script src="select.js"></script>
+	<script>
+ 	window.onload = function(){
+ 		var oTab = document.getElementById('tab');
+ 		var tBody = oTab.tBodies[0];
+ 		var datas = data;
+ 		
+ 		for(var i in datas){
+ 			var oTr = document.createElement('tr');
+ 			var oTd = document.createElement('td');
+ 			oTd.innerHTML = datas[i][0];
+ 			oTr.appendChild(oTd);
+ 			var oTd = document.createElement('td');
+ 			oTd.innerHTML = datas[i][1];
+ 			oTr.appendChild(oTd);
+ 			var oTd = document.createElement('td');
+ 			oTd.innerHTML = datas[i][2];
+ 			oTr.appendChild(oTd);
+
+ 			tBody.appendChild(oTr);
+ 		}
+ 	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<h3>元素选择</h3>
+		<div class="box">
+			<table id="tab">
+				<thead>
+					<tr>
+						<th>选择器</th>
+						<th>栗子</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<div class="box box1">
+			<h3>描点</h3>
+			<a href="#div1">div1</a>
+			<a href="#div2">div2</a>
+			<a href="#div3">div3</a>
+			<div id="div1">div1</div>
+			<div id="div2">div2</div>
+			<div id="div3">div3</div>
+		</div>
+	</div>
+	
+</body>
+</html>

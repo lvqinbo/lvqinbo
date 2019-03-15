@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机选彩票</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	ul{list-style: none;}
+	a{text-decoration: none;}
+	#box{width: 960px; height: 300px; margin: 20px auto;}
+	.c-btn{width: 80px; height: 150px; margin-left: 20px; float: left;}
+	.c-btn a{width: 50px; height: 50px; padding: 10px 15px; font: bold 12px/50px "微软雅黑"; color: #333; float: left; background: #f0f0f0; margin-bottom: 10px;}
+	.ball{width: 500px; height: 100%; border: 1px solid #f0f0f0; box-shadow: 0 0 5px #f0f0f0; float: left;}
+	.ball span{width: 25px; height: 25px; line-height: 25px; margin-right: 5px; display: inline-block; border-radius: 50%; background: red; color: #fff; text-align: center;}
+	.ball span.b-ball{background: blue;}
+	</style>
+	<script>
+	window.onload = function(){
+		
+		// 随机数组	
+		function randomBall(all,num){
+			var arrAll = [];
+			var arrNum = [];
+			for(var i = 1; i <= all; i++){
+				arrAll.push(i);
+			}
+			for (var i = 1; i <= num; i++) {
+				arrNum.push(arrAll.splice( Math.floor(Math.random() * arrAll.length),1) );
+			};
+			return arrNum;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="ball">
+			
+		</div>
+		
+		<div class="c-btn">
+			<a href="javascript:;">随机一组</a>
+			<a href="javascript:;">随机五组</a>
+		</div>
+	</div>
+</body>
+</html>

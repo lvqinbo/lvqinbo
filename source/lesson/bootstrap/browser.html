@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+	body{padding-bottom: 30px;}
+	.carousel{
+		height: 410px; 
+		overflow: hidden;
+		background-color: #000;}
+	.carousel .item{
+		height: 410px;
+		background-color: #000;}
+
+	.carousel .item img{
+		width: 100%;}
+
+	.carousel-caption p{margin: 15px 0;}
+	.carousel-caption input{margin-bottom: 10px;}
+
+	#summary-content .col-md-4{
+		text-align: center;}
+
+	hr.divider{
+		margin: 40px 0;}
+	.img-box{
+		padding: 40px 20px 20px 20px;
+		}
+	
+	.img-box a{
+		display: inline-block;
+		width: 110px;
+		height: 110px;
+		line-height: 110px;
+		border-radius: 50%;
+		background-color: #ED5441;
+	}
+	.img-box a img{
+		width: 60px;
+		height: 60px;
+	}
+	.img-box2 a{background-color: #609CEC;}
+	.img-box3 a{background-color: #51D466;}
+
+	.feature{
+		padding: 30px 0;
+	}
+	.feature-header{font-size: 40px;}
+	.feature-header .text-muted{
+		color: #ccc;
+		font-size: 30px;
+	}
+	.feature img{
+		width: 300px;
+	}
+
+	</style>
+</head>
+<body>
+	<nav class="nav navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">Brand</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">综述</a></li>
+					<li><a href="#">简述</a></li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button">特点<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#tab-chrome">Chrome</a></li>
+							<li><a href="#tab-firefox">Firefox</a></li>
+							<li><a href="#tab-safari">Safari</a></li>
+							<li><a href="#tab-opear">Opear</a></li>
+							<li><a href="#tab-ie">IE</a></li>
+						</ul>
+					</li>
+					<li><a href="#" data-toggle="modal" data-target="#about">关于</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav><!-- nav end -->
+	<!-- slide 广告 -->
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li class="active" data-target="#carousel-example-generic" data-slide-to="0"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="img/portfolio-11.jpg" alt="">
+				<div class="carousel-caption">
+					<h3>Chrome</h3>
+					<p>这里是内如说明</p>
+					<input type="button" class="btn btn-primary" value="点击下载">
+				</div>
+			</div>
+			<div class="item">
+				<img src="img/portfolio-12.jpg" alt="">
+				<div class="carousel-caption">
+					<h3>Chrome</h3>
+					<p>这里是内如说明</p>
+					<input type="button" class="btn btn-primary" value="点击下载">
+				</div>
+			</div>
+			<div class="item">
+				<img src="img/portfolio-13.jpg" alt="">
+				<div class="carousel-caption">
+					<h3>Chrome</h3>
+					<p>这里是内如说明</p>
+					<input type="button" class="btn btn-primary" value="点击下载">
+				</div>
+			</div>
+		</div>
+		<a href="#carousel-example-generic" class="left carousel-control" data-slide="prev" role="button">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previsive</span>
+		</a>
+		<a href="#carousel-example-generic" class="right carousel-control" data-slide="next" role="button">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only"></span>
+		</a>
+	</div>
+
+	<div class="container" id="summary-content">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="img-box">
+					<a href="javascript:;">
+						<img src="img/3.png" alt="">
+					</a>
+				</div>
+				
+				<h3>Chrome</h3>
+				<p>这里是内如说明</p>
+				<input type="button" class="btn btn-danger" value="点击下载">
+			</div>
+			<div class="col-md-4">
+				<div class="img-box img-box2">
+					<a href="javascript:;">
+						<img src="img/10.png" alt="">
+					</a>
+				</div>
+				<h3>Chrome</h3>
+				<p>这里是内如说明</p>
+				<input type="button" class="btn btn-primary" value="点击下载">
+			</div>
+			<div class="col-md-4">
+				<div class="img-box img-box3">
+					<a href="javascript:;">
+						<img src="img/17.png" alt="">
+					</a>
+				</div>
+				<h3>Chrome</h3>
+				<p>这里是内如说明</p>
+				<input type="button" class="btn btn-success" value="点击下载">
+			</div>
+		</div>
+		<hr class="divider">
+	</div>
+	<div class="container">
+		<div class="row">
+			<ul class="nav nav-tabs" role="tablist" id="tab-list">
+				<li class="active"><a href="#tab-chorme" role="tab" data-toggle="tab">chorme</a></li>
+				<li><a href="#tab-firefox" role="tab" data-toggle="tab">firefox</a></li>
+				<li><a href="#tab-safari" role="tab" data-toggle="tab">safari</a></li>
+				<li><a href="#tab-opear" role="tab" data-toggle="tab">opear</a></li>
+				<li><a href="#tab-ie" role="tab" data-toggle="tab">ie</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-chorme">
+					<div class="row feature">
+						<div class="col-md-7">
+							<h2 class="feature-header">chorme<span class="text-muted">谷歌浏览器</span></h2>
+							<p>谷歌浏览器谷歌浏览器谷歌浏览器谷歌浏览器</p>
+						</div>
+						<div class="col-md-5">
+							<img src="img/chrome-logo.jpg" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-firefox">
+					<div class="row feature">
+						<div class="col-md-5">
+							<img src="img/firefox-logo.jpg" alt="">
+						</div>
+						<div class="col-md-7">
+							<h2 class="feature-header">chorme<span class="text-muted">谷歌浏览器</span></h2>
+							<p>谷歌浏览器谷歌浏览器谷歌浏览器谷歌浏览器</p>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-safari">
+					<div class="row feature">
+						<div class="col-md-7">
+							<h2 class="feature-header">chorme<span class="text-muted">谷歌浏览器</span></h2>
+							<p>谷歌浏览器谷歌浏览器谷歌浏览器谷歌浏览器</p>
+						</div>
+						<div class="col-md-5">
+							<img src="img/safari-logo.jpg" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-opear">
+					<div class="row feature">
+						<div class="col-md-5">
+							<img src="img/opera-logo.jpg" alt="">
+						</div>
+						<div class="col-md-7">
+							<h2 class="feature-header">chorme<span class="text-muted">谷歌浏览器</span></h2>
+							<p>谷歌浏览器谷歌浏览器谷歌浏览器谷歌浏览器</p>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-ie">
+					<div class="row feature">
+						<div class="col-md-7">
+							<h2 class="feature-header">chorme<span class="text-muted">谷歌浏览器</span></h2>
+							<p>谷歌浏览器谷歌浏览器谷歌浏览器谷歌浏览器</p>
+						</div>
+						<div class="col-md-5">
+							<img src="img/ie-logo.jpg" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="divider">
+	<footer>
+		<p class="pull-right"><a href="#top">回到顶部</a></p>
+		<p>2016@copyright</p>
+	</footer>
+	</div>
+	<div class="modal" id="about">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					慕课网是一家从事互联网免费教学的网络教育公司。秉承"开拓、创新、公平、分享"的精神，将互联网特性全面的应用在教育领域，致力于为教育机构及求学者打造一站式互动在线教育品牌。
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">了解了</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$('#navbar-1 .dropdown-menu a').click(function(){
+			var href = $(this).attr('href');
+
+			$('#tab-list a[href="'+ href +'"]').tab('show');
+		})
+	});
+	</script>
+</body>
+</html>

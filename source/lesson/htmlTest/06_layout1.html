@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单布局</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	.container{border: 10px solid #ccc; margin: 20px auto; width: 600px; height: 400px; overflow: hidden;}
+	.g-aside{width: 300px; height: 100%; background: green; float: left;}
+	.g-main{overflow: hidden;}
+	.g-main .header{height: 100px; background: blue;}
+	.g-main .section{height: 200px;}
+	.g-main .footer{height: 100px; background: black;}
+
+	.section .aside{width:100px; height: 100%; background: pink; float: left;} 
+	.section .main{width: 300px; height: 100%; background: orange;} 
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="g-aside">aside</div>
+		<div class="g-main">
+			<div class="header">header</div>
+			<div class="section">
+				<div class="aside">main-aside</div>
+				<div class="main">g-main-main</div>
+			</div>
+			<div class="footer">footer</div>
+		</div>
+	</div>
+</body>
+</html>

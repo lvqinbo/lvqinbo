@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性拖拽</title>
+	<style>
+	body,ul{margin:0; padding:0;}
+	body{ }
+	#box{width:960px; height:600px; margin:0px auto; background: url(img/bg.jpg)no-repeat; overflow: hidden;  position: relative;}
+	#wrap{width: 730px; height: 412px; position: absolute; left:150px; top:137px; overflow: hidden; background: #fff; }
+	#box ul{ position: absolute; left:0; top: 0;}
+	#box li{ list-style: none; width:730px; height: 412px; float:left; cursor: pointer; }
+	#box  img{ border:none; width:730px; height: 412px; }
+	#box p{height: 20px; width: 100%;  position: absolute; bottom:0; left:0; text-align: center;}
+	#box p span{width: 15px; height: 15px; display: inline-block; background: gray; border-radius:50%; }
+	#box p .active{background: orange;}
+	</style>
+	<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		var aLi = document.getElementsByTagName('li');
+		var oP = document.getElementsByTagName('p')[0];
+		var aSpan = oP.getElementsByTagName('span');
+	
+		var iNow = 0;
+		var speed = 0;
+		var timer = null;
+		var disX = 0;
+		var downX = 0;
+		var str =  str2 = '';
+		var arrUrl = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg'];
+		// 创建li和span小点
+		for(var i = 0; i <  arrUrl.length; i++){
+			str += '<li><img src="'+arrUrl[i]+'" ></li>';
+			str2 += '<span></span>';
+		}
+		oUl.innerHTML = str;
+		oP.innerHTML = str2;
+		oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px'; //Ul的宽度
+		aSpan[0].className = 'active';  //第一个点高亮
+		
+		oUl.onmousedown = function(ev){
+			var ev = ev || event;
+			disX = ev.clientX - oUl.offsetLeft;
+			downX = ev.clientX;
+	
+			document.onmousemove = function(ev){
+				var ev = ev || event;
+				oUl.style.left = ev.clientX - disX + 'px';
+			}
+			document.onmouseup = function(ev){
+				var ev = ev || event;
+				document.onmousemove = null;
+				document.onmouseup = null;
+	
+				if( ev.clientX < downX ){
+					if( iNow < aLi.length-1){ iNow++; }
+					startMove(oUl,- iNow * aLi[0].offsetWidth);
+					fnClear();
+				}else{
+					if( iNow > 0){ iNow--; }
+					startMove(oUl,- iNow * aLi[0].offsetWidth);
+					fnClear();
+				}
+			}
+			//禁止图片默认拖拽
+			return false;
+		}
+		// 弹性拖拽运动
+		function startMove(obj,iTarget){
+			
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				speed += ( iTarget - obj.offsetLeft )/6;
+				speed *= 0.75;
+	
+				if( Math.abs( speed )<= 1 && Math.abs( obj.offsetLeft )<= 1 ){
+					clearInterval(obj.timer);
+					obj.style.left = iTarget + 'px';
+					speed = 0;
+				}else{
+					obj.style.left = obj.offsetLeft + speed + 'px';
+				}
+	
+			},30);
+		}
+		// 清除小点的样式
+		function fnClear(){
+			for (var i = 0; i < aSpan.length; i++) {
+				aSpan[i].className = '';
+			};
+			aSpan[iNow].className = 'active';
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="box">
+		<div id="wrap">
+			<ul id="ul1"></ul>
+			<p></p>
+		</div>
+	</div>
+</body>
+</html>

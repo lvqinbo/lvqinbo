@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>convas</title>
+	<style>
+	body{background: #000;}
+	#c1{background: #fff; width: 400px; height: 400px;}
+	</style>
+	
+	<script>
+	window.onload = function(){
+
+		var oC = document.getElementById('c1');
+		var oGc = oC.getContext('2d');
+		var str = '生命不止';
+		oGc.font = '50px impact';
+		oGc.textBaseline = 'bottom';
+		oGc.shadowOffsetX = 5;
+		oGc.shadowOffsetY = 10;
+		oGc.shadowColor = 'red';
+		var w = oGc.measureText(str).width;
+		console.log(w);
+		oGc.fillText(str, ( oC.width-w )/2, ( oC.height-60 )/2 );
+
+	}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="400" height="400"></canvas>
+</body>
+</html>

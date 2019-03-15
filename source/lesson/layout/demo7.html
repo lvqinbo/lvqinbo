@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex弹性布局</title>
+	<style>
+	body{background-color: #f0f0f0; color: #fff; font-size: 24px; font-family: "Menlo";}
+	.wrap{width: 960px; margin: 20px auto; background-color: #00BCD4;}
+	.wrap .title{font-size: 16px; margin: 0; padding: 10px 0; text-align: center; background-color: #2196F3;}
+	.box{}
+	.item{padding: 10px; margin: 10px; background-color: #8BC34A;}
+
+	/* 正常排序 */
+	.box1{display: flex;}
+
+	/* 倒序排序 */
+	.box2{ display: flex; flex-direction: row-reverse;}
+
+	/* 纵向排序 */
+	.box3{display: flex; flex-direction: column;}	
+
+	/* 纵向倒序排序 */
+	.box4{display: flex; flex-direction: column-reverse;}
+
+	/* 均分 */
+	.box5{display: flex;}
+	.box5 .item{width: 300px;}
+	
+	/* 包含 */
+	.box6{display: flex; flex-wrap: wrap;}
+	.box6 .item{width: 300px;}	
+	
+	/* 包含 */
+	.box7{display: flex; flex-wrap: wrap-reverse;}
+	.box7 .item{width: 300px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<p class="title">正常排序display: flex;</p>
+		<div class="box box1">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<p class="title">倒序排序 display: flex; flex-direction: row-reverse;</p>
+		<div class="box box2">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<p class="title">纵向排序 display: flex; flex-direction: column;</p>
+		<div class="box box3">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<p class="title">纵向倒序排序 display: flex; flex-direction: column-reverse;</p>
+		<div class="box box4">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<p class="title">按照父级宽度来均分每个子元素的宽度(包含内外边距)</p>
+		<div class="box box5">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+			<div class="item">Item4</div>
+			<div class="item">Item5</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<p class="title">包含每个子元素，超出宽度则换行display: flex; flex-wrap: wrap;</p>
+		<div class="box box6">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+			<div class="item">Item4</div>
+			<div class="item">Item5</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<p class="title">倒序排列，总最后一行排序display: flex; flex-wrap: wrap-reverse;</p>
+		<div class="box box7">
+			<div class="item">Item1</div>
+			<div class="item">Item2</div>
+			<div class="item">Item3</div>
+			<div class="item">Item4</div>
+			<div class="item">Item5</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	li{list-style: none;}
+	img{border: none; vertical-align: top;}
+	a{text-decoration: none;}
+	body{background: #ccc;}
+	#wrap{width: 818px; height: 300px; position: relative; margin: 0 auto;}
+	#wrap ul{position: relative; left: 0; top: 0;}
+	#wrap ul li{position: absolute;}
+	#wrap ul li:nth-of-type(1){left: 55px; top: 30px; z-index: 1; opacity: 0;}
+	#wrap ul li:nth-of-type(2){left: 0px; top: 150px; z-index: 2; opacity: 0.4;}
+	#wrap ul li:nth-of-type(3){left: 75px; top: 125px; z-index: 3; opacity: 0.6;}
+	#wrap ul li:nth-of-type(4){left: 150px; top: 100px; z-index: 4; opacity: 1;}
+	#wrap ul li:nth-of-type(5){left: 325px; top: 125px; z-index: 3; opacity: 0.6;}
+	#wrap ul li:nth-of-type(6){left: 500px; top: 150px; z-index: 2; opacity: 0.4;}
+	#wrap ul li:nth-of-type(7){left: 560px; top: 30px; z-index: 1; opacity: 0;}
+	#wrap a{display: inline-block; width: 50px; height: 50px; line-height: 50px; top: 200px; text-align: center; background: rgba(0,0,0,.2); color: #fff; position: absolute; z-index: 6;}
+	#wrap a:nth-of-type(1){left: 60px;}
+	#wrap a:nth-of-type(2){right: 60px;}
+	#wrap a:hover{background: rgba(0,0,0,.8); }
+	</style>
+	<script src="../../../js/doMove.js"></script>
+	<script>
+	window.onload = function(){
+		var oDiv = document.getElementById('wrap');
+		var aLi = oDiv.getElementsByTagName('li');
+		var aA = oDiv.getElementsByTagName('a');
+
+		var arr = [];
+
+		for (var i = 0; i < aLi.length; i++) {
+			var oImg = aLi[i].getElementsByTagName('img')[0];
+			
+			arr.push( [
+				parseInt( getStyle(aLi[i],'left') ), 
+				parseInt( getStyle(aLi[i],'top') ),
+				parseInt( getStyle(aLi[i],'zIndex') ),
+				getStyle(aLi[i],'opacity')*100 , 
+				oImg.width
+				]);
+		};
+
+
+		aA[0].onclick = function(){
+			arr.unshift(arr[arr.length-1]);
+			arr.pop();
+			fnSwap();
+			
+		}
+		aA[1].onclick = function(){
+			arr.push(arr.shift(arr[0]));
+			fnSwap();
+		}
+
+		function fnSwap(){
+			for (var i = 0; i < aLi.length; i++) {
+				var oImg = aLi[i].getElementsByTagName('img')[0];
+				
+				aLi[i].style.zIndex = arr[i][2];
+				doMove(aLi[i],{ left: arr[i][0], top : arr[i][1], opacity : arr[i][3]});
+				doMove(oImg,{width : arr[i][4]});
+			};
+		}
+
+		function getStyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj,false)[attr];
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<ul>
+			<li><img src="img/1.jpg" width="218" alt=""></li>
+			<li><img src="img/2.jpg" width="318" alt=""></li>
+			<li><img src="img/3.jpg" width="418" alt=""></li>
+			<li><img src="img/4.jpg" width="518" alt=""></li>
+			<li><img src="img/5.jpg" width="418" alt=""></li>
+			<li><img src="img/4.jpg" width="318" alt=""></li>
+			<li><img src="img/2.jpg" width="218" alt=""></li>
+		</ul>
+		<a href="javascript:;">左边</a>
+		<a href="javascript:;">右边</a>
+	</div>
+</body>
+</html>

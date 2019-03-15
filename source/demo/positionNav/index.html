@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位导航</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	body{
+		background: #f0f0f0;
+	}
+	#content{
+		width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	#content h2{
+		font-size: 18px;
+		color: #333;
+	}
+	#content .item{
+		border: 1px dashed #ccc;
+		margin-top: 10px;
+		background: #fff;
+		overflow: hidden;
+	}
+	#content .item h3{
+		font-size: 16px;
+		padding: 10px 0 10px 20px;
+		border-bottom: 2px solid #2761E8;
+	}
+	#content .item ul{
+		list-style: none;
+		padding-left: 20px;
+	}
+	#content .item ul li{
+		float: left;
+		
+	}
+	#content .item ul li a{
+		display: inline-block;
+	}
+	#content .item ul li img{
+		width: 230px;
+		height: 230px;
+		margin: 10px;
+		border: none;
+		vertical-align: top;
+	}
+	#menu{
+		position: fixed;
+		left: 50%;
+		top: 200px;
+		margin-left: 400px;
+	}
+	#menu li{
+		list-style: none;
+	}
+	#menu li a{
+		display: block;
+		padding: 10px 15px;
+		color: #333;
+		text-align: center;
+		text-decoration: none;
+	}
+	#menu li a:hover,
+	#menu li a.selected{
+		background: #4B79E3;
+		color: #fff;
+	}
+	</style>
+
+</head>
+<body>
+	<ul id="menu">
+		<li><a href="#item1" class="selected">1F 男装</a></li>
+		<li><a href="#item2">2F 女装</a></li>
+		<li><a href="#item3">3F 美装</a></li>
+		<li><a href="#item4">4F 母婴</a></li>
+		<li><a href="#item5">5F 电器</a></li>
+	</ul>
+	<div id="content">
+		<h2>购物网</h2>
+		<div id="item1" class="item">
+			<h3>1F 男装</h3>
+			<ul>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+				<li><a href="#"><img src="1.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div id="item2" class="item">
+			<h3>2F 女装</h3>
+			<ul>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+				<li><a href="#"><img src="2.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div id="item3" class="item">
+			<h3>3F 美装</h3>
+			<ul>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+				<li><a href="#"><img src="3.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div id="item4" class="item">
+			<h3>4F 母婴</h3>
+			<ul>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+				<li><a href="#"><img src="4.png" alt=""></a></li>
+			</ul>
+		</div>
+		<div id="item5" class="item">
+			<h3>5F 电器</h3>
+			<ul>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+				<li><a href="#"><img src="5.png" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

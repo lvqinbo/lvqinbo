@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动布局</title>
+	<style>
+		body,h2,ul{margin: 0; padding: 0;}
+		body{font-size: 12px; background: #f0f0f0;}
+		li{list-style: none;}
+		a{text-decoration: none; color: #1A1A1A;}
+		img{border: none; vertical-align: top;}
+
+		.box{width: 678px; height: 447px; border: 1px solid #D9D9D9; background: #fff; margin: 20px auto; position: relative;}
+		.box a:hover{color: #f60;}
+		.top{height: 42px;}
+		.top .tvb,.top ul,.top .more{position: absolute; }
+		.top .tvb{width: 86px; height: 0; padding-top: 26px; left: 20px; top: 17px; background: url(img/title.png)no-repeat; overflow: hidden;}
+		.top ul{left: 120px; top: 30px;}
+		.top li{float: left; margin-right: 18px; text-align: center;}
+		.top a{}
+		.top .more{right: 25px; top: 30px;}
+
+		.list{padding: 0 19px; margin-right: -20px;}
+		.img_list{margin-top: 20px; overflow: hidden;}
+		.img_list li{float: left; margin-right: 20px;}
+		.img{margin-bottom: 10px;}
+
+		.fl{float: left;}
+		.fr{float: right;}
+		.clear{clear: both;}
+		.clear:after{content: ""; display: block; height: 0; overflow: hidden; visibility: hidden; clear: both;}
+		.clear{*zoom: 1;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<h2 class="tvb">电视剧</h2>
+			<ul>
+				<li><a href="javascript:;">电视剧频道</a></li>
+				<li><a href="javascript:;">台剧</a></li>
+				<li><a href="javascript:;">韩剧</a></li>
+				<li><a href="javascript:;">TVB</a></li>
+				<li><a href="javascript:;">美剧</a></li>
+				<li><a href="javascript:;">最美片花</a></li>
+			</ul>
+			<a class="more" href="javascript:;">更多>></a>
+		</div>
+		<div class="list">
+			<ul class="img_list">
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/11.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/2.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/3.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/4.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/5.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+			</ul>
+			<ul class="img_list">
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/6.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/7.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/8.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/9.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+				<li>
+					<div class="img"><a href="javascript:;"><img src="img/10.jpg" alt=""></a></div>
+					<a href="javascript:;">笑傲江湖</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

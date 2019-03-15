@@ -1,0 +1,251 @@
+/*解决IE浏览器不能识别main标签和其他标签的方法*/
+article,aside,footer,header,section,footer,nav,figure,main{display:block}
+
+html,body,ul,div,h2,h3,p,figure{margin: 0;}
+ul{list-style: none;}
+a{
+	text-decoration: none;
+	color: #333;
+}
+body{
+	width: 100%;
+	color: #2e2e2e;
+	font-family: "微软雅黑";
+}
+
+#wrapper{
+	width: 100%;
+	border-top: 5px solid #228B22;
+}
+#header{
+	width: 75%;
+	height: 120px;
+	margin: 0 auto 3%;
+	position: relative;
+}
+#header .logo{
+	width: 120px;
+	height: 120px;
+}
+
+#header .hide{
+	display: none;
+}
+
+#header .menu{
+	position: absolute;
+	left: 140px;
+	height: 40px;
+	top: 80px;
+}
+#header .menu li{
+	float: left;
+	margin-left: 10px;
+}
+#header .menu li a{
+	padding: 10px 15px;
+	display: inline-block;
+	background-color: #efe5d0; 
+	color: #006400;
+	font: 95%/120% "微软雅黑";
+}
+#header .menu li a:hover,#header .menu li .active{
+	background: #ffe5d0;
+}
+#main{
+	width: 75%;
+	margin: 0 auto;
+}
+
+#main h3{
+	font-size: 120%;
+	font-weight: normal;
+	padding: 1% 0;
+}
+#main h3 a{
+	color: #228B22;
+}
+#main h3 a:hover{
+	color: #f60;
+}
+#main .asild{
+	width: 33%;
+	margin-right: 2%;
+	float: left;
+}
+#main .asild .news{
+	margin-bottom: 5%;
+	padding: 5%;
+	background-image: url(../images/background.gif);
+    background:#efe5d0 url(../images/background.gif)top left;
+}
+#main .asild .news p{
+	font-size: 90%;
+	line-height: 25px;
+}
+#main .asild .news p a{
+	color: #228B22;
+}
+
+#main .asild .drink{
+	padding: 5% 0 5% 5%;
+	overflow: hidden;
+	background-image: url(../images/background.gif);
+    background:#efe5d0 url(../images/background.gif)top left;
+}
+
+#main .asild .drink .drink-img figure{
+	float: left;
+	margin-right: 4%;
+}
+#main .asild .drink .drink-img .right-img{
+	margin-right: 0;
+}
+#main .asild .drink .drink-img figure figcaption{
+	text-align: center;
+	font-size: 82.5%;
+	line-height: 25px;
+	color: #000;
+}
+#main .asild .drink .drink-img a{
+	width: 145px;
+	height: 162px;
+}
+#main .asild .drink .drink-img img{
+	border: 2px solid #fff;
+	width: 141px;
+	height: 158px;
+}
+
+#main .content{
+	width: 65%;
+	color: #000;
+	float: left;
+	font-size: 90%;
+	margin-bottom: 2%;
+	overflow: hidden;
+	background-image: url(../images/background.gif);
+    background:#efe5d0 url(../images/background.gif)top left;
+}
+#main .content article{
+	border-bottom: 1px dashed #999;
+	padding: 2% 5%;
+}
+#main .content h3{
+	text-align: center;
+}
+#main .content  p{
+	line-height: 220%;
+	text-indent: 30px;
+}
+#main .content time{
+	color: #666;
+}
+#main .content figure{
+	margin: 2% 0;
+}
+#main .content figure video{
+	width: 100%;
+}
+#main .content figcaption{
+	padding: 1% 0;
+}
+#main .content footer{
+	padding: 2% 0 0 0;
+	text-align: right;
+}
+ #main .content footer a:hover{
+	color: #f60;
+} 
+#main .content .last-article{
+	border-bottom: none;
+}
+
+#footer{
+	width: 100%;
+	line-height: 40px;
+	background-color: #8B8970;
+	text-align: center;
+	clear: both;
+}
+#footer p{
+	font-size: 80%;
+	color: #fff;
+}
+
+@media screen and (min-width: 240px) and (max-width: 768px) {
+	#wrapper{
+		width: 90%;
+		margin: 0 auto;
+	}
+	#header{
+		width: 100%;
+		height: auto;
+	}
+	#header .logo{
+		margin: 0 auto;
+	}
+	#header .menu{
+		width: 100%;
+		height: 160px;
+		padding: 0;
+		position: static;
+		text-align: center;
+		background-color: #efe5d0; 
+	}
+	#header .menu li{
+		width: 100%;
+		height: 40px;
+		margin: 0;
+
+	}
+	#header .menu li a{
+		display: block;
+		border-radius: 8px;
+	}
+
+	#main{
+		width: 100%;
+		overflow: hidden;
+	}
+	#main .asild{
+		width: 100%;
+		margin-bottom: 2%;
+	}
+	#main .asild .news{
+		margin-bottom: 2%;
+	}
+	#main .asild .drink{
+		margin: 0;
+	}
+	#main .asild .drink .drink-img figure {
+		width: 50%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#main .asild .drink .drink-img figure a{
+		
+	}
+	#main .asild .drink .drink-img figure a img{
+		width: 80%;
+		
+	}
+	
+	#main .content{
+		width: 100%;
+	}
+	#main .content figure{
+		width: 100%;
+	}
+	#main .content video{
+		width: 100%;
+		height: auto;
+	}
+	#footer{
+		width: 100%;
+	}
+	#footer p{
+		padding: 5%;
+		line-height: 20px;
+	}
+}

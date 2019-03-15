@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滑动门导航</title>
+	<style>
+	body,ul{margin: 0; padding: 0;}
+	body{background: #231F20; font-family: arial;}
+	li{list-style: none;}
+	a{text-decoration: none;}
+	.nav{background: url(img/nav1.png)no-repeat; margin: 20px; float: left;}
+	.navR{background: url(img/nav2R.png)no-repeat right 0; float: left; height: 32px; padding: 5px;}
+	.navR a{background: url(img/nav_in2L.png)no-repeat; float: left;}
+	.navR span{background: url(img/nav_in2R.png)no-repeat right 0; height: 22px; float: left; padding: 0 25px; color: #54494D; line-height: 21px;}
+	.navR li{float: left; padding-right: 2px;}
+
+	.navR .active{background-image: url(img/hover2A.png);}
+	.navR .active span{background-image: url(img/hover2R.png); color: #fff;}
+
+	.nav2{padding-top: 20px;}
+	.navR2{}
+	.navR2 li{float: left; padding-right: 3px;}
+	.navR2 a{background: url(img/navL3.png)no-repeat; float: left;}
+	.navR2 span{background: url(img/navR3.png)no-repeat right 0; height: 24px; line-height: 24px; padding: 0 36px; color: #fff; float: left;}
+
+	.nav3{margin: 20px; background: #0F0F14 url(img/nav.png)no-repeat; float: left;}
+	.nav3 .navR{background: url(img/navR.png)no-repeat right 0; padding: 4px 3px 0 4px; float: left;}
+	.nav3 .navR li{padding-right: 1px; float: left;}
+	.nav3 .navR a{background: url(img/nav_inL.png)no-repeat; float: left;}
+	.nav3 .navR span{display: inline-block; background: url(img/nav_inR.png)no-repeat right 0; padding: 0 18px; height: 31px; line-height: 31px; color: #fff;}
+	.nav3 .navR a:hover,.nav3 .navR .active{background-image: url(img/hoverA.png);}
+	.nav3 .navR a:hover span,.nav3 .navR .active span {background-image: url(img/hoverR.png);}
+	
+	</style>
+	<script>
+	window.onload = function(){
+		var oUl = document.getElementById('navBox');
+		var aLi = oUl.getElementsByTagName('li');
+		var aA = oUl.getElementsByTagName('a');
+
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].index = i;
+			aLi[i].onmouseover = function(){
+				for (var i = 0; i < aLi.length; i++) {
+					aA[i].className = '';
+				};
+				aA[this.index].className = 'active';
+			}
+		};
+	}
+	</script>
+</head>
+<body>
+	<div class="nav">
+		<div class="navR">
+			<ul id="navBox">
+				<li>
+					<a class="active" href="#"><span>homg</span></a>
+				</li>
+				<li>
+					<a href="#"><span>about us</span></a>
+				</li>
+				<li>
+					<a href="#"><span>contact us</span></a>
+				</li>
+				<li>
+					<a href="#"><span>products</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="nav2">
+		<div class="navR2">
+			<ul>
+				<li><a href="#"><span>home</span></a></li>
+				<li><a href="#"><span>about us</span></a></li>
+				<li><a href="#"><span>contact us</span></a></li>
+				<li><a href="#"><span>products</span></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav3">
+		<div class="navR">
+			<ul id="ul1">
+				<li>
+					<a class="active" href="#"><span>首页</span></a>
+				</li>
+				<li>
+					<a href="#"><span>关于我们</span></a>
+				</li>
+				<li>
+					<a href="#"><span>联系我们</span></a>
+				</li>
+				<li>
+					<a href="#"><span>商品</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

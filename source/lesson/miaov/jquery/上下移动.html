@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上下移动位置</title>
+	<style>
+	.list{}
+	.list span{width: 40px; line-height: 24px; display: inline-block;}
+	.list input{margin: 0 2px;}
+	</style>
+	<script src="jquery.js"></script>
+	<script>
+	$(function(){
+		$('input').on('click',function(){
+			
+			/*if($(this).val() == '上移'){
+				$(this).parent().insertBefore($(this).parent().prev());
+			}else{
+				$(this).parent().insertAfter($(this).parent().next());
+			}*/
+
+			if( $(this).val() == '上移' ){
+
+				$(this).parent().insertBefore( $(this).parent().prev() );
+				
+			}else{
+				$(this).parent().next().after( $(this).parent() );
+			}
+		})
+	})
+	</script>
+</head>
+<body>
+	<ul class="list">
+		<li><span>01</span><input type="button" value="上移"><input type="button" value="下移"></li>
+		<li><span>02</span><input type="button" value="上移"><input type="button" value="下移"></li>
+		<li><span>03</span><input type="button" value="上移"><input type="button" value="下移"></li>
+		<li><span>04</span><input type="button" value="上移"><input type="button" value="下移"></li>
+		<li><span>05</span><input type="button" value="上移"><input type="button" value="下移"></li>
+	</ul>
+</body>
+</html>

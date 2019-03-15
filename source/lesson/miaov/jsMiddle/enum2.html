@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>枚举算法</title>
+	<script>
+	window.onload = function(){
+		var oCity = document.getElementById('city');
+		var aA = oCity.getElementsByTagName('a');
+		var oUl = oCity.getElementsByTagName('ul')[0];
+		var aLi = oUl.getElementsByTagName('li');
+
+		for(var i = 0, len = aA.length; i < len; i++){
+			aA[i].onclick = function(){
+				if(enumerate(this.innerHTML)){
+					var oLi = document.createElement('li');
+					oLi.innerHTML = this.innerHTML;
+					oUl.insertBefore(oLi,aLi[0]);
+				}else{
+					enumerate2(this.innerHTML);
+				}
+			}
+		}
+		// 
+		function enumerate(str){
+			var result = true;
+			for(var i = 0, len =aLi.length; i < len; i++ ){
+				if(aLi[i].innerHTML == str){
+					return false;
+				}
+			}
+			return result;
+		}
+		function enumerate2(str){
+			for(var i = 0, len =aLi.length; i < len; i++ ){
+				if(aLi[i].innerHTML == str){
+					oUl.insertBefore(aLi[i],aLi[0]);
+				}
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div id="city">
+		<a href="javascript:;">北京</a>
+		<a href="javascript:;">上海</a>
+		<a href="javascript:;">广州</a>
+		<a href="javascript:;">杭州</a>
+		<a href="javascript:;">深圳</a>
+		<ul class="list"></ul>
+	</div>
+</body>
+</html>

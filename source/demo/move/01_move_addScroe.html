@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击加分</title>
+	<style>
+	#wrap{position: relative; width: 500px;height: 50px; margin:300px auto; text-align: center;}
+	#box{width: 500px; height: 50px; border:1px solid #333; position: absolute; left:0; top:0; font-size: 30px; line-height: 50px; text-align: center; z-index: 2;}
+	#col{height: 50px; width: 0px; background: blue; position: absolute; left: 0; top:1px;}
+	</style>
+	<script src="../../../js/doMove.js"></script>
+	<script>
+	window.onload = function(){
+
+		var oBox = document.getElementById('box');
+		var aDiv = oBox.getElementsByTagName('div');
+		var oC = document.getElementById('col');
+		var str = '';
+		var len = 10;
+		var num = 0;
+		var timer = null;
+
+		for (var i = 0; i < len; i++) {
+			str += '<div style="width:50px; height:50px; position:absolute; left:'+i*50+'px; top: 0px;">+1</div>';
+		};
+		init();
+		function init(){
+			oBox.innerHTML = str;
+			oC.style.width = '0px';
+			oC.style.opacity = 100;
+		}
+
+		oBox.onclick =fnUp;
+		
+		function fnUp (){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				doMove(aDiv[num],{top: -180,opacity: 0});
+				doMove(oC,{width: 500, opacity: 0});
+				num++;
+				if(num == len){
+					num = 0;
+					clearInterval(timer);
+					setTimeout(function(){
+						init();
+					},400);
+				}
+			},70);
+		}
+	}
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<div id="box">
+		
+	</div>
+	<div id="col"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex左右排序布局</title>
+	<style>
+	body{font-size: 14px; font-family: "Menlo"; background-color: #999; color: #fff;}
+	.wrap{width: 800px; background-color: #ddd;}
+	.item{width: 100px; line-height: 100px; padding: 10px; margin: 10px; background-color: #666;}
+	
+	.wrap{display: flex; flex-flow: row wrap;}
+	.wrap {align-content: flex-start;}
+	.wrap {align-content: flex-end;}
+	.wrap {align-content: center;}
+	.wrap {align-content: space-between;}
+	.wrap {align-content: space-around;}
+	.wrap {align-content: stretch;} 
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="item">Item1</div>
+		<div class="item">Item2</div>
+		<div class="item">Item3</div>
+	</div>
+</body>
+</html>

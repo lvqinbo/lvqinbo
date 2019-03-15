@@ -1,0 +1,26 @@
+
+@mixin transition($transition){
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-ms-transition: $transition;
+	transition: $transition;
+}
+@mixin transform-origin($orgin){
+	-webkit-transform-origin: $orgin;
+	-moz-transform-origin: $orgin;
+	-o-transform-origin: $orgin;
+	-ms-transform-origin: $orgin;
+	transform-origin: $orgin;
+}
+@mixin scale($scale){
+	-webkit-transform: scale($scale);
+	-moz-transform: scale($scale);
+	-ms-transform: scale($scale);
+	-o-transform: scale($scale);
+	transform: scale($scale);
+}
+@mixin opacity($val){
+	opacity: $val;
+	filter: alpha(opacity=$val * 100);
+}

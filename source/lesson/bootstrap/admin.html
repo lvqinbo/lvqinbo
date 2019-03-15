@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+	body{height: 100%;}
+	.aside{width: 200px; height: 500px; margin-right: 20px; padding-top: 20px; background-color: #ccc;}
+	.aside ul{list-style: none; padding: 0;}
+	.aside ul li{height: 30px; line-height: 30px; padding-left: 20px;}
+	.aside ul li:hover,.aside ul li.seleced{background: #337AB7;}
+	.aside ul li:hover a,.aside ul li.seleced a{color: #fff;}
+	#form-box{float: right;}
+	#form-box input{width: 120px;}
+	#form-box .row{
+		float: right;
+	}
+	#content{margin-top: 50px;}
+	#content .message{margin-top: 20px;}
+	.msg-num{
+		float: right;
+	}
+	</style>
+</head>
+<body>
+<nav class="nav navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<div class="container-fuild">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-list">
+				<span class="sr-only">Toggle Navbar</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">后台管理系统</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-list">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">首页</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">功能<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#create-information">信息建立</a></li>
+						<li><a href="#search-information">信息查询</a></li>
+						<li><a href="#manag-information">信息管理</a></li>
+					</ul>
+				</li>
+				<li><a href="#">帮助</a></li>
+			</ul>
+			<div class="col-md-4" id="form-box">
+				<div class="row">
+					<form action="" class="navbar-form">
+						<div class="form-group input-group-sm">
+							<input type="text" class="form-control" placeholder="用户名">
+							<input type="password" class="form-control" placeholder="密码">
+						</div>
+						<div class="btn-group btn-group-sm">
+							<button type="button" class="btn btn-default">登陆</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>	
+	</div>
+</nav><!-- navbar end -->
+<div class="container-fuild">
+	<div class="aside col-lg-3 col-md-6 col-sm-12 ">
+		<div class="container-fuild">
+			<div class="row">
+				<ul>
+					<li class="seleced"><a href="#">首页</a></li>
+					<li><a href="#">信息建立</a></li>
+					<li><a href="#">信息查询</a></li>
+					<li><a href="#">信息管理</a></li>
+					<li><a href="#">设置</a></li>
+					<li><a href="#">帮助</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div alass="col-lg-9 col-md-3" id="content">
+		<div class="container">
+			<div class="row">
+				<h2>管理控制台</h2>
+				<hr class="divider">
+				<div class="btn-list-box">
+					<button type="button" class="btn btn-default">操作1</button>
+					<button type="button" class="btn btn-primary">操作2</button>
+					<button type="button" class="btn btn-info">操作3</button>
+					<button type="button" class="btn btn-success">操作4</button>
+					<button type="button" class="btn btn-warning">操作5</button>
+					<button type="button" class="btn btn-danger">操作6</button>
+				</div>
+				<div class="message">
+					<div class="container">
+						
+						<div class="row">
+							<div class="col-lg-5">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<div class="panel-title">最新提醒</div>
+									</div>
+									<div class="panel-body">
+										<div class="alert alert-info" role="alert">提醒：您的订单(002312)已通过审批!</div>
+										<div class="alert alert-warning" role="alert">提醒：您的订单(002312)已被打回!</div>
+										<div class="alert alert-danger" role="alert">提醒：您的订单(002312)客户付款!</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-5">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<div class="panel-title">我的任务</div>
+									</div>
+									<div class="panel-body">
+										<div class="alert alert-info" role="alert">订单审批
+											<a href="#" class="msg-num"><span class="badge">88</span></a>
+										</div>
+										<div class="alert alert-success" role="alert">订单通过
+											<a href="#" class="msg-num"><span class=badge>109</span></a>
+										</div>
+										<div class="alert alert-danger">付款确认
+											<a href="#" class="msg-num"><span class="badge">10</span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-5">
+								<div class="panel panel-primary">
+									<div class="panel-heading">最新订单</div>
+									<div class="panel-body">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>产品</th>
+													<th>数量</th>
+													<th>金额</th>
+													<th>业务员</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th>1</th>
+													<th>Apple</th>
+													<th>10</th>
+													<th>10000</th>
+													<th>helloman</th>
+												</tr>
+												<tr>
+													<th>2</th>
+													<th>Apple</th>
+													<th>32</th>
+													<th>12000</th>
+													<th>小王</th>
+												</tr>
+											</tbody>
+										</table>
+										<button type="button" class="btn btn-primary">查看详情>></button>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-5">
+								<div class="panel panel-primary">
+									<div class="panel-heading">工程进度</div>
+									<div class="panel-body">
+										<p><span class="label label-primary">水井挖掘工程</span></p>
+										<div class="progress">
+											<div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 40%">40%
+												<span class="sr-only">40%</span>
+											</div>
+										</div>
+										<p><span class="label label-danger">基建工程</span></p>
+										<div class="progress">
+											<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">50%</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>	
+</body>
+</html>

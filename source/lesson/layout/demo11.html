@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex布局--justify左右对齐方式</title>
+	<style>
+	body{font-family: "Menlo"; font-size: 16px; color: #fff; background-color: #ddd;}
+	.row{width: 960px; margin: 20px auto;}
+	.title{padding: 10px 0; margin: 0; text-align: center; background-color: #CDDC39;}
+	.wrap{background-color: #98a1a6;}
+
+	.item{width: 100px; margin: 10px; padding: 10px; font-size: 24px; background-color: #FF9800;}
+
+	.wrap{display: flex;}
+	.fs{justify-content: flex-start;}
+	.fe{justify-content: flex-end;}
+	.fc{justify-content: center;}
+	.sb{justify-content: space-between;}
+	.sr{justify-content: space-around;}
+	</style>
+</head>
+<body>
+<div class="row">
+	<p class="title">justify-content: flex-start;</p>
+	<div class="wrap fs">
+		<div class="item">item1</div>
+		<div class="item">item2</div>
+		<div class="item">item3</div>
+		<div class="item">item4</div>
+		<div class="item">item5</div>
+	</div>
+</div>
+<div class="row">
+	<p class="title">justify-content: flex-end;</p>
+	<div class="wrap fe">
+		<div class="item">item1</div>
+		<div class="item">item2</div>
+		<div class="item">item3</div>
+		<div class="item">item4</div>
+		<div class="item">item5</div>
+	</div>
+</div>
+<div class="row">
+	<p class="title">justify-content: center;</p>
+	<div class="wrap fc">
+		<div class="item">item1</div>
+		<div class="item">item2</div>
+		<div class="item">item3</div>
+		<div class="item">item4</div>
+		<div class="item">item5</div>
+	</div>
+</div>
+<div class="row">
+	<p class="title">justify-content: space-between;</p>
+	<div class="wrap sb">
+		<div class="item">item1</div>
+		<div class="item">item2</div>
+		<div class="item">item3</div>
+		<div class="item">item4</div>
+		<div class="item">item5</div>
+	</div>
+</div>
+<div class="row">
+	<p class="title">justify-content: space-around;</p>
+	<div class="wrap sr">
+		<div class="item">item1</div>
+		<div class="item">item2</div>
+		<div class="item">item3</div>
+		<div class="item">item4</div>
+		<div class="item">item5</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax无刷新上传文件</title>
+	<style>
+	#wrap{width: 960px; margin: 20px auto;}
+	#progress{width: 300px; height: 20px; line-height: 20px; margin-top: 20px; text-align: center; border: 1px solid #f0f0f0; border-radius: 10px; position: relative; overflow: hidden; display: none;}
+	#progress .p-cent{width: 0; height: 100%; background: #ccc;}
+	#progress .p-text{width: 100%; height: 100%; position: absolute; left: 0; top: 0; font-family: Arial;}
+	.list{margin: 40px 0 20px 0; list-style: none;}
+	.list li{line-height: 30px;}
+	</style>
+	<link rel="stylesheet" href="../../code.css">
+	<script src="../../ajax.js"></script>
+	<script src="../../readcode.js"></script>
+	<script>
+	window.onload = function(){
+		var oCodeList = getByClass(document,'codelist')[0];
+		readCode('upload.js',oCodeList);
+		var oFile = document.getElementById('myFile');
+		var oBtnUpload = document.getElementById('upload');
+		var oBarBox = document.getElementById('progress');
+		var oBarCent= document.querySelector('.p-cent');
+		var oBarText = document.querySelector('.p-text');
+		
+		oBtnUpload.onclick = function(){
+			oBarBox.style.display = 'block';
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function(){
+				alert('上传成功！');
+				createList();
+				oBarBox.style.display = 'none';
+				oBarCent.style.width =  0;
+				oBarText.innerHTML = '0%';
+			}
+			var oUpload = xhr.upload;
+			oUpload.onprogress = function(ev){
+				var iScale = ev.loaded / ev.total;
+				oBarCent.style.width = oBarBox.offsetWidth * iScale + 'px';
+				oBarText.innerHTML = Math.floor(iScale * 100) + '%';
+			}
+			xhr.open('post','data/post_file.php',true);
+			xhr.setRequestHeader('X-Requeset-With','XMLHttpRequest');
+			//通过FormData来构建提交数据
+			var oFormData = new FormData();
+			oFormData.append('file',oFile.files[0]);
+			xhr.send(oFormData);	
+		}
+		
+		function createList(){
+			var oUl = document.querySelector('.list');
+			var oLi = document.createElement('li');
+			var arr = oFile.value.split('\\');
+			oLi.innerHTML = '<a href="#">'+arr[arr.length-1];+'</a>' 
+			oUl.appendChild(oLi);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<p>
+			<input type="file" id="myFile">
+			<input type="button" value="上传" id="upload">
+		</p>
+		<div id="progress">
+			<div class="p-cent"></div>
+			<div class="p-text">0%</div>
+		</div>	
+		<ul class="list"></ul>	
+	</div>
+	<div class="codebox"><pre><ol class="codelist"></ol></pre></div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单元素</title>
+	<style>
+	body,h1,p,form{margin:0; padding:0; color: #333;}
+	form,input,textarea{ font:12px/16px "微软雅黑"; }
+	main.form{margin-left:0; }
+	main.form h1{text-align: center; width: 900px;  height: 25px; font-size: 20px; margin:0 auto; padding:20px 0 10px; background:#EEE8CD; border-top:20px solid #FF7F00;}
+	main.form form{display: table; width:880px; margin:0 auto; background: #EEE8CD; padding:10px;}
+
+	main.form .rows{display: table-row; height: 36px;  }
+	main.form .cell{display: table-cell; vertical-align: middle;}
+	main.form .cell p{ width: 400px; display: inline-block; color: #f60; text-indent: 10px;}
+	main.form .rows .cell:first-child {text-align: right; }
+	main.form input {width: 200px; padding:5px;}
+	main.form input.sbtn  {width: 100px; border:none; padding:5px; margin:0 auto;margin-left: 150px; background: #FF7F00; color: #fff; }
+	main.form input.sbtn:last-child{margin-left: 10px;}
+	main.form textarea {width: 490px; height: 70px; padding:5px; resize:none;}
+	</style>
+	<link rel="stylesheet" href="../../code.css">
+	<script src="../../ajax.js"></script>
+	<script src="../../readcode.js"></script>
+	<script>
+	window.onload = function(){
+		var oCodeList = getByClass(document,'codelist')[0];
+		readCode('html5表单.js',oCodeList);
+	}
+	</script>
+</head>
+<body>
+	<main class="form">
+		<h1>表单元素</h1>
+		<form action="http://www.hictrip.net" method="post">
+			
+			<div class="rows">
+				<div class="cell">
+					<label for="username">请输入用户名和密码：</label>
+				</div>
+				<div class="cell">
+					<input type="text" id="username" name="username" placeholder="用户名" required>
+					<input type="password" name="password" placeholder="密码"  required>
+				</div>
+			</div>
+
+			<div class="rows">
+				<div class="cell">
+					<label for="telphone">请输入电话号码：</label>
+				</div>
+				<div class="cell">
+					<input type="tel" id="telphone" placeholder="请输入电话号码" autocomplete="off" required>
+					<p>autocomplete="off" 不记住上次输入的信息</p>
+				</div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="email">请输入电子邮箱：</label></div>
+				<div class="cell"><input type="email" id="email" placeholder="Example@163.com" required>
+				<p>placeholder="提示信息" </p>
+				</div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="address">请输入收货地址：</label></div>
+				<div class="cell"><input type="address" id="address" placeholder="例如：北京市东城区东交民巷44号" required>
+				<p>required 必填项</p>
+				</div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="option"></label>请选择城市：</div>
+				<div class="cell">
+					<input type="text" id="option" list="valList" autocomplete="off">
+					<datalist id="valList">
+						<option value="北京">北京</option>
+						<option value="上海">上海</option>
+						<option value="广州">广州</option>
+						<option value="重庆">重庆</option>
+					</datalist>
+				</div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="search">输入要查询的内容：</label></div>
+				<div class="cell"><input type="search" autofocus ><p>autofocus 获取鼠标焦点</p></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="number">请选择数量：(每人限购10份)</label></div>
+				<div class="cell">
+					<input type="number" id="number" value="1" min="1" max="10">
+				</div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="num">拖动选择数量：</label></div>
+				<div class="cell"><input type="range" id="num" step="1" min="1" max="10" value="5"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="datetime">UTC时间(chrome、火狐不支持)：</label></div>
+				<div class="cell"><input type="datetime"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="datetime-local">当地时间：</label></div>
+				<div class="cell"><input type="datetime-local"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="week">输入的日期属于今年第几周：</label></div>
+				<div class="cell"><input type="week"></div>
+			</div>
+			
+			<div class="rows">
+				<div class="cell"><label for="birthday">出生年月日(火狐不支持)：</label></div>
+				<div class="cell"><input type="date" id="birthday"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="month">当前月份：</label></div>
+				<div class="cell"><input type="month"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="time">小时分钟：</label></div>
+				<div class="cell"><input type="time"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="pattern">正则匹配：</label></div>
+				<div class="cell"><input type="text" placeholder="5~10个字母" pattern="\d{4,10}"></div>
+			</div>
+
+			<div class="rows">
+				<div class="cell"><label for="message">留言与建议：</label></div>
+				<div class="cell"><textarea name="message" id="message" cols="30" rows="5"></textarea></div>
+			</div>
+	
+			<div class="rows">
+				<div class="cell"></div>
+				<div class="cell">
+					<input class="sbtn" type="submit" value="提交">
+					<input class="sbtn" type="submit" value="保存至草稿箱" formation="http://www.jiamengly.com" formnovalidate>
+				</div>
+			</div>
+		</form>
+	</main>
+	<div class="codebox"><pre><ol class="codelist"></ol></pre></div>
+</body>
+</html>

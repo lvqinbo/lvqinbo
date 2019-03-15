@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百叶窗效果</title>
+	<style>
+	body,ul,p{margin:0; padding: 0;}
+	a{text-decoration: none;}
+	li{list-style: none;}
+	#box{width: 1000px; height:500px; margin:20px auto 0;}
+	#ul1,#ul2 {width: 400px; border:1px solid #f0f0f0;  padding: 20px;}
+	ul li{height: 30px;  line-height: 30px; border-bottom: 1px dashed #ccc; position: relative; overflow: hidden; transition:2s;}
+	ul li:hover{background: orange;}
+	ul li div{height: 30px;  width: 500px; line-height: 30px; position: absolute; top:-30px; left:0; }
+	ul li div p{height: 30px; padding: 0 10px;}
+	ul li div a{color:#333;}
+	ul li div a:hover{color:#f60;}
+	#ul1{float: left;}
+	#ul2{float: left;}
+	</style>
+	<script src="../../../js/doMove.js"></script>
+	<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		var oUl2 = document.getElementById('ul2');
+		var timer2 = null;
+		
+		fnTab(oUl);
+		
+		timer2 = setTimeout(function(){
+			fnTab(oUl2);
+		},2000);
+
+		function fnTab(obj){
+			var aDiv = obj.getElementsByTagName('div');
+			var num = 0;
+			var timer = null;
+			var onOff = true;
+			
+			setInterval(function(){
+				change();
+			},3000);
+
+			function change(){
+				timer = setInterval(function(){
+					if(num == aDiv.length){
+						clearInterval(timer);
+						num = 0;
+						onOff =  !onOff;
+					}else if(onOff){
+						doMove(aDiv[num],{top: 0});
+						num++;
+					}else{
+						doMove(aDiv[num],{top: -30});
+						num++;
+					}
+
+				},100);
+			}
+		}
+			
+		window.onfocus = function(){
+			console.log(1);
+			timer = setInterval(change,2000);
+			timer2 = setTimeout(function(){
+			fnTab(oUl2);
+			},2000);
+		}
+		window.onblur = function(){
+			console.log(2);
+			clearInterval(timer);
+			clearTimeout(timer2);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul id="ul1">
+			<li>
+				<div>
+					<p><a href="javascript:;">习近平：彻查天津港爆炸事故并追责</a></p>
+					<p><a href="javascript:;">李克强:对事故企业安评环评等逐一认定责任</a></p>
+				</div>
+				
+			</li>
+			<li>
+				<div>
+					<p><a href="javascript:;">原中共中央副主席汪东兴病逝 享年100岁</a></p>
+					<p><a href="javascript:;">9月3日抗战阅兵看什么：84%装备首次亮相</a></p>
+				</div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">天津爆炸116人遇难 其中65名消防员 死鱼因缺氧</a></p>
+					<p><a href="javascript:;">令政策被双开曾干扰组织审查 令家5兄妹今何在</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">公安部原副部长李东生 海南原副省长冀文林受贿被诉</a></p>
+					<p><a href="javascript:;">南昌退休市长返乡务农：40年仕途4小时变回农民</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">牺牲消防员9岁弟弟作文：我宁愿他不是英雄</a></p>
+					<p><a href="javascript:;">马英九怒批李登辉：媚日卖台作贱自己</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">金正恩下令朝军进入战时状态 朝否认向韩方开火</a></p>
+					<p><a href="javascript:;">女司机开斗气车被打成脑震荡续:打人者赔4万获缓刑</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">沪指周跌幅11.54%险守3500 创业板暴跌6.65% 解读</a></p>
+					<p><a href="javascript:;">女司机开斗气车被打成脑震荡续:打人者赔4万获缓刑</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">金正恩下令朝军进入战时状态 朝否认向韩方开火</a></p>
+					<p><a href="javascript:;">女司机开斗气车被打成脑震荡续:打人者赔4万获缓刑</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">天津爆炸116人遇难 其中65名消防员 死鱼因缺氧</a></p>
+					<p><a href="javascript:;">令政策被双开曾干扰组织审查 令家5兄妹今何在</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">公安部原副部长李东生 海南原副省长冀文林受贿被诉</a></p>
+					<p><a href="javascript:;">南昌退休市长返乡务农：40年仕途4小时变回农民</a></p></div>
+			</li>
+		</ul>
+		<ul id="ul2">
+			<li>
+				<div>
+					<p><a href="javascript:;">习近平：彻查天津港爆炸事故并追责</a></p>
+					<p><a href="javascript:;">李克强:对事故企业安评环评等逐一认定责任</a></p>
+				</div>
+				
+			</li>
+			<li>
+				<div>
+					<p><a href="javascript:;">原中共中央副主席汪东兴病逝 享年100岁</a></p>
+					<p><a href="javascript:;">9月3日抗战阅兵看什么：84%装备首次亮相</a></p>
+				</div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">天津爆炸116人遇难 其中65名消防员 死鱼因缺氧</a></p>
+					<p><a href="javascript:;">令政策被双开曾干扰组织审查 令家5兄妹今何在</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">公安部原副部长李东生 海南原副省长冀文林受贿被诉</a></p>
+					<p><a href="javascript:;">南昌退休市长返乡务农：40年仕途4小时变回农民</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">牺牲消防员9岁弟弟作文：我宁愿他不是英雄</a></p>
+					<p><a href="javascript:;">马英九怒批李登辉：媚日卖台作贱自己</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">金正恩下令朝军进入战时状态 朝否认向韩方开火</a></p>
+					<p><a href="javascript:;">女司机开斗气车被打成脑震荡续:打人者赔4万获缓刑</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">沪指周跌幅11.54%险守3500 创业板暴跌6.65% 解读</a></p>
+					<p><a href="javascript:;">女司机开斗气车被打成脑震荡续:打人者赔4万获缓刑</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">金正恩下令朝军进入战时状态 朝否认向韩方开火</a></p>
+					<p><a href="javascript:;">女司机开斗气车被打成脑震荡续:打人者赔4万获缓刑</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">天津爆炸116人遇难 其中65名消防员 死鱼因缺氧</a></p>
+					<p><a href="javascript:;">令政策被双开曾干扰组织审查 令家5兄妹今何在</a></p></div>
+			</li>
+			<li>
+				<div><p><a href="javascript:;">公安部原副部长李东生 海南原副省长冀文林受贿被诉</a></p>
+					<p><a href="javascript:;">南昌退休市长返乡务农：40年仕途4小时变回农民</a></p></div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

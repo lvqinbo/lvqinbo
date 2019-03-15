@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册表格</title>
+	<style>
+	html,body{ background:#ccc;}
+	html,body,p,span{margin:0; padding:0;}
+	#tab{width:600px; background:#fff; margin:20px auto; padding-top: 10px; display: table;}
+	.form{width: 455px;margin-left: 43px; display: table; font-size: 14px;}
+	.row{width: 371px; display: table-row; }
+	.cell{display: table-cell;}
+	.cell span{color:red; }
+	.cell p{color:#8A8A8A; margin:8px 0; font-size: 12px;}
+	.cell:nth-of-type(1){text-align: right; width: 100px;}
+	.cell:nth-of-type(2){width: 262px;}
+	.cell input{width: 250px; height: 26px; outline: none; padding:2px 5px; color:#8A8A8A;}
+	.cell img{border:1px solid #000; position: relative; top:18px; width: 126px; height: 38px;}
+	.cell .check_code{width:133px;}
+	.cell .agree{width: 15px; height: 15px; margin-top: 7px; float: left;}
+	.cell .clause{width: 350px; color:#000;}
+	.cell .clause a{text-decoration: none;}
+	#register{width: 133px; height: 37px; border:none; margin:40px 0 23px 0; background: url(img/register.png)no-repeat;}
+	</style>
+</head>
+<body>
+	<div id="tab">
+		<div class="form">
+			<div class="row">
+				<div class="cell"><span>*</span>常用邮箱地址:</div>
+				<div class="cell">
+					<input type="text">
+					<p>支持您常用的邮箱，如：name@example.com</p>
+					<a href="javascript:;">还没有邮箱，立即注册网易邮箱》》</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell"><span>*</span>设置密码:</div>
+				<div class="cell">
+					<input type="text">
+					<p>6到16个字符，区分大小写</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell"><span>*</span>确认密码:</div>
+				<div class="cell">
+					<input type="text">
+					<p>再次输入您设置的密码</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell"><span>*</span>密码保护问题:</div>
+				<div class="cell">
+					<input type="text" list="question" value="请选择...">
+					<datalist id="question">
+						<option value="我的出生地址">我的出生地址</option>
+						<option value="我爱人的生日">我爱人的生日</option>
+						<option value="我父亲的出生日期">我父亲的出生日期</option>
+						<option value="我祖父的名字">我祖父的名字</option>
+					</datalist>
+					<p>支持您常用的邮箱，如：name@example.com</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell"><span>*</span>你的答案:</div>
+				<div class="cell">
+					<input type="text">
+					<p>4到30个字符，支持大小写和英文字母</p>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="cell"><span>*</span>验证码:</div>
+				<div class="cell">
+					<input type="text" class="check_code" >
+					<img src="img/code.jpg" alt="">
+					<p>不区分大小写，看不清楚可以换一个</p>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="cell"></div>
+				<div class="cell">
+					<input type="checkbox" checked class="agree">
+					<p class="clause">我同意<a href="javascript:;"><q>服务条款</q></a>和<a href="javascript:;"><q>隐私权保护和个人信息利用政策</q></a></p>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="cell"></div>
+				<div class="cell">
+					<input type="button" id="register">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

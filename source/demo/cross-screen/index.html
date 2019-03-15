@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手机端左右划屏切换</title>
+	<style type="text/css">
+
+	ul{margin: 0; padding: 0; list-style: none;}
+	#img-box{position: relative; width: 640px; height: 320px; margin: 50px auto; border: 1px solid #ddd; overflow: hidden;}
+	.img-list{position: absolute; left: 0; top: 0;}
+	.img-item{width: 640px; height: 320px; float: left;}
+	</style>
+	<script src="js/move.js"></script>
+	<script>
+		window.onload = function(){
+			var oBoxParent = document.getElementById('img-box');
+			var oUl = oBoxParent.getElementsByTagName('ul')[0];
+			var aLiItem = oUl.getElementsByTagName('li');
+
+			var downX = 0;
+			var downLeft = 0;
+			var iNow = 0;
+			var iBtn = true;
+			var downTime = 0;
+
+			oUl.style.width = aLiItem[0].offsetWidth * aLiItem.length + 'px';
+
+			document.ontouchmove = function (ev){
+				ev.preventDefault();
+			}
+
+			oUl.ontouchstart = function (ev){
+				var touchs = ev.changedTouches[0];
+				downX = touchs.pageX;
+				downLeft = this.offsetLeft;
+				downTime = Date.now();
+
+				oUl.ontouchmove = function (ev){
+					var touchs = ev.changedTouches[0];
+
+					if(this.offsetLeft >= 0){
+						if(iBtn){
+							downX = touchs.pageX;
+							iBtn = false;
+						}
+						this.style.left = (touchs.pageX - downX)/3 + 'px';
+					}else if(this.offsetLeft <= (oBoxParent.offsetWidth - oUl.offsetWidth)){
+						if(iBtn){
+							downX = touchs.pageX;
+							iBtn = false;
+						}
+						this.style.left = (touchs.pageX - downX)/3 + (oBoxParent.offsetWidth - oUl.offsetWidth) + 'px';
+					}else{
+						this.style.left = touchs.pageX - downX + downLeft + 'px';
+					}
+
+				}
+
+				oUl.ontouchend = function (ev){
+					var touchs = ev.changedTouches[0];
+					
+					if(touchs.pageX < downX){ // left
+						if(iNow < aLiItem.length-1){
+							if(downX - touchs.pageX >  aLiItem[0].offsetWidth/2 || (Date.now() - downTime < 300&& downX - touchs.pageX > 30)){
+								iNow++;
+							}
+						}
+					}else{ // right
+						if(iNow != 0){
+							if(touchs.pageX - downX > aLiItem[0].offsetWidth/2 || (Date.now() - downTime < 300 && touchs.pageX - downX > 30)) {
+								
+								iNow--;
+							}
+						}
+					}
+					doMove(oUl,{ left : -iNow * aLiItem[0].offsetWidth} );
+					this.ontouchmove = null;
+					this.ontouchend = null;
+				}
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="img-box">
+		<ul class="img-list">
+			<li class="img-item"><a href="javascript:;"><img src="img/1.jpg" /></a></li>
+			<li class="img-item"><a href="javascript:;"><img src="img/2.jpg" /></a></li>
+			<li class="img-item"><a href="javascript:;"><img src="img/3.jpg" /></a></li>
+			<li class="img-item"><a href="javascript:;"><img src="img/4.jpg" /></a></li>
+			<li class="img-item"><a href="javascript:;"><img src="img/5.jpg" /></a></li>
+		</ul>
+	</div>
+</body>
+</html>

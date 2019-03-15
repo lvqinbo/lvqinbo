@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>坠落的div</title>
+	<style>
+	#wrap{position: relative; width: 960px; height: 40px; margin: 20px auto;}
+	#wrap div{width: 46px; line-height: 46px; text-align: center; font-size: 30px; color: #fff; position: absolute; top: 0; z-index: 2;}
+	</style>
+	<script src="../../../js/doMove.js"></script>
+	<script>
+	window.onload = function(){
+		var oWrap = document.getElementById('wrap');
+		var aDiv = oWrap.getElementsByTagName('div');
+		var iNum = 0;
+		var timer2 = null;
+		var iBtn = true;
+		for(var i = 0; i < 20; i++){
+			oWrap.innerHTML += '<div style="left:'+i*48+'px; background: '+randomColor()+';">'+i+'</div>';
+		}
+		document.onclick = function(){
+			clearInterval(timer2);
+			timer2 = setInterval(function(){
+				if(iBtn){
+					doMove(aDiv[iNum],{top: 500});
+					iNum++;
+					if(iNum == aDiv.length){
+						clearInterval(timer2);
+						iNum = aDiv.length-1;
+						iBtn = false;
+					}
+				}else{
+					doMove(aDiv[iNum],{top: 0});
+					iNum--;
+					if(iNum == -1){
+						iNum = 0;
+						clearInterval(timer2);
+						iBtn = true;
+					}
+				}
+			},70);
+		}
+		function randomVal(val){
+			return Math.floor(Math.random() * (val + 1));
+		}
+		function randomColor(){
+			return 'rgb('+randomVal(255)+','+randomVal(255)+','+randomVal(255)+')';
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap"></div>
+</body>
+</html>

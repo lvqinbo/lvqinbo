@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+	<title>边栏展开收缩</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style>
+	body,ul{
+	margin: 0; padding: 0;
+}
+h2{
+	margin: 0; font-weight: normal;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+
+@font-face {font-family: "iconfont";
+  src: url('fonts/iconfont.eot'); /* IE9*/
+  src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fonts/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('fonts/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.icon {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-user:before { content: "\e765"; }
+.icon-setting:before { content: "\e62d"; }
+.icon-return:before { content: "\e610"; }
+.icon-qiyedongtai:before { content: "\f000b"; }
+.icon-contact:before { content: "\e7b8"; }
+.icon-contact1:before { content: "\e615"; }
+.icon-join:before { content: "\e712"; }
+.icon-fengcai:before { content: "\e6ca"; }
+.icon-menu:before { content: "\e6ae"; }
+
+body{
+	font-family: "微软雅黑";
+	font-size: 12px; 
+	position: relative;
+	overflow: hidden;
+}
+
+#container{
+	width: 500px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.page,
+.side-nav{
+	width: 100%; height: 100%;
+}
+
+#container,
+.page-top,
+.side-nav-fixed{
+	position: relative;
+}
+
+.page,
+.page-bottom{
+	left: 0; 
+	width: 100%; 
+	background: #fffff0;
+	z-index: 1;
+}
+.page,
+.page-bottom,
+.page-top-btn,
+.side-nav{
+	position: absolute; 
+}
+
+#container{
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.page{top: 0; overflow: hidden;}
+
+.page-top{height: 3em; line-height: 3em; background: #ddd; z-index: 2;}
+.page-top-btn{width: 5em; text-align: center;}
+.title{text-align: center;}
+
+.side-nav-fixed{height: calc(100% - 6em); cursor: pointer;}
+.side-nav{top: 0;}
+#list-inner{height: 100%;}
+.tab-list-item{line-height: 3em; text-indent: 2em; border-bottom: 1px solid #ddd;}
+.tab-list-item > a{display: block; color: #333;}
+.tab-list-item > a:hover{background: #f6f6f6;}
+
+.page-bottom{bottom: 0; height: 3em; background: #ddd;}
+
+
+.pageShow{
+	z-index: 2;
+}
+
+@media screen and (max-width:324px){
+	#container{
+		width: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+}
+
+
+	</style>
+	<script type="text/javascript" src="js/doMove.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+	<!-- ================================侧栏导航页面================================ -->
+	<div id="container">
+		<div class="page pageShow" id="page-home" onselectstart="return false">
+				<div class="page-top">
+					<span class="page-top-btn" id="menu-btn" title="显示菜单"><i class="icon icon-menu"></i></span>
+					<h2 class="title">菜单</h2>
+				</div>
+				<div class="side-nav-fixed">
+					<div class="side-nav">
+						<ul id="list-inner">
+                    <li>
+                        <div class="img-box">
+                           <img src="http://thumb-qiniu.720static.com/@/resource/prod/69ai37767n4/56325xivmlr/303793/imgs/thumb.jpg?imageMogr2/thumbnail/100x" alt="">
+                        </div>
+                        <div class="caption">
+                            <h2>东南亚客厅效果图</h2>
+                            <p>
+                                <span>欧式田园：你若喜欢清新, 拥抱欧式田园</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                            </p>
+                        </div>
+                        <div class="price">
+                             <a href="http://720yun.com/t/dc92bjaduuv">立即体验</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box">
+                            <img src="http://thumb-qiniu.720static.com/@/resource/prod/69ai37767n4/56325xivmlr/303746/imgs/thumb.jpg?imageMogr2/thumbnail/100x" alt="">
+                        </div>
+                        <div class="caption">
+                            <h2>欧式田园</h2>
+                            <p>
+                                <span>欧式田园：你若喜欢清新, 拥抱欧式田园</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                            </p>
+                        </div>
+                        <div class="price">
+                            <a href="http://720yun.com/t/43821jaduyn">立即体验</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box">
+                           <img src="http://thumb-qiniu.720static.com/@/resource/prod/69ai37767n4/56325xivmlr/303744/imgs/thumb.jpg?imageMogr2/thumbnail/100x" alt="">
+                        </div>
+                        <div class="caption">
+                            <h2>欧式田园</h2>
+                            <p>
+                                <span>欧式田园：你若喜欢清新, 拥抱欧式田园</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                            </p>
+                        </div>
+                        <div class="price">
+                           <a href="http://720yun.com/t/a3d20jaduyr">立即体验</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box">
+                            <img src="http://thumb-qiniu.720static.com/@/resource/prod/69ai37767n4/56325xivmlr/303747/imgs/thumb.jpg?imageMogr2/thumbnail/100x" alt="">
+                        </div>
+                        <div class="caption">
+                            <h2>欧式田园</h2>
+                            <p>
+                                <span>欧式田园：你若喜欢清新, 拥抱欧式田园</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                                <span>25项精装全包，所有材料选用国内一线品牌，安全、环保、健康</span>
+                            </p>
+                        </div>
+                        <div class="price">
+                            <a href="http://720yun.com/t/a3e22jadubw">立即体验</a>
+                        </div>
+                    </li>
+                </ul>
+					</div>
+				</div>
+				<div class="page-bottom"></div>
+		</div>
+		<!-- ================================用户设置页面================================ -->
+		<div class="page">
+			<div class="page-top">
+				<h2 class="title">用户中心</h2>
+			</div>
+			<div class="side-nav-fixed">
+				<div class="side-nav">
+					<ul class="tab-list">
+						<li class="tab-list-item"><a href="javascript:;"><i class="icon icon-user"></i>个人中心</a></li>
+						<li class="tab-list-item"><a href="javascript:;"><i class="icon icon-setting"></i>设置</a></li>
+						<li class="tab-list-item"><a href="javascript:;"><i class="icon icon-return"></i>返回</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

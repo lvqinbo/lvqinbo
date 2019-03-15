@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多线程</title>
+	<style>
+	body{margin: 0; padding: 0; background: #000;}
+	#wrap{width: 960px; margin: 20px auto;}
+	#list{list-style: none; overflow: hidden;}
+	#list li{width: 50px; height: 50px; line-height: 50px; background: #ccc; margin-right: 5px; text-align: center; font-size: 50px; float: left;}
+	#c1{background: #fff;}
+	</style>
+	<script>
+	window.onload = function(){
+		var aLi = document.getElementById('list').getElementsByTagName('li');
+		var oC = document.getElementById('c1');
+		var oGc = oC.getContext('2d');
+		var str = '';
+		
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].onclick = function(){
+				console.time('hello');
+				str = this.innerHTML;
+				oGc.clearRect(0, 0, oC.width, oC.height);
+
+				var w1 = new Worker('worker.js');
+
+				w1.postMessage( oC.width * oC.height );
+				w1.onmessage = function(ev){
+					var arr = ev.data;
+					
+					var h = 180;
+					oGc.font = h + 'px impact';
+					oGc.fillStyle = 'red';
+					oGc.textBaseline = 'top';
+					var w = oGc.measureText(str).width;
+					oGc.fillText(str, (oC.width- w)/2, (oC.height - h)/2 );
+
+					var oImg = oGc.getImageData( (oC.width - w)/2, (oC.height - h)/2, w, h );
+					oGc.clearRect( 0, 0, oC.width, oC.height );
+					var objImg = oGc.createImageData( w, h );
+
+					for (var i = 0; i < arr.length; i++) {
+						objImg.data[4 * arr[i]] = oImg.data[ 4* arr[i]];
+						objImg.data[4 * arr[i]+1] = oImg.data[ 4* arr[i]+1];
+						objImg.data[4 * arr[i]+2] = oImg.data[ 4* arr[i]+2];
+						objImg.data[4 * arr[i]+3] = oImg.data[ 4* arr[i]+3];
+					};
+					oGc.putImageData( objImg, (oC.width - w)/2, (oC.height - h)/2 );
+				}
+				console.timeEnd('hello');
+			}
+		};
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<canvas id="c1" width="400" height="400"></canvas>
+		<ul id="list">
+			<li>中</li>
+			<li>华</li>
+			<li>民</li>
+			<li>族</li>
+		</ul>
+	</div>
+</body>
+</html>

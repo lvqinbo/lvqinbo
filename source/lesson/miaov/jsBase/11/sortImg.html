@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>图片排序</title>
+<style>
+*{margin: 0; padding: 0;}
+ul{list-style: none;}
+img{border: none; vertical-align: top;}
+a{text-decoration: none;}
+body{background: #f0f0f0;}
+#wrap{width: 960px; margin: 20px auto;}
+.picbox{position: relative; padding: 30px; background: #fff;}
+.piclist{width: 900px; height: 190px; padding-left: 20px;}
+.piclist li{width: 200px; height: 150px; margin-right: 20px; float: left;}
+.piclist p{text-align: center; padding: 5px; background: #f0f0f0;}
+.controlbox{width: 100%; line-height: 40px; margin-top: 20px; text-align: center;}
+.controlbox a{display: inline-block; width: 80px; line-height: 40px; font-size: 12px; color: #333; background: #ccc;}
+</style>
+<script>
+	window.onload = function(){
+		var oWrap = document.getElementById('wrap');
+		var aLi = oWrap.getElementsByTagName('li');
+		var aP = oWrap.getElementsByTagName('p');
+		var oControlDiv = oWrap.querySelector('.controlbox');
+		var aBtn = oControlDiv.getElementsByTagName('a');
+		var arrPos = [];
+		// 将li的位置与p的内容添加到数组
+		for(var i = 0; i < aLi.length; i++){
+			aLi[i].index = i;
+			arrPos[i] = [aP[i].innerHTML,aLi[i].offsetLeft, aLi[i].offsetTop];
+		}
+		// 随机排序
+		aBtn[0].onclick = function(){
+			arrPos.sort(function(){
+				return Math.random() - 0.5;
+			});
+			fnLayout();
+		}
+		// 顺序排序
+		aBtn[1].onclick = function(){
+			arrPos.sort();
+			fnLayout();
+		}
+		// 倒序排序
+		aBtn[2].onclick = function(){
+			arrPos.sort(function(a, b){
+				return parseInt(b) - parseInt(a);
+			});
+			fnLayout();
+		}
+		function fnLayout(){
+			for (var i = 0; i < arrPos.length; i++) {
+				aLi[i].style.position = 'absolute';
+				aLi[i].style.left = arrPos[i][1] + 'px';
+				aLi[i].style.top = arrPos[i][2] + 'px';
+				aLi[i].style.margin = 0;
+			};
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="picbox">
+			<ul class="piclist">
+				<li>
+					<a href="javascript:;"><img src="img/1.jpg" alt="guilin"></a>
+					<p>1-漓江清晨</p>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/2.jpg" alt="guilin"></a>
+					<p>2-鸟瞰桂林</p>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/3.jpg" alt="guilin"></a>
+					<p>3-桂林漓江</p>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/4.jpg" alt="guilin"></a>
+					<p>4-早晨插秧</p>
+				</li>
+			</ul>
+			<ul class="piclist">
+				<li>
+					<a href="javascript:;"><img src="img/1.jpg" alt="guilin"></a>
+					<p>5-桂林山水</p>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/2.jpg" alt="guilin"></a>
+					<p>6-桂林市区</p>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/3.jpg" alt="guilin"></a>
+					<p>7-村妇洗衣</p>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/4.jpg" alt="guilin"></a>
+					<p>8-乡村风景</p>
+				</li>
+			</ul>
+		</div>
+		<div class="controlbox">
+			<a href="javascript:;">随机排序</a>
+			<a href="javascript:;">顺序排序</a>
+			<a href="javascript:;">倒序排序</a>
+		</div>
+	</div>
+</body>
+</html>

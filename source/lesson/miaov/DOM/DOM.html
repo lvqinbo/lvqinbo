@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>动态创建元素</title>
+<style>
+body{background: #fff; font-size: 12px; color: #666; font-family: "微软雅黑";}
+#box{width: 940px; padding: 10px; margin: 20px auto; box-shadow: 0 0 1px #666;}
+#box p input{padding: 5px; border: 1px solid #f0f0f0; font-family: "微软雅黑";}
+#ul1{list-style: none; padding: 0 10px; background: #f0f0f0;}
+#ul1 li{line-height: 25px;}
+#ul1 li a{padding: 0 10px;}
+</style>
+<link rel="stylesheet" href="../../code.css">
+<script src="../../ajax.js"></script>
+<script src="../../readcode.js"></script>
+<script>
+window.onload = function(){
+	var oCodeList = getByClass(document,'codelist')[0];
+	readCode('DOM.js',oCodeList);
+	var oUl = document.getElementById('ul1');
+	var aLi = oUl.getElementsByTagName('li');
+	var aInput = document.getElementsByTagName('input');
+	var aA = document.getElementsByTagName('a');
+
+	aInput[1].onclick = function(){
+		var str = aInput[0].value;
+
+		if(str == ''){
+			alert("请输入内容");
+			return;
+		}
+		var oA = document.createElement('a');
+		oA.href = 'javascript:;';
+		oA.innerHTML = '隐藏';
+		var oLi = document.createElement('li');
+		oLi.innerHTML = str;
+		
+		oLi.appendChild(oA);
+		oUl.insertBefore(oLi,aLi[0]);
+	}
+	// 通过委托事件可以给动态创建的元素加上事件
+	oUl.onclick = function(ev){
+		var ev = ev || event;
+		var target = ev.target || ev.srcElement;
+		if(target.nodeName.toLowerCase() == 'a'){
+			target.parentNode.style.display = 'none';
+		}
+	}
+
+	/*for (var i = 0; i < aA.length; i++) {
+		aA[i].onclick = function(){
+			this.parentNode.style.display = 'none';
+		}
+	};*/
+}
+</script>
+</head>
+<body>
+<div id="box">
+	<p>
+		<input type="text">
+		<input type="button" value="创建元素">
+	</p>
+	<ul id="ul1"></ul>
+</div>
+<div class="codebox"><pre><ol class="codelist"></ol></pre></div>
+</body>
+</html>

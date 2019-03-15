@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三角函数</title>
+	<style type="text/css">
+	#div1{width: 20px; height: 20px; position: absolute; left: 700px; top: 300px; background: red; border-radius: 50%;}
+	#div2{width: 20px; height: 20px; position: absolute; left: 600px; top: 200px; background: blue; border-radius: 50%;}
+	#div3{width: 200px; height: 200px; border: 1px solid #333; border-radius: 50%; position: absolute; left: 500px; top: 200px;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oDiv1 = document.getElementById('div1');
+		var oDiv2 = document.getElementById('div2');
+		var r = 100;
+		var x = 600;
+		var y = 300;
+
+		var num = 0;
+
+		setInterval(function(){
+
+			num++;
+			if(num==360){
+				num = 0;
+			}
+			var a = Math.sin(num * Math.PI/180) * r;
+			var b = Math.cos(num * Math.PI/180) * r;
+
+			oDiv1.style.left = x + b - (oDiv1.offsetWidth)/2 + 'px';
+			oDiv1.style.top = y - (oDiv1.offsetHeight)/2 + 'px';
+			
+			oDiv2.style.top = y + a - (oDiv2.offsetHeight)/2 + 'px';
+			oDiv2.style.left = x - (oDiv2.offsetWidth)/2 + 'px';
+			// oDiv.style.top = y + a - (oDiv.offsetHeight)/2 + 'px';
+			oDiv1.style.width = a/100*30 + 50 + 'px';
+			oDiv1.style.height = a/100*30 + 50 + 'px';
+			
+			oDiv2.style.width = b/100*30 + 50  + 'px';
+			oDiv2.style.height = b/100*30 + 50 + 'px';
+
+		},1000/60)
+	}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+</body>
+</html>
