@@ -117,14 +117,15 @@ var fixMenu = (function(){
 	
 	function fnHide(){
 		oSidebar.style.transition = '.5s';
-		oSidebar.style.left = -view().w + 'px';
+		oSidebar.style.bottom = '-80px';
 		setTimeout(function(){
-			oOpen.style.cssText = 'display: block; right: -80px; bottom: 0';
+			oOpen.style.cssText = 'display: block;'
 		},500);
 	}
 	function fnShow(){
 		oSidebar.style.transition = '.6s';
 		oSidebar.style.left = 0;
+		oSidebar.style.bottom = 0;
 		oOpen.style.display = 'none';
 	}
 })();
