@@ -28,7 +28,7 @@
 .icon-menu:before { content: "\e60a"; }
 
 html,body,ul,ol,pre{margin: 0; padding: 0;}
-body{font-size: 14px; font-family: "微软雅黑"; background: #fff; color: #666;}
+body{font-size: 14px; font-family: "Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei"; background: #fff; color: #666;}
 p,h3{padding: 0;}
 ul{list-style: none;}
 a{text-decoration: none;}
@@ -174,8 +174,9 @@ h3{font-weight: normal;}
 .code .view{margin-left: 45px; line-height: 30px; border-bottom: 1px solid #ddd;}
 .code .view a{display: inline-block; padding: 5px 20px; background: #384350; color: #fff; -webkit-transition: all .6s; transition: all .6s;}
 .code .view a:hover{background-color: #C10841;}
+
 /* 返回顶部 */
-.toolsbar{position: fixed; right: 20px; bottom: 26px; z-index: 10;}
+.toolsbar{position: absolute; right: 10px; bottom: 26px; transition: top .2s; z-index: 10;}
 .toolsbar-item{position: relative; display: block; width: 52px; height: 52px; margin-top: 1px;}
 .toolsbar-item:after{content: ""; width: 160px; position: absolute; right: 53px; bottom: 0; background: url(../img/wx.jpg)no-repeat; opacity: 0; filter: alpha(opacity=0);
 	-webkit-transition: all .6s; 

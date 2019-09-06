@@ -316,6 +316,14 @@ var addSidebarList = (function(){
 	};
 })();
 
+var toolsBar = g('.toolsbar');
+var toolsBarHeight = toolsBar[0].getBoundingClientRect().height
+var footBarHeight = 100
+window.addEventListener('scroll', function() {
+	let vh = view().h - footBarHeight
+	toolsBar[0].style.top = document.documentElement.scrollTop + vh  - toolsBarHeight + 'px'
+})
+
 // 缩放窗口
 window.onresize = function(){
 	if(document.body.clientWidth < 968){
