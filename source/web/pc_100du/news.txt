@@ -1,7 +1,0 @@
-[
-	{name : '百度', time : '5分钟',title : '李克强总理赴天津重大火灾爆炸事故现场', url : 'http://news.baidu.com/'},
-	{name : '腾讯', time : '5分钟',title : '李克强总理赴天津重大火灾爆炸事故现场', url : 'http://news.baidu.com/'},
-	{name : '网易', time : '5分钟',title : '李克强总理赴天津重大火灾爆炸事故现场', url : 'http://news.baidu.com/'},
-	{name : '搜狐', time : '5分钟',title : '李克强总理赴天津重大火灾爆炸事故现场', url : 'http://news.baidu.com/'},
-	{name : '人民网', time : '5分钟',title : '李克强总理赴天津重大火灾爆炸事故现场', url : 'http://news.baidu.com/'}
-]
